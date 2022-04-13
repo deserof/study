@@ -129,9 +129,9 @@ namespace opr4
         {
             //return a * Math.Pow(x, 2) + b * x + c;
 
-            return 0.22 * Math.Pow(x, 2) - 1.474 * x + 5.79; // [2,7]
+            //return 0.22 * Math.Pow(x, 2) - 1.474 * x + 5.79; // [2,7]
             //return 3.75 * Math.Pow(x, 2) + 10.38 * x + 2.18; // [-4, 1]
-            //return x * Math.Pow(Math.E, x * 8.0); // [-2, 3]
+            return x * Math.Pow(Math.E, x * 8.0); // [-2, 3]
         }
 
         private static int GetFibonacciWithNumber(int n)
