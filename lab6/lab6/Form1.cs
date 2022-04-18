@@ -9,6 +9,7 @@ namespace lab6
     {
         private readonly ITextService _textService;
         private readonly IHistoryService _historyService;
+        private string buffer;
 
         public Lab6(
             ITextService textService,
@@ -19,6 +20,7 @@ namespace lab6
             InitializeComponent();
             InputText.Text = _textService.GetText();
             InputText_TextChanged(new object(), EventArgs.Empty);
+            base.KeyPreview = true;
         }
 
         private void InputText_TextChanged(object sender, EventArgs e)
@@ -34,15 +36,22 @@ namespace lab6
 
         private void FindButton_Click(object sender, EventArgs e)
         {
-            if (_textService.TryGetStartAndLengthSubstringIndex(FindText.Text, out int startIndex, out int length))
-            {
-                InputText.SelectionStart = startIndex;
-                InputText.SelectionLength = length;
-                InputText.SelectionColor = Color.DarkGoldenrod;
-            }
-            else
+            InputText.SelectionStart = 0;
+            InputText.SelectionLength = InputText.TextLength;
+            InputText.SelectionColor = Color.Black;
+
+            if (FindText.Text == "")
             {
                 MessageBox.Show($"Text not found: {FindText.Text}");
+            }
+
+            int startIndex = 0;
+            int index;
+            while ((index = InputText.Text.IndexOf(FindText.Text, startIndex, StringComparison.Ordinal)) != -1)
+            {
+                InputText.Select(index, FindText.Text.Length);
+                InputText.SelectionColor = Color.Coral;
+                startIndex = index + FindText.Text.Length;
             }
         }
 
@@ -86,6 +95,112 @@ namespace lab6
         {
             History historyForm = new History(_historyService);
             historyForm.Show();
+        }
+
+        private void aboutProgramToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            const string message = "Student: Artsiom Kharkevich\nVariant 8";
+            MessageBox.Show(message, "about", MessageBoxButtons.OK);
+        }
+
+        private void magneToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InputText.Font = new Font("Magneto", 10f);
+        }
+
+        private void segoeUIToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InputText.Font = new Font("Segoe UI", 10f);
+        }
+
+        private void timesNewRomanToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InputText.Font = new Font("Times New Roman", 10f);
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            InputText.Font = new Font(InputText.Font.Name, 8f);
+        }
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            InputText.Font = new Font(InputText.Font.Name, 10f);
+        }
+
+        private void toolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            InputText.Font = new Font(InputText.Font.Name, 12f);
+        }
+
+        private void toolStripMenuItem5_Click(object sender, EventArgs e)
+        {
+            InputText.Font = new Font(InputText.Font.Name, 14f);
+        }
+
+        private void MainForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            //    if (e.Control && e.KeyCode == Keys.Q)
+            //    {
+            //        buffer = InputText.SelectedText;
+            //        InputText.SelectedText = string.Empty;
+            //        return;
+            //    }
+
+            //    if (e.Control && e.KeyCode == Keys.W)
+            //    {
+            //        buffer = InputText.SelectedText;
+            //        return;
+            //    }
+
+            //    if (e.Control && e.KeyCode == Keys.RControlKey)
+            //    {
+            //        InputText.SelectedText = buffer;
+            //        return;
+            //    }
+        }
+
+        private void upperCaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InputText.Text = InputText.Text.ToUpper();
+        }
+
+        private void lowerCaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InputText.Text = InputText.Text.ToLower();
+        }
+
+        private void standartToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InputText.Text = _textService.SetStandartCaseForText();
+        }
+
+        private bool _prev = false;
+        private bool _prevPrev = false;
+
+        private void RichTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '.' || e.KeyChar == '!' || e.KeyChar == '?')
+            {
+                _prevPrev = true;
+                return;
+            }
+
+            if (e.KeyChar == ' ')
+            {
+                _prev = true;
+                return;
+            }
+
+            if (_prev && _prevPrev)
+            {
+                e.KeyChar = char.Parse(e.KeyChar.ToString().ToUpper());
+                _prevPrev = false;
+                _prev = false;
+                return;
+            }
+
+            e.KeyChar = char.Parse(e.KeyChar.ToString().ToLower());
         }
     }
 }

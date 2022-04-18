@@ -59,10 +59,27 @@ namespace lab6
             this.InputText = new System.Windows.Forms.RichTextBox();
             this.SaveButton = new System.Windows.Forms.Button();
             this.HistoryButton = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.magneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.segoeUIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.timesNewRomanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.registryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.upperCaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lowerCaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.standartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutProgramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ControlTab.SuspendLayout();
             this.FindTab.SuspendLayout();
             this.FindAndReplaceTab.SuspendLayout();
             this.RemoveTab.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // FindButton
@@ -107,7 +124,7 @@ namespace lab6
             this.ControlTab.Controls.Add(this.FindTab);
             this.ControlTab.Controls.Add(this.FindAndReplaceTab);
             this.ControlTab.Controls.Add(this.RemoveTab);
-            this.ControlTab.Location = new System.Drawing.Point(538, 8);
+            this.ControlTab.Location = new System.Drawing.Point(538, 37);
             this.ControlTab.Name = "ControlTab";
             this.ControlTab.SelectedIndex = 0;
             this.ControlTab.Size = new System.Drawing.Size(250, 173);
@@ -259,12 +276,13 @@ namespace lab6
             // 
             // InputText
             // 
-            this.InputText.Location = new System.Drawing.Point(12, 8);
+            this.InputText.Location = new System.Drawing.Point(12, 37);
             this.InputText.Name = "InputText";
-            this.InputText.Size = new System.Drawing.Size(400, 430);
+            this.InputText.Size = new System.Drawing.Size(400, 401);
             this.InputText.TabIndex = 15;
             this.InputText.Text = "";
             this.InputText.TextChanged += new System.EventHandler(this.InputText_TextChanged);
+            this.InputText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.RichTextBox_KeyPress);
             // 
             // SaveButton
             // 
@@ -278,7 +296,7 @@ namespace lab6
             // 
             // HistoryButton
             // 
-            this.HistoryButton.Location = new System.Drawing.Point(694, 187);
+            this.HistoryButton.Location = new System.Drawing.Point(694, 212);
             this.HistoryButton.Name = "HistoryButton";
             this.HistoryButton.Size = new System.Drawing.Size(94, 29);
             this.HistoryButton.TabIndex = 17;
@@ -286,11 +304,142 @@ namespace lab6
             this.HistoryButton.UseVisualStyleBackColor = true;
             this.HistoryButton.Click += new System.EventHandler(this.HistoryButton_Click);
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fontToolStripMenuItem,
+            this.registryToolStripMenuItem,
+            this.aboutProgramToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
+            this.menuStrip1.TabIndex = 18;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fontToolStripMenuItem
+            // 
+            this.fontToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.stToolStripMenuItem,
+            this.sizeToolStripMenuItem});
+            this.fontToolStripMenuItem.Name = "fontToolStripMenuItem";
+            this.fontToolStripMenuItem.Size = new System.Drawing.Size(52, 24);
+            this.fontToolStripMenuItem.Text = "Font";
+            // 
+            // stToolStripMenuItem
+            // 
+            this.stToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.magneToolStripMenuItem,
+            this.segoeUIToolStripMenuItem,
+            this.timesNewRomanToolStripMenuItem});
+            this.stToolStripMenuItem.Name = "stToolStripMenuItem";
+            this.stToolStripMenuItem.Size = new System.Drawing.Size(123, 26);
+            this.stToolStripMenuItem.Text = "Type";
+            // 
+            // magneToolStripMenuItem
+            // 
+            this.magneToolStripMenuItem.Name = "magneToolStripMenuItem";
+            this.magneToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.magneToolStripMenuItem.Text = "Magneto";
+            this.magneToolStripMenuItem.Click += new System.EventHandler(this.magneToolStripMenuItem_Click);
+            // 
+            // segoeUIToolStripMenuItem
+            // 
+            this.segoeUIToolStripMenuItem.Name = "segoeUIToolStripMenuItem";
+            this.segoeUIToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.segoeUIToolStripMenuItem.Text = "Segoe UI";
+            this.segoeUIToolStripMenuItem.Click += new System.EventHandler(this.segoeUIToolStripMenuItem_Click);
+            // 
+            // timesNewRomanToolStripMenuItem
+            // 
+            this.timesNewRomanToolStripMenuItem.Name = "timesNewRomanToolStripMenuItem";
+            this.timesNewRomanToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.timesNewRomanToolStripMenuItem.Text = "Times New Roman";
+            this.timesNewRomanToolStripMenuItem.Click += new System.EventHandler(this.timesNewRomanToolStripMenuItem_Click);
+            // 
+            // sizeToolStripMenuItem
+            // 
+            this.sizeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem2,
+            this.toolStripMenuItem3,
+            this.toolStripMenuItem4,
+            this.toolStripMenuItem5});
+            this.sizeToolStripMenuItem.Name = "sizeToolStripMenuItem";
+            this.sizeToolStripMenuItem.Size = new System.Drawing.Size(123, 26);
+            this.sizeToolStripMenuItem.Text = "Size";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(108, 26);
+            this.toolStripMenuItem2.Text = "8";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(108, 26);
+            this.toolStripMenuItem3.Text = "10";
+            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(108, 26);
+            this.toolStripMenuItem4.Text = "12";
+            this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(108, 26);
+            this.toolStripMenuItem5.Text = "14";
+            this.toolStripMenuItem5.Click += new System.EventHandler(this.toolStripMenuItem5_Click);
+            // 
+            // registryToolStripMenuItem
+            // 
+            this.registryToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.upperCaseToolStripMenuItem,
+            this.lowerCaseToolStripMenuItem,
+            this.standartToolStripMenuItem});
+            this.registryToolStripMenuItem.Name = "registryToolStripMenuItem";
+            this.registryToolStripMenuItem.Size = new System.Drawing.Size(94, 24);
+            this.registryToolStripMenuItem.Text = "Letter case";
+            // 
+            // upperCaseToolStripMenuItem
+            // 
+            this.upperCaseToolStripMenuItem.Name = "upperCaseToolStripMenuItem";
+            this.upperCaseToolStripMenuItem.Size = new System.Drawing.Size(166, 26);
+            this.upperCaseToolStripMenuItem.Text = "Upper case";
+            this.upperCaseToolStripMenuItem.Click += new System.EventHandler(this.upperCaseToolStripMenuItem_Click);
+            // 
+            // lowerCaseToolStripMenuItem
+            // 
+            this.lowerCaseToolStripMenuItem.Name = "lowerCaseToolStripMenuItem";
+            this.lowerCaseToolStripMenuItem.Size = new System.Drawing.Size(166, 26);
+            this.lowerCaseToolStripMenuItem.Text = "Lower case";
+            this.lowerCaseToolStripMenuItem.Click += new System.EventHandler(this.lowerCaseToolStripMenuItem_Click);
+            // 
+            // standartToolStripMenuItem
+            // 
+            this.standartToolStripMenuItem.Name = "standartToolStripMenuItem";
+            this.standartToolStripMenuItem.Size = new System.Drawing.Size(166, 26);
+            this.standartToolStripMenuItem.Text = "Standart";
+            this.standartToolStripMenuItem.Click += new System.EventHandler(this.standartToolStripMenuItem_Click);
+            // 
+            // aboutProgramToolStripMenuItem
+            // 
+            this.aboutProgramToolStripMenuItem.Name = "aboutProgramToolStripMenuItem";
+            this.aboutProgramToolStripMenuItem.Size = new System.Drawing.Size(126, 24);
+            this.aboutProgramToolStripMenuItem.Text = "About program";
+            this.aboutProgramToolStripMenuItem.Click += new System.EventHandler(this.aboutProgramToolStripMenuItem_Click);
+            // 
             // Lab6
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.HistoryButton);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.InputText);
@@ -301,8 +450,10 @@ namespace lab6
             this.Controls.Add(this.DateValue);
             this.Controls.Add(this.ControlTab);
             this.Controls.Add(this.DateLabel);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Lab6";
             this.Text = "Lab6";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
             this.ControlTab.ResumeLayout(false);
             this.FindTab.ResumeLayout(false);
             this.FindTab.PerformLayout();
@@ -310,6 +461,8 @@ namespace lab6
             this.FindAndReplaceTab.PerformLayout();
             this.RemoveTab.ResumeLayout(false);
             this.RemoveTab.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -341,5 +494,21 @@ namespace lab6
         private System.Windows.Forms.RichTextBox InputText;
         private System.Windows.Forms.Button SaveButton;
         private Button HistoryButton;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem fontToolStripMenuItem;
+        private ToolStripMenuItem stToolStripMenuItem;
+        private ToolStripMenuItem aboutProgramToolStripMenuItem;
+        private ToolStripMenuItem sizeToolStripMenuItem;
+        private ToolStripMenuItem magneToolStripMenuItem;
+        private ToolStripMenuItem segoeUIToolStripMenuItem;
+        private ToolStripMenuItem timesNewRomanToolStripMenuItem;
+        private ToolStripMenuItem toolStripMenuItem2;
+        private ToolStripMenuItem toolStripMenuItem3;
+        private ToolStripMenuItem toolStripMenuItem4;
+        private ToolStripMenuItem toolStripMenuItem5;
+        private ToolStripMenuItem registryToolStripMenuItem;
+        private ToolStripMenuItem upperCaseToolStripMenuItem;
+        private ToolStripMenuItem lowerCaseToolStripMenuItem;
+        private ToolStripMenuItem standartToolStripMenuItem;
     }
 }
