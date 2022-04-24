@@ -75,11 +75,16 @@ namespace lab6
             this.lowerCaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.standartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutProgramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip4 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.вырезатьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.копироватьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.вставитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ControlTab.SuspendLayout();
             this.FindTab.SuspendLayout();
             this.FindAndReplaceTab.SuspendLayout();
             this.RemoveTab.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.contextMenuStrip4.SuspendLayout();
             this.SuspendLayout();
             // 
             // FindButton
@@ -434,6 +439,37 @@ namespace lab6
             this.aboutProgramToolStripMenuItem.Text = "About program";
             this.aboutProgramToolStripMenuItem.Click += new System.EventHandler(this.aboutProgramToolStripMenuItem_Click);
             // 
+            // contextMenuStrip4
+            // 
+            this.contextMenuStrip4.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip4.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.вырезатьToolStripMenuItem,
+            this.копироватьToolStripMenuItem,
+            this.вставитьToolStripMenuItem});
+            this.contextMenuStrip4.Name = "contextMenuStrip4";
+            this.contextMenuStrip4.Size = new System.Drawing.Size(211, 104);
+            // 
+            // вырезатьToolStripMenuItem
+            // 
+            this.вырезатьToolStripMenuItem.Name = "вырезатьToolStripMenuItem";
+            this.вырезатьToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.вырезатьToolStripMenuItem.Text = "Вырезать";
+            this.вырезатьToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItemCut_Click);
+            // 
+            // копироватьToolStripMenuItem
+            // 
+            this.копироватьToolStripMenuItem.Name = "копироватьToolStripMenuItem";
+            this.копироватьToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.копироватьToolStripMenuItem.Text = "Копировать";
+            this.копироватьToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItemCopy_Click);
+            // 
+            // вставитьToolStripMenuItem
+            // 
+            this.вставитьToolStripMenuItem.Name = "вставитьToolStripMenuItem";
+            this.вставитьToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.вставитьToolStripMenuItem.Text = "Вставить";
+            this.вставитьToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItemInsert_Click);
+            // 
             // Lab6
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -463,6 +499,7 @@ namespace lab6
             this.RemoveTab.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.contextMenuStrip4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -510,5 +547,9 @@ namespace lab6
         private ToolStripMenuItem upperCaseToolStripMenuItem;
         private ToolStripMenuItem lowerCaseToolStripMenuItem;
         private ToolStripMenuItem standartToolStripMenuItem;
+        private ContextMenuStrip contextMenuStrip4;
+        private ToolStripMenuItem вырезатьToolStripMenuItem;
+        private ToolStripMenuItem копироватьToolStripMenuItem;
+        private ToolStripMenuItem вставитьToolStripMenuItem;
     }
 }

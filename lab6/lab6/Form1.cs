@@ -9,7 +9,7 @@ namespace lab6
     {
         private readonly ITextService _textService;
         private readonly IHistoryService _historyService;
-        private string buffer;
+        private string _buffer;
 
         public Lab6(
             ITextService textService,
@@ -18,9 +18,25 @@ namespace lab6
             _textService = textService;
             _historyService = historyService;
             InitializeComponent();
+            InputText.ContextMenuStrip = contextMenuStrip4;
             InputText.Text = _textService.GetText();
             InputText_TextChanged(new object(), EventArgs.Empty);
             base.KeyPreview = true;
+        }
+
+        private void toolStripMenuItemCut_Click(object sender, EventArgs e)
+        {
+            _buffer = InputText.SelectedText;
+            InputText.Cut();
+        }
+
+        private void toolStripMenuItemCopy_Click(object sender, EventArgs e) =>
+            _buffer = InputText.SelectedText;
+
+        private void toolStripMenuItemInsert_Click(object sender, EventArgs e)
+        {
+            var myFormat = DataFormats.GetFormat(_buffer);
+            InputText.Paste(myFormat);
         }
 
         private void InputText_TextChanged(object sender, EventArgs e)
@@ -29,10 +45,7 @@ namespace lab6
             SymbolsValue.Text = InputText.Text.Length.ToString();
         }
 
-        private void Timer_Tick(object sender, EventArgs e)
-        {
-            DateValue.Text = DateTime.Now.ToString("F");
-        }
+        private void Timer_Tick(object sender, EventArgs e) => DateValue.Text = DateTime.Now.ToString("F");
 
         private void FindButton_Click(object sender, EventArgs e)
         {
