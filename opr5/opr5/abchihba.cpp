@@ -4,6 +4,7 @@
 #include <string>
 #include "tinyexpr.h"
 #include <math.h>
+#include <iomanip>
 
 using namespace std;
 
@@ -29,17 +30,17 @@ int main()
 	SetConsoleOutputCP(1251);
 	setlocale(LC_ALL, "RUSSIAN");
 	//int x_numbers, y_numbers;
-	int startPointX, startPointY, vmax, number_with_x, number_with_y, mu;
+	int startPointX, startPointY, vMax, numberWithX, numberWithY, mu;
 	float lyambda;
 	string formula;
 	cout << "enter (will replace x1 and x2 as x and y):\n> ";
 	cout << "2*(x-7)^2+(y-1)^2\n> ";
 	cin >> formula;
 	cout << "enter value in brackets with x = 7:\n> ";
-	cin >> number_with_x;
+	cin >> numberWithX;
 	cout << "enter value in brackets with y = 1:\n> ";
-	cin >> number_with_y;
-	cout << "enter value Mu=1:\n> ";
+	cin >> numberWithY;
+	cout << "enter value Mu=2:\n> ";
 	cin >> mu;
 	cout << "enter value x start point 0:\n> ";
 	cin >> startPointX;
@@ -50,7 +51,7 @@ int main()
 	//cout << "Введите значение j:\n> ";
 	//cin >> y_numbers;
 	cout << "enter value v=20:\n> ";
-	cin >> vmax;
+	cin >> vMax;
 	cout << "enter lenght of step (lambda) = 0.3:\n> ";
 	cin >> lyambda;
 	//Создание двумерного массива
@@ -75,10 +76,10 @@ int main()
 	//        M_i_j[i][j] = squaric_function_solver(formula, x_numbers_array, y_numbers_array, i, j);
 	//Пункт 2.2
 	//Определения вектора начальных значений
-	float* x_with_v = new float[vmax];
-	float* y_with_v = new float[vmax];
-	float* ff = new float[vmax];
-	for (int i = 0; i < vmax; i++)
+	float* x_with_v = new float[vMax];
+	float* y_with_v = new float[vMax];
+	float* ff = new float[vMax];
+	for (int i = 0; i < vMax; i++)
 	{
 		if (i == 0)
 		{
@@ -88,78 +89,90 @@ int main()
 		}
 		if (i != 0)
 		{
-			x_with_v[i] = x_with_v[i - 1] + (finding_step(lyambda, i) * finding_projection_x(x_with_v[i - 1], y_with_v[i - 1], mu, number_with_x, number_with_y));
-			y_with_v[i] = y_with_v[i - 1] + (finding_step(lyambda, i) * finding_projection_y(x_with_v[i - 1], y_with_v[i - 1], mu, number_with_x, number_with_y));
+			x_with_v[i] = x_with_v[i - 1] + (finding_step(lyambda, i) * finding_projection_x(x_with_v[i - 1], y_with_v[i - 1], mu, numberWithX, numberWithY));
+			y_with_v[i] = y_with_v[i - 1] + (finding_step(lyambda, i) * finding_projection_y(x_with_v[i - 1], y_with_v[i - 1], mu, numberWithX, numberWithY));
 			ff[i] = squaric_function_solver(formula, x_with_v[i], y_with_v[i]);
 		}
 	}
-	//Вывод значений аргументов
-	for (int i = 0; i < vmax; i++)
+
+	// output
+	for (int i = 0; i < vMax; i++)
 	{
-		cout << setw(10) << "\t\tx" << i << "= " << x_with_v[i] << "\t\ty" << i << "= " << y_with_v[i] << "\t\tff" << i << "= " << ff[i] << endl;
+		cout << "\t\tx" << i << "= " << left << setw(20) << left << x_with_v[i]
+			<< "y" << i << "= " << left << setw(20) << left << y_with_v[i]
+			<< "ff" << i << "= " << left << setw(20) << left << ff[i] << endl;
 	}
-	//Выбор мест автоколебаний
+	// place of vibr
 
-	//int selected_x_begin, selected_x_end, selected_y_begin, selected_y_end;
-	//cout << "Выберите точку начала колебаний по оси х (если их нет - поставить -1):\n> ";
-	//cin >> selected_x_begin;
-	//if (selected_x_begin != -1)
-	//{
-	//	cout << "Выберите точку конца колебаний по оси х:\n> ";
-	//	cin >> selected_x_end;
-	//}
-	//else selected_x_end = -1;
-	//cout << "Выберите точку начала колебаний по оси y (если их нет - поставить -1):\n> ";
-	//cin >> selected_y_begin;
-	//if (selected_y_begin != -1)
-	//{
-	//	cout << "Выберите точку конца колебаний по оси y:\n> ";
-	//	cin >> selected_y_end;
-	//}
-	//else selected_y_end = -1;
+	int selected_x_begin, selected_x_end, selected_y_begin, selected_y_end;
+	cout << "Point of the start vibrations X (if does not exist - enter 1):\n> ";
+	cin >> selected_x_begin;
 
-	//Определение точки минимума
+	if (selected_x_begin != 1)
+	{
+		cout << "Enter point of the end vibrations X:\n> ";
+		cin >> selected_x_end;
+	}
+	else selected_x_end = 1;
+	cout << "Point of the start vibrations Y (if does not exist - enter 1):\n> ";
+	cin >> selected_y_begin;
 
-	//float minimum_x, minimum_y, minimum_function;
-	//if (selected_x_begin != -1)
-	//{
-	//	minimum_x = (x_with_v[selected_x_begin] - (-x_with_v[selected_x_end])) / 2;
-	//}
-	//else minimum_x = 0;
-	//if (selected_y_begin != -1)
-	//{
-	//	minimum_y = (y_with_v[selected_y_end] - (-y_with_v[selected_y_begin])) / 2;
-	//}
-	//else minimum_y = 0;
-	//minimum_function = squaric_function_solver(formula, minimum_x, minimum_y);
+	if (selected_y_begin != 1)
+	{
+		cout << "Enter point of the end vibrations Y:\n> ";
+		cin >> selected_y_end;
+	}
+	else selected_y_end = 1;
 
-	//Расчёт амплитуды колебаний
+	// point of min
 
-	//float amplitude;
-	//float x_start_positive, x_end_positive, y_start_positive, y_end_positive;
-	//if (x_with_v[selected_x_begin] < 0)
-	//{
-	//	x_start_positive = -x_with_v[selected_x_begin];
-	//}
-	//else x_start_positive = x_with_v[selected_x_begin];
-	//if (x_with_v[selected_x_end] < 0)
-	//{
-	//	x_end_positive = -x_with_v[selected_x_end];
-	//}
-	//else x_end_positive = x_with_v[selected_x_end];
-	//if (y_with_v[selected_y_begin] < 0)
-	//{
-	//	y_start_positive = -y_with_v[selected_y_begin];
-	//}
-	//else y_start_positive = y_with_v[selected_y_begin];
-	//if (y_with_v[selected_y_end] < 0)
-	//{
-	//	y_end_positive = -y_with_v[selected_y_end];
-	//}
-	//else y_end_positive = y_with_v[selected_y_end];
-	//amplitude = sqrt(pow((x_start_positive + x_end_positive), 2) + pow((y_start_positive + y_end_positive), 2));
-	////Вывод ответа
-	//cout << "Точка минимума функции:\nx=" << minimum_x << "\t\ty=" << minimum_y << "\t\tf(x,y)=" << minimum_function << "\nАмплитуда: " << amplitude;
+	float minimum_x, minimum_y, minimum_function;
+	if (selected_x_begin != -1)
+	{
+		minimum_x = (x_with_v[selected_x_begin] - (-x_with_v[selected_x_end])) / 2;
+	}
+	else minimum_x = 0;
+
+	if (selected_y_begin != -1)
+	{
+		minimum_y = (y_with_v[selected_y_end] - (-y_with_v[selected_y_begin])) / 2;
+	}
+	else minimum_y = 0;
+	minimum_function = squaric_function_solver(formula, minimum_x, minimum_y);
+
+	// amplitude
+
+	float amplitude;
+	float x_start_positive, x_end_positive, y_start_positive, y_end_positive;
+
+	if (x_with_v[selected_x_begin] < 0)
+	{
+		x_start_positive = -x_with_v[selected_x_begin];
+	}
+	else x_start_positive = x_with_v[selected_x_begin];
+
+	if (x_with_v[selected_x_end] < 0)
+	{
+		x_end_positive = -x_with_v[selected_x_end];
+	}
+	else x_end_positive = x_with_v[selected_x_end];
+
+	if (y_with_v[selected_y_begin] < 0)
+	{
+		y_start_positive = -y_with_v[selected_y_begin];
+	}
+	else y_start_positive = y_with_v[selected_y_begin];
+
+	if (y_with_v[selected_y_end] < 0)
+	{
+		y_end_positive = -y_with_v[selected_y_end];
+	}
+	else y_end_positive = y_with_v[selected_y_end];
+	amplitude = sqrt(pow((x_start_positive + x_end_positive), 2) + pow((y_start_positive + y_end_positive), 2));
+	//Вывод ответа
+	cout << "Function minimum point:\nx=" << minimum_x
+		<< "\t\ty=" << minimum_y << "\t\tf(x,y)=" << minimum_function
+		<< "\nAmplitude: " << amplitude;
 	return 0;
 }
 
