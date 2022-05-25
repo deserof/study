@@ -6,6 +6,8 @@
 #include <math.h>
 
 using namespace std;
+// -(25/34)x-(15/34)y+190/17
+// x^2+y^2-12*x-8*y+18
 
 // Для простой замены x и y.
 float squaric_function_solver(string squaric_function, int x, int y);
@@ -19,112 +21,116 @@ void reserching_Search(string function, string limit, int limitMoreOrLessThanZer
 void reserching_Search(string function, string limit, int limitMoreOrLessThanZero, float increment, float*& reserchingSearchCoodinates);
 string ReplaceString(std::string subject, const std::string& search, const std::string& replace);
 
+
+
 int main()
 {
-    SetConsoleCP(1251);
-    SetConsoleOutputCP(1251);
-    setlocale(LC_ALL, "RUSSIAN");
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	setlocale(LC_ALL, "RUSSIAN");
 	int xZero, yZero;
 	float increment, stepReductionCoefficient, searchStopParameter, limitMoreOrLessThanZero;
 	string function, limit;
-	cout << "Введите функцию (без пробелов):\n> ";
+	cout << "enter function:\n> ";
 	cin >> function;
-	cout << "Введите приращение:\n> ";
+	cout << "enter increment:\n> ";
 	cin >> increment;
-	cout << "Введите коэффициент уменьшения шага:\n> ";
+	cout << "pitch reduction coef:\n> ";
 	cin >> stepReductionCoefficient;
-	cout << "Введите параметр остановки поиска:\n> ";
+	cout << "stop search param:\n> ";
 	cin >> searchStopParameter;
-	cout << "Введите формулу ограничения:\n> ";
+	cout << "restriction function:\n> ";
 	cin >> limit;
-	cout << "Введите 1, если ограничение БОЛЬШЕ 0, или 2, если ограничение МЕНЬШЕ 0:\n> ";
+	cout << "enter 1, if restriction greater than 0, or 2, if restriction lower than 0:\n> ";
 	cin >> limitMoreOrLessThanZero;
 	//////////////////
 	float limitFunction;
 	do
 	{
-		cout << "Введите начальную ночку. Введите x:\n> ";
+		cout << "x:\n> ";
 		cin >> xZero;
-		cout << "Введите начальную ночку. Введите y:\n> ";
+		cout << "y:\n> ";
 		cin >> yZero;
 		limitFunction = squaric_function_solver(limit, xZero, yZero);
-		if (limitMoreOrLessThanZero == 1)
-			if (limitFunction < 0)
-			{
-				cout << "Начальная точка не соответствует ограничению, выберите другое начальное значение." << endl;
-			}
-		if (limitMoreOrLessThanZero == 1)
-			if (limitFunction >= 0)
-			{
-				break;
-			}
-		if (limitMoreOrLessThanZero == 2)
-			if (limitFunction > 0)
-			{
-				cout << "Начальная точка не соответствует ограничению, выберите другое начальное значение." << endl;
-			}
-		if (limitMoreOrLessThanZero == 2)
-			if (limitFunction <= 0)
-			{
-				break;
-			}
-	} while (true);
+		int i = 1;
+		//if (limitMoreOrLessThanZero == 1)
+		//	if (limitFunction < 0)
+		//	{
+		//		cout << "err. choose another" << endl;
+		//	}
+		//if (limitMoreOrLessThanZero == 1)
+		//	if (limitFunction >= 0)
+		//	{
+		//		break;
+		//	}
+		//if (limitMoreOrLessThanZero == 2)
+		//	if (limitFunction > 0)
+		//	{
+		//		cout << "err. choose another" << endl;
+		//	}
+		//if (limitMoreOrLessThanZero == 2)
+		//	if (limitFunction <= 0)
+		//	{
+		//		break;
+		//	}
+
 	///////////////////
-	float* coordinatesBase = new float[3]; //включая вычисленную функцию.
-	coordinatesBase[0] = xZero;
-	coordinatesBase[1] = yZero;
-	coordinatesBase[2] = squaric_function_solver(function, xZero, yZero);
-	do
-	{
-		float xLastLast = coordinatesBase[0];
-		float yLastLast = coordinatesBase[1];
-		//Исследующий поиск в итерации.
-		int isAnyResult = 0;
-		//reserching_Search(function, increment, coordinatesBase, isAnyResult);
-		reserching_Search(function, limit, limitMoreOrLessThanZero, increment, coordinatesBase, isAnyResult);
-		if (isAnyResult != 0) {
-			//Поиск по образцу в итерации.
-			float fLast = 0;
-			float* coordinatesTemp = new float[3];
-			float limitForResearch;
-			int checker;
-			do
-			{
-				checker = 0;
-				fLast = coordinatesBase[2];
-				coordinatesTemp[0] = coordinatesBase[0] + (coordinatesBase[0] - xLastLast);
-				coordinatesTemp[1] = coordinatesBase[1] + (coordinatesBase[1] - yLastLast);
-				xLastLast = coordinatesBase[0];
-				yLastLast = coordinatesBase[1];
-				coordinatesTemp[2] = squaric_function_solver(function, coordinatesTemp[0], coordinatesTemp[1]);
-				//Исследующий поиск в поиске по образцу.
-				//reserching_Search(function, increment, coordinatesTemp);
-				reserching_Search(function, limit, limitMoreOrLessThanZero, increment, coordinatesTemp);
-				limitForResearch = squaric_function_solver(limit, coordinatesTemp[0], coordinatesTemp[1]);
-				if (limitMoreOrLessThanZero == 1)
-					if (limitForResearch > 0 && coordinatesTemp[2] < fLast)
-					{
-						coordinatesBase[0] = coordinatesTemp[0];
-						coordinatesBase[1] = coordinatesTemp[1];
-						coordinatesBase[2] = coordinatesTemp[2];
-						checker++;
-					}
-				if (limitMoreOrLessThanZero == 1 && checker == 0) break;
-				if (limitMoreOrLessThanZero == 2)
-					if (limitForResearch < 0 && coordinatesTemp[2] < fLast)
-					{
-						coordinatesBase[0] = coordinatesTemp[0];
-						coordinatesBase[1] = coordinatesTemp[1];
-						coordinatesBase[2] = coordinatesTemp[2];
-						checker++;
-					}
-				if (limitMoreOrLessThanZero == 2 && checker == 0) break;
-			} while (true);
-		}
-		else if (increment > searchStopParameter) increment = increment / stepReductionCoefficient;
+		float* coordinatesBase = new float[3]; //включая вычисленную функцию.
+		coordinatesBase[0] = xZero;
+		coordinatesBase[1] = yZero;
+		coordinatesBase[2] = squaric_function_solver(function, xZero, yZero);
+		do
+		{
+			float xLastLast = coordinatesBase[0];
+			float yLastLast = coordinatesBase[1];
+			//Исследующий поиск в итерации.
+			int isAnyResult = 0;
+			//reserching_Search(function, increment, coordinatesBase, isAnyResult);
+			reserching_Search(function, limit, limitMoreOrLessThanZero, increment, coordinatesBase, isAnyResult);
+			if (isAnyResult != 0) {
+				//Поиск по образцу в итерации.
+				float fLast = 0;
+				float* coordinatesTemp = new float[3];
+				float limitForResearch;
+				int checker;
+				do
+				{
+					checker = 0;
+					fLast = coordinatesBase[2];
+					coordinatesTemp[0] = coordinatesBase[0] + (coordinatesBase[0] - xLastLast);
+					coordinatesTemp[1] = coordinatesBase[1] + (coordinatesBase[1] - yLastLast);
+					xLastLast = coordinatesBase[0];
+					yLastLast = coordinatesBase[1];
+					coordinatesTemp[2] = squaric_function_solver(function, coordinatesTemp[0], coordinatesTemp[1]);
+					//Исследующий поиск в поиске по образцу.
+					//reserching_Search(function, increment, coordinatesTemp);
+					reserching_Search(function, limit, limitMoreOrLessThanZero, increment, coordinatesTemp);
+					limitForResearch = squaric_function_solver(limit, coordinatesTemp[0], coordinatesTemp[1]);
+					if (limitMoreOrLessThanZero == 1)
+						if (limitForResearch > 0 && coordinatesTemp[2] < fLast)
+						{
+							coordinatesBase[0] = coordinatesTemp[0];
+							coordinatesBase[1] = coordinatesTemp[1];
+							coordinatesBase[2] = coordinatesTemp[2];
+							checker++;
+						}
+					if (limitMoreOrLessThanZero == 1 && checker == 0) break;
+					if (limitMoreOrLessThanZero == 2)
+						if (limitForResearch < 0 && coordinatesTemp[2] < fLast)
+						{
+							coordinatesBase[0] = coordinatesTemp[0];
+							coordinatesBase[1] = coordinatesTemp[1];
+							coordinatesBase[2] = coordinatesTemp[2];
+							checker++;
+						}
+					if (limitMoreOrLessThanZero == 2 && checker == 0) break;
+				} while (true);
+			}
+			else if (increment > searchStopParameter) increment = increment / stepReductionCoefficient;
 			else break;
+		} while (true);
+		cout << "answer:\n" << coordinatesBase[0] << " " << coordinatesBase[1] << " " << coordinatesBase[2] << endl;
 	} while (true);
-	cout << "Ответ:\n" << coordinatesBase[0] << " " << coordinatesBase[1] << " " << coordinatesBase[2] << endl;
 	system("pause");
 	return 0;
 }
@@ -217,7 +223,7 @@ void reserching_Search(string function, string limit, int limitMoreOrLessThanZer
 	reserchingSearchCoodinates[0] = reserchingSearchCoodinates[0] + increment;
 	fTemp = squaric_function_solver(function, reserchingSearchCoodinates[0], reserchingSearchCoodinates[1]);
 	limitFloat = squaric_function_solver(limit, reserchingSearchCoodinates[0], reserchingSearchCoodinates[1]);
-	if (limitMoreOrLessThanZero == 1) 
+	if (limitMoreOrLessThanZero == 1)
 		if (fTemp < reserchingSearchCoodinates[2] && limitFloat > 0)
 		{
 			isAnyResult += 1;

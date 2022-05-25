@@ -23,6 +23,9 @@ int main()
 	int xFirst, yFirst, n = 2;
 	int alpha = 1, gamma = 2;
 	float beta = 0.5;
+	// -(25/34)x-(15/34)y+190/17
+	// x^2+y^2-12*x-8*y+18
+
 	//string function = "(x)^2+(x)*(y)+(y)^2-6*(x)-9*(y)";
 	//string limit = "x^2+y^2-12*x+8*y+18";
 	string function;
@@ -33,23 +36,23 @@ int main()
 	float* coordinatesSecond = new float[3];
 	float* coordinatesThird = new float[3];
 	float* coordinatesResult = new float[3];
-	cout << "Введите функцию (без пробелов):\n> ";
+	cout << "enter function:\n> ";
 	cin >> function;
-	cout << "Введите ограничение (без пробелов):\n> ";
+	cout << "enter restrictions:\n> ";
 	cin >> limit;
 	float limitFloat;
 	do
 	{
-		cout << "Введите x:\n> ";
+		cout << "x:\n> ";
 		cin >> xFirst;
-		cout << "Введите y:\n> ";
+		cout << "y:\n> ";
 		cin >> yFirst;
 		limitFloat = squaric_function_solver(limit, xFirst, yFirst);
-		if (limitFloat > 0)
-		{
-			cout << "Точка не соответсвует ограничению. Выберите другую точку." << endl;
-		}
-		else {
+		//if (limitFloat > 0)
+		//{
+		//	cout << "err. choose another" << endl;
+		//}
+		//else {
 			coordinatesFirst[0] = xFirst;
 			coordinatesFirst[1] = yFirst;
 			coordinatesFirst[2] = squaric_function_solver(function, coordinatesFirst[0], coordinatesFirst[1]);
@@ -60,7 +63,7 @@ int main()
 			coordinatesThird[1] = coordinatesFirst[1] + delta2;
 			coordinatesThird[2] = squaric_function_solver(function, coordinatesThird[0], coordinatesThird[1]);
 			break;
-		}
+		//}
 	} while (true);
 	int iteration = -1;
 	float* worst = new float[3];
@@ -136,7 +139,7 @@ int main()
 	} while (iteration < 10);
 	//Вывод значений
 	finding_the_solutions(coordinatesFirst, coordinatesSecond, coordinatesThird, best, good, worst);
-	cout << "Лучшее решение: " << best[0] << " " << best[1] << endl;
+	cout << "best sol: " << best[0] << " " << best[1] << endl;
 	system("pause");
 	return 0;
 }
