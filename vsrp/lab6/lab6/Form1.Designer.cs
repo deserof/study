@@ -79,6 +79,7 @@ namespace lab6
             this.вырезатьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.копироватьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.вставитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.variant8Button = new System.Windows.Forms.Button();
             this.ControlTab.SuspendLayout();
             this.FindTab.SuspendLayout();
             this.FindAndReplaceTab.SuspendLayout();
@@ -447,34 +448,45 @@ namespace lab6
             this.копироватьToolStripMenuItem,
             this.вставитьToolStripMenuItem});
             this.contextMenuStrip4.Name = "contextMenuStrip4";
-            this.contextMenuStrip4.Size = new System.Drawing.Size(211, 104);
+            this.contextMenuStrip4.Size = new System.Drawing.Size(163, 76);
             // 
             // вырезатьToolStripMenuItem
             // 
             this.вырезатьToolStripMenuItem.Name = "вырезатьToolStripMenuItem";
-            this.вырезатьToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.вырезатьToolStripMenuItem.Size = new System.Drawing.Size(162, 24);
             this.вырезатьToolStripMenuItem.Text = "Вырезать";
             this.вырезатьToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItemCut_Click);
             // 
             // копироватьToolStripMenuItem
             // 
             this.копироватьToolStripMenuItem.Name = "копироватьToolStripMenuItem";
-            this.копироватьToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.копироватьToolStripMenuItem.Size = new System.Drawing.Size(162, 24);
             this.копироватьToolStripMenuItem.Text = "Копировать";
             this.копироватьToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItemCopy_Click);
             // 
             // вставитьToolStripMenuItem
             // 
             this.вставитьToolStripMenuItem.Name = "вставитьToolStripMenuItem";
-            this.вставитьToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.вставитьToolStripMenuItem.Size = new System.Drawing.Size(162, 24);
             this.вставитьToolStripMenuItem.Text = "Вставить";
             this.вставитьToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItemInsert_Click);
+            // 
+            // variant8Button
+            // 
+            this.variant8Button.Location = new System.Drawing.Point(694, 247);
+            this.variant8Button.Name = "variant8Button";
+            this.variant8Button.Size = new System.Drawing.Size(94, 29);
+            this.variant8Button.TabIndex = 19;
+            this.variant8Button.Text = "variant8";
+            this.variant8Button.UseVisualStyleBackColor = true;
+            this.variant8Button.Click += new System.EventHandler(this.variant8Button_Click);
             // 
             // Lab6
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.variant8Button);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.HistoryButton);
             this.Controls.Add(this.SaveButton);
@@ -551,5 +563,6 @@ namespace lab6
         private ToolStripMenuItem вырезатьToolStripMenuItem;
         private ToolStripMenuItem копироватьToolStripMenuItem;
         private ToolStripMenuItem вставитьToolStripMenuItem;
+        private Button variant8Button;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using lab6.Services.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -153,39 +154,29 @@ namespace lab6
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
-            //    if (e.Control && e.KeyCode == Keys.Q)
-            //    {
-            //        buffer = InputText.SelectedText;
-            //        InputText.SelectedText = string.Empty;
-            //        return;
-            //    }
 
-            //    if (e.Control && e.KeyCode == Keys.W)
-            //    {
-            //        buffer = InputText.SelectedText;
-            //        return;
-            //    }
-
-            //    if (e.Control && e.KeyCode == Keys.RControlKey)
-            //    {
-            //        InputText.SelectedText = buffer;
-            //        return;
-            //    }
         }
 
+        private bool IsUpper;
+        private bool IsLower;
         private void upperCaseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             InputText.Text = InputText.Text.ToUpper();
+            IsUpper = true;
+            IsLower = false;
         }
 
         private void lowerCaseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             InputText.Text = InputText.Text.ToLower();
+            IsLower = true;
+            IsUpper = false;
         }
 
         private void standartToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            InputText.Text = _textService.SetStandartCaseForText();
+            IsLower = false;
+            IsUpper = false;
         }
 
         private bool _prev = false;
@@ -214,6 +205,39 @@ namespace lab6
             }
 
             e.KeyChar = char.Parse(e.KeyChar.ToString().ToLower());
+
+            if (IsLower)
+            {
+                e.KeyChar = char.Parse(e.KeyChar.ToString().ToLower());
+            }
+
+            if (IsUpper)
+            {
+                e.KeyChar = char.Parse(e.KeyChar.ToString().ToUpper());
+            }
+        }
+
+        private void variant8Button_Click(object sender, EventArgs e)
+        {
+            char[] vowels = {'а','у','е','о','ы','э','ю','я'};
+            List<string> sents = new List<string>(_textService.GetText().Split(new []{'.', '!', '?'}));
+            List<int> lenOfVowels = new List<int>();
+
+            foreach (var sent in sents)
+            {
+                int count = 0;
+                for (int i = 0; i < vowels.Length; i++)
+                {
+                    for (int j = 0; j < sent.Length; j++)
+                    {
+                        if (vowels[i] == char.ToLower(sent[j]))
+                        {
+                            count++;
+                        }
+                    }
+                }
+                lenOfVowels.Add(count);
+            }
         }
     }
 }
