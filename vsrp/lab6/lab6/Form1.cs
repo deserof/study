@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 
 namespace lab6
@@ -11,6 +13,10 @@ namespace lab6
         private readonly ITextService _textService;
         private readonly IHistoryService _historyService;
         private string _buffer;
+        private bool IsUpper;
+        private bool IsLower;
+        private bool _prev;
+        private bool _prevPrev;
 
         public Lab6(
             ITextService textService,
@@ -23,6 +29,10 @@ namespace lab6
             InputText.Text = _textService.GetText();
             InputText_TextChanged(new object(), EventArgs.Empty);
             base.KeyPreview = true;
+            var t = new ToolTip();
+            t.SetToolTip(variant8Button,
+                @"Записать каждое предложение текста в порядке возрастания количества гласных букв в слове.");
+            t.SetToolTip(variant8_2btn, @"Вывести все слова из текста, которые встречаются два и более раз.");
         }
 
         private void toolStripMenuItemCut_Click(object sender, EventArgs e)
@@ -57,15 +67,29 @@ namespace lab6
             if (FindText.Text == "")
             {
                 MessageBox.Show($"Text not found: {FindText.Text}");
+                return;
             }
 
             int startIndex = 0;
             int index;
-            while ((index = InputText.Text.IndexOf(FindText.Text, startIndex, StringComparison.Ordinal)) != -1)
+
+            if (checkCaseCheckBox1.Checked)
             {
-                InputText.Select(index, FindText.Text.Length);
-                InputText.SelectionColor = Color.Coral;
-                startIndex = index + FindText.Text.Length;
+                while ((index = InputText.Text.IndexOf(FindText.Text, startIndex, StringComparison.Ordinal)) != -1)
+                {
+                    InputText.Select(index, FindText.Text.Length);
+                    InputText.SelectionColor = Color.Coral;
+                    startIndex = index + FindText.Text.Length;
+                }
+            }
+            else
+            {
+                while ((index = InputText.Text.ToLower().IndexOf(FindText.Text.ToLower(), startIndex, StringComparison.Ordinal)) != -1)
+                {
+                    InputText.Select(index, FindText.Text.Length);
+                    InputText.SelectionColor = Color.Coral;
+                    startIndex = index + FindText.Text.Length;
+                }
             }
         }
 
@@ -84,7 +108,10 @@ namespace lab6
                 return;
             }
 
-            string text = _textService.ReplaceText(FindText2.Text, ReplaceText.Text);
+            string text = checkCaseCheckBox2.Checked 
+                ? _textService.ReplaceText(FindText2.Text, ReplaceText.Text) 
+                : _textService.ReplaceText(FindText2.Text.ToLower(), ReplaceText.Text.ToLower());
+
             InputText.Text = text;
         }
 
@@ -96,7 +123,10 @@ namespace lab6
                 return;
             }
 
-            string text = _textService.RemoveText(RemoveText.Text);
+            string text = checkCaseCheckBox2.Checked
+                ? _textService.RemoveText(RemoveText.Text)
+                : _textService.RemoveText(RemoveText.Text.ToLower());
+
             InputText.Text = text;
         }
 
@@ -157,8 +187,6 @@ namespace lab6
 
         }
 
-        private bool IsUpper;
-        private bool IsLower;
         private void upperCaseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             InputText.Text = InputText.Text.ToUpper();
@@ -175,12 +203,11 @@ namespace lab6
 
         private void standartToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            InputText.Text = _textService.SetStandartCaseForText();
+
             IsLower = false;
             IsUpper = false;
         }
-
-        private bool _prev = false;
-        private bool _prevPrev = false;
 
         private void RichTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -221,23 +248,96 @@ namespace lab6
         {
             char[] vowels = {'а','у','е','о','ы','э','ю','я'};
             List<string> sents = new List<string>(_textService.GetText().Split(new []{'.', '!', '?'}));
-            List<int> lenOfVowels = new List<int>();
+            List<string> lenOfVowels = new List<string>();
 
             foreach (var sent in sents)
             {
                 int count = 0;
-                for (int i = 0; i < vowels.Length; i++)
+
+                foreach (var vowel in vowels)
                 {
-                    for (int j = 0; j < sent.Length; j++)
+                    foreach (var sym in sent)
                     {
-                        if (vowels[i] == char.ToLower(sent[j]))
+                        if (char.ToLower(sym) == vowel)
                         {
                             count++;
                         }
                     }
                 }
-                lenOfVowels.Add(count);
+
+                lenOfVowels.Add($"{GenerateRandomNumber()}_{count}");
             }
+
+            var dict = lenOfVowels
+                .Zip(sents, (k, v) => new { k, v })
+                .ToDictionary(x => x.k, x => x.v);
+
+            var sortedDict = dict.OrderBy(x => Convert.ToInt32(x.Key[5..]));
+            var txt = new StringBuilder();
+
+            foreach (var t in sortedDict)
+            {
+                txt.Append($"{Convert.ToInt32(t.Key[5..])} {t.Value}\n");
+            }
+
+            MessageBox.Show(txt.ToString());
+        }
+
+        private int GenerateRandomNumber()
+        {
+            int _min = 1000;
+            int _max = 9999;
+            var _rdm = new Random();
+            return _rdm.Next(_min, _max);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            InputText.Text = _textService.GetText();
+        }
+
+        private void FindLiteralButton_Click(object sender, EventArgs e)
+        {
+            if (LiteralTextBox.Text.Length == 0)
+            {
+                MessageBox.Show("Error");
+                return;
+            }
+
+            MessageBox.Show(_textService.FindLiteral(LiteralTextBox.Text));
+        }
+
+        private void variant8_2btn_Click(object sender, EventArgs e)
+        {
+            int count;
+            List<string> list = new List<string>();
+            string temp = "";
+
+            string text = _textService.GetText();
+            string[] writes = new string(text.Where(c => !char.IsPunctuation(c)).ToArray()).Split(' ');
+
+            foreach (var t in writes)
+            {
+                count = 0;
+                if (temp == t) continue;
+
+                foreach (string word in writes)
+                {
+                    if (t == word) count++;
+
+                    if (count <= 2) continue;
+
+                    list.Add(t);
+                    temp = t;
+                    break;
+                }
+            }
+
+            var strBldr = new StringBuilder();
+
+            foreach (string l in list) strBldr.Append($"{l}\n");
+
+            MessageBox.Show(strBldr.ToString());
         }
     }
 }

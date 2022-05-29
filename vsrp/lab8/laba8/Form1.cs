@@ -55,7 +55,7 @@ namespace laba8
 
         private void buttonShowData_Click(object sender, EventArgs e)
         {
-            if (!(listBoxMedicine.SelectedItem is  Pills))
+            if (!(listBoxMedicine.SelectedItem is Pills item))
             {
                 Ointment selectedMedicine = (Ointment)listBoxMedicine.SelectedItem;
 
@@ -63,9 +63,7 @@ namespace laba8
             }
             else
             {
-                Pills selectedMedicine = (Pills)listBoxMedicine.SelectedItem;
-
-                MessageBox.Show(selectedMedicine.Show());
+                MessageBox.Show(item.Show());
             }
         }
     }

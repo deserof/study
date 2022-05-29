@@ -1,4 +1,6 @@
-﻿using lab6.Repositories.Interfaces;
+﻿using System.Linq;
+using System.Text;
+using lab6.Repositories.Interfaces;
 using lab6.Services.Interfaces;
 
 namespace lab6.Services.Implementations
@@ -52,6 +54,42 @@ namespace lab6.Services.Implementations
             }
 
             return text;
+        }
+
+        public string FindLiteral(string literalText)
+        {
+            string[] arrayText = GetText().Split('.', '!', '?');
+            var textStrBuilder = new StringBuilder();
+
+            foreach (var text in arrayText)
+            {
+                if (text == string.Empty)
+                {
+                    continue;
+                }
+
+                string[] array = text.Split(' ', ' ', ',');
+
+                for (int j = 0; j < array.Length; j++)
+                {
+                    if (j == 0)
+                    {
+                        textStrBuilder.Append("< ");
+                    }
+
+                    char[] arrayChar = array[j].ToCharArray();
+                    int temp = arrayChar.Count(symbol => symbol.ToString() == literalText);
+
+                    textStrBuilder.Append($"{temp} ");
+
+                    if (j == array.Length - 1)
+                    {
+                        textStrBuilder.Append(">");
+                    }
+                }
+            }
+
+            return textStrBuilder.ToString();
         }
     }
 }

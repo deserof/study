@@ -11,5 +11,7 @@
         public string RemoveText(string removeText);
 
         public string SetStandartCaseForText();
+
+        public string FindLiteral(string text);
     }
 }

@@ -75,14 +75,17 @@ namespace laba8
             return false;
         }
 
-        public virtual string Show() => $"Название: {Title}\n" +
-            $"Страна производства: {Country}\n" +
-            $"Минимальный возраст для употребления: {MinimalAge} лет\n" +
-            $"Срок годности: {ShelfLife}";
+        public virtual string Show()
+        {
+            return $"Название: {Title}\n" +
+                $"Страна производства: {Country}\n" +
+                $"Минимальный возраст для употребления: {MinimalAge} лет\n" +
+                $"Срок годности: {ShelfLife}";
+        }
 
-        public override string ToString() => string.Format($"{Title}," +
-           $"{Country}," +
-           $"{MinimalAge}," +
-           $"{ShelfLife}");
+        public override string ToString()
+        {
+            return $"{Title}, {Country}, {MinimalAge}, {ShelfLife}";
+        }
     }
 }
