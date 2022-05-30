@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace lab7
 {
     public class Medicine
     {
-        private Country country; 
+        private Country _country;
 
         public string Title { get; set; }
 
@@ -16,9 +12,9 @@ namespace lab7
 
         public string Country
         {
-            get => country.ToString();
+            get => _country.ToString();
 
-            set => country = (Country)Enum.Parse(typeof(Country), value);
+            set => _country = (Country)Enum.Parse(typeof(Country), value);
         }
 
         public int NumberOfTablets { get; set; }
@@ -28,39 +24,36 @@ namespace lab7
             Country country,
             int numberOfTablets)
         {
-            this.Title = title;
-
-            this.ShelfLife = shelfLife;
-
-            this.Country = country.ToString();
-
-            this.NumberOfTablets = numberOfTablets;
+            Title = title;
+            ShelfLife = shelfLife;
+            Country = country.ToString();
+            NumberOfTablets = numberOfTablets;
         }
 
-        public Medicine(string title, string shelfLife, Country country) : this(title,
-           shelfLife,
-           country,
+        public Medicine(
+            string title,
+            string shelfLife,
+            Country country) : this(title, shelfLife, country,
            50)
         {
-
         }
 
-        public Medicine(string title, string shelfLife) : this(title,
-            shelfLife,
-            lab7.Country.Belarus)
+        public Medicine(
+            string title,
+            string shelfLife)
+            : this(title, shelfLife, lab7.Country.Belarus)
         {
-            
         }
 
-        public Medicine(string title) : this(title,
+        public Medicine(string title)
+            : this(title,
             "3 года")
         {
-
         }
 
-        public Medicine() : this("Цитрамон")
+        public Medicine()
+            : this("Цитрамон")
         {
-
         }
     }
 }

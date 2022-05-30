@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace lab7
+﻿namespace lab7
 {
     public enum Country
     {
-        Germany,
-        Belarus,
-        Russia,
-        India
+        Germany = 0,
+        Belarus = 1,
+        Russia = 2,
+        India = 3
     }
 }

@@ -34,12 +34,12 @@
             // 
             // buttonEnterData
             // 
-            this.buttonEnterData.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonEnterData.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonEnterData.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonEnterData.Location = new System.Drawing.Point(95, 53);
-            this.buttonEnterData.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonEnterData.Location = new System.Drawing.Point(191, 106);
+            this.buttonEnterData.Margin = new System.Windows.Forms.Padding(4);
             this.buttonEnterData.Name = "buttonEnterData";
-            this.buttonEnterData.Size = new System.Drawing.Size(316, 74);
+            this.buttonEnterData.Size = new System.Drawing.Size(262, 31);
             this.buttonEnterData.TabIndex = 0;
             this.buttonEnterData.Text = "Ввести данные";
             this.buttonEnterData.UseVisualStyleBackColor = true;
@@ -47,12 +47,12 @@
             // 
             // buttonShowData
             // 
-            this.buttonShowData.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonShowData.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonShowData.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.buttonShowData.Location = new System.Drawing.Point(95, 189);
-            this.buttonShowData.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonShowData.Location = new System.Drawing.Point(191, 196);
+            this.buttonShowData.Margin = new System.Windows.Forms.Padding(4);
             this.buttonShowData.Name = "buttonShowData";
-            this.buttonShowData.Size = new System.Drawing.Size(316, 72);
+            this.buttonShowData.Size = new System.Drawing.Size(262, 34);
             this.buttonShowData.TabIndex = 1;
             this.buttonShowData.Text = "Посмотреть данные";
             this.buttonShowData.UseVisualStyleBackColor = true;
@@ -63,10 +63,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(513, 324);
+            this.ClientSize = new System.Drawing.Size(615, 370);
             this.Controls.Add(this.buttonShowData);
             this.Controls.Add(this.buttonEnterData);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
             this.Text = "Лабораторная работа №7";
             this.ResumeLayout(false);
