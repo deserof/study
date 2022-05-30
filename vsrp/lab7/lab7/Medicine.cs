@@ -17,7 +17,22 @@ namespace lab7
             set => _country = (Country)Enum.Parse(typeof(Country), value);
         }
 
-        public int NumberOfTablets { get; set; }
+        private int _numberOfTablets;
+
+        public int NumberOfTablets 
+        {
+            get => _numberOfTablets;
+            
+            set
+            {
+                if (value > 100)
+                {
+                    throw new ArgumentException("Tablets more than 50");
+                }
+
+                _numberOfTablets = value;
+            }
+        }
 
         public Medicine(string title,
             string shelfLife,

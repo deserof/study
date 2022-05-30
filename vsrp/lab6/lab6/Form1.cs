@@ -38,25 +38,29 @@ namespace lab6
         private void toolStripMenuItemCut_Click(object sender, EventArgs e)
         {
             _buffer = InputText.SelectedText;
+            InputText.Copy();
             InputText.Cut();
         }
 
-        private void toolStripMenuItemCopy_Click(object sender, EventArgs e) =>
+        private void toolStripMenuItemCopy_Click(object sender, EventArgs e)
+        {
+            InputText.Copy();
             _buffer = InputText.SelectedText;
+        }
+
 
         private void toolStripMenuItemInsert_Click(object sender, EventArgs e)
         {
-            var myFormat = DataFormats.GetFormat(_buffer);
-            InputText.Paste(myFormat);
+            InputText.Paste();
         }
 
         private void InputText_TextChanged(object sender, EventArgs e)
         {
-            FontValue.Text = InputText.Font.Name;
-            SymbolsValue.Text = InputText.Text.Length.ToString();
+            toolStripStatusLabel1.Text = InputText.Font.Name;
+            toolStripStatusLabel1.Text = InputText.Text.Length.ToString();
         }
 
-        private void Timer_Tick(object sender, EventArgs e) => DateValue.Text = DateTime.Now.ToString("F");
+        private void Timer_Tick(object sender, EventArgs e) => toolStripStatusLabel1.Text = DateTime.Now.ToString("F");
 
         private void FindButton_Click(object sender, EventArgs e)
         {
@@ -334,10 +338,15 @@ namespace lab6
             }
 
             var strBldr = new StringBuilder();
-
-            foreach (string l in list) strBldr.Append($"{l}\n");
+            List<string> uniqueWords = list.Distinct().ToList();
+            foreach (string l in uniqueWords) strBldr.Append($"{l}\n");
 
             MessageBox.Show(strBldr.ToString());
+        }
+
+        private void toolStripStatusLabel1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

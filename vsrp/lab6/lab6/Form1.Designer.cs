@@ -38,7 +38,6 @@ namespace lab6
             this.FindButton = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.DateLabel = new System.Windows.Forms.Label();
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ControlTab = new System.Windows.Forms.TabControl();
             this.FindTab = new System.Windows.Forms.TabPage();
@@ -58,9 +57,7 @@ namespace lab6
             this.FindLiteralButton = new System.Windows.Forms.Button();
             this.LiteralTextBox = new System.Windows.Forms.TextBox();
             this.DateValue = new System.Windows.Forms.Label();
-            this.FontLabel = new System.Windows.Forms.Label();
             this.FontValue = new System.Windows.Forms.Label();
-            this.SymbolsLabel = new System.Windows.Forms.Label();
             this.SymbolsValue = new System.Windows.Forms.Label();
             this.Timer = new System.Windows.Forms.Timer(this.components);
             this.InputText = new System.Windows.Forms.RichTextBox();
@@ -89,6 +86,8 @@ namespace lab6
             this.variant8Button = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.variant8_2btn = new System.Windows.Forms.Button();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.ControlTab.SuspendLayout();
             this.FindTab.SuspendLayout();
             this.FindAndReplaceTab.SuspendLayout();
@@ -96,6 +95,7 @@ namespace lab6
             this.LiteralTabPage.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip4.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // FindButton
@@ -120,15 +120,6 @@ namespace lab6
             this.contextMenuStrip2.Name = "contextMenuStrip2";
             this.contextMenuStrip2.Size = new System.Drawing.Size(61, 4);
             // 
-            // DateLabel
-            // 
-            this.DateLabel.AutoSize = true;
-            this.DateLabel.Location = new System.Drawing.Point(418, 378);
-            this.DateLabel.Name = "DateLabel";
-            this.DateLabel.Size = new System.Drawing.Size(44, 20);
-            this.DateLabel.TabIndex = 7;
-            this.DateLabel.Text = "Date:";
-            // 
             // contextMenuStrip3
             // 
             this.contextMenuStrip3.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -142,7 +133,7 @@ namespace lab6
             this.ControlTab.Controls.Add(this.FindAndReplaceTab);
             this.ControlTab.Controls.Add(this.RemoveTab);
             this.ControlTab.Controls.Add(this.LiteralTabPage);
-            this.ControlTab.Location = new System.Drawing.Point(468, 37);
+            this.ControlTab.Location = new System.Drawing.Point(477, 37);
             this.ControlTab.Name = "ControlTab";
             this.ControlTab.SelectedIndex = 0;
             this.ControlTab.Size = new System.Drawing.Size(320, 173);
@@ -314,15 +305,6 @@ namespace lab6
             this.DateValue.Size = new System.Drawing.Size(0, 20);
             this.DateValue.TabIndex = 10;
             // 
-            // FontLabel
-            // 
-            this.FontLabel.AutoSize = true;
-            this.FontLabel.Location = new System.Drawing.Point(418, 398);
-            this.FontLabel.Name = "FontLabel";
-            this.FontLabel.Size = new System.Drawing.Size(41, 20);
-            this.FontLabel.TabIndex = 11;
-            this.FontLabel.Text = "Font:";
-            // 
             // FontValue
             // 
             this.FontValue.AutoSize = true;
@@ -330,15 +312,6 @@ namespace lab6
             this.FontValue.Name = "FontValue";
             this.FontValue.Size = new System.Drawing.Size(0, 20);
             this.FontValue.TabIndex = 12;
-            // 
-            // SymbolsLabel
-            // 
-            this.SymbolsLabel.AutoSize = true;
-            this.SymbolsLabel.Location = new System.Drawing.Point(418, 418);
-            this.SymbolsLabel.Name = "SymbolsLabel";
-            this.SymbolsLabel.Size = new System.Drawing.Size(68, 20);
-            this.SymbolsLabel.TabIndex = 13;
-            this.SymbolsLabel.Text = "Symbols:";
             // 
             // SymbolsValue
             // 
@@ -362,7 +335,7 @@ namespace lab6
             this.InputText.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.InputText.Location = new System.Drawing.Point(12, 37);
             this.InputText.Name = "InputText";
-            this.InputText.Size = new System.Drawing.Size(400, 401);
+            this.InputText.Size = new System.Drawing.Size(409, 443);
             this.InputText.TabIndex = 15;
             this.InputText.Text = "";
             this.InputText.TextChanged += new System.EventHandler(this.InputText_TextChanged);
@@ -371,7 +344,7 @@ namespace lab6
             // SaveButton
             // 
             this.SaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.SaveButton.Location = new System.Drawing.Point(694, 409);
+            this.SaveButton.Location = new System.Drawing.Point(703, 438);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(94, 29);
             this.SaveButton.TabIndex = 16;
@@ -382,7 +355,7 @@ namespace lab6
             // HistoryButton
             // 
             this.HistoryButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.HistoryButton.Location = new System.Drawing.Point(694, 212);
+            this.HistoryButton.Location = new System.Drawing.Point(703, 212);
             this.HistoryButton.Name = "HistoryButton";
             this.HistoryButton.Size = new System.Drawing.Size(94, 29);
             this.HistoryButton.TabIndex = 17;
@@ -399,7 +372,7 @@ namespace lab6
             this.aboutProgramToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(809, 28);
             this.menuStrip1.TabIndex = 18;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -420,7 +393,7 @@ namespace lab6
             this.segoeUIToolStripMenuItem,
             this.timesNewRomanToolStripMenuItem});
             this.stToolStripMenuItem.Name = "stToolStripMenuItem";
-            this.stToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.stToolStripMenuItem.Size = new System.Drawing.Size(123, 26);
             this.stToolStripMenuItem.Text = "Type";
             // 
             // magneToolStripMenuItem
@@ -452,7 +425,7 @@ namespace lab6
             this.toolStripMenuItem4,
             this.toolStripMenuItem5});
             this.sizeToolStripMenuItem.Name = "sizeToolStripMenuItem";
-            this.sizeToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.sizeToolStripMenuItem.Size = new System.Drawing.Size(123, 26);
             this.sizeToolStripMenuItem.Text = "Size";
             // 
             // toolStripMenuItem2
@@ -497,21 +470,21 @@ namespace lab6
             // upperCaseToolStripMenuItem
             // 
             this.upperCaseToolStripMenuItem.Name = "upperCaseToolStripMenuItem";
-            this.upperCaseToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.upperCaseToolStripMenuItem.Size = new System.Drawing.Size(166, 26);
             this.upperCaseToolStripMenuItem.Text = "Upper case";
             this.upperCaseToolStripMenuItem.Click += new System.EventHandler(this.upperCaseToolStripMenuItem_Click);
             // 
             // lowerCaseToolStripMenuItem
             // 
             this.lowerCaseToolStripMenuItem.Name = "lowerCaseToolStripMenuItem";
-            this.lowerCaseToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.lowerCaseToolStripMenuItem.Size = new System.Drawing.Size(166, 26);
             this.lowerCaseToolStripMenuItem.Text = "Lower case";
             this.lowerCaseToolStripMenuItem.Click += new System.EventHandler(this.lowerCaseToolStripMenuItem_Click);
             // 
             // standartToolStripMenuItem
             // 
             this.standartToolStripMenuItem.Name = "standartToolStripMenuItem";
-            this.standartToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.standartToolStripMenuItem.Size = new System.Drawing.Size(166, 26);
             this.standartToolStripMenuItem.Text = "Standart";
             this.standartToolStripMenuItem.Click += new System.EventHandler(this.standartToolStripMenuItem_Click);
             // 
@@ -557,7 +530,7 @@ namespace lab6
             // variant8Button
             // 
             this.variant8Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.variant8Button.Location = new System.Drawing.Point(694, 247);
+            this.variant8Button.Location = new System.Drawing.Point(703, 247);
             this.variant8Button.Name = "variant8Button";
             this.variant8Button.Size = new System.Drawing.Size(94, 29);
             this.variant8Button.TabIndex = 19;
@@ -568,7 +541,7 @@ namespace lab6
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(582, 409);
+            this.button1.Location = new System.Drawing.Point(593, 438);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(94, 29);
             this.button1.TabIndex = 20;
@@ -579,7 +552,7 @@ namespace lab6
             // variant8_2btn
             // 
             this.variant8_2btn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.variant8_2btn.Location = new System.Drawing.Point(694, 282);
+            this.variant8_2btn.Location = new System.Drawing.Point(703, 282);
             this.variant8_2btn.Name = "variant8_2btn";
             this.variant8_2btn.Size = new System.Drawing.Size(94, 29);
             this.variant8_2btn.TabIndex = 21;
@@ -587,11 +560,30 @@ namespace lab6
             this.variant8_2btn.UseVisualStyleBackColor = true;
             this.variant8_2btn.Click += new System.EventHandler(this.variant8_2btn_Click);
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 466);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(809, 26);
+            this.statusStrip1.TabIndex = 22;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(151, 20);
+            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Click += new System.EventHandler(this.toolStripStatusLabel1_Click);
+            // 
             // Lab6
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(809, 492);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.variant8_2btn);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.variant8Button);
@@ -600,12 +592,9 @@ namespace lab6
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.InputText);
             this.Controls.Add(this.SymbolsValue);
-            this.Controls.Add(this.SymbolsLabel);
             this.Controls.Add(this.FontValue);
-            this.Controls.Add(this.FontLabel);
             this.Controls.Add(this.DateValue);
             this.Controls.Add(this.ControlTab);
-            this.Controls.Add(this.DateLabel);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Lab6";
             this.Text = "Lab6";
@@ -622,6 +611,8 @@ namespace lab6
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.contextMenuStrip4.ResumeLayout(false);
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -631,7 +622,6 @@ namespace lab6
         private System.Windows.Forms.Button FindButton;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
-        private System.Windows.Forms.Label DateLabel;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip3;
         private System.Windows.Forms.TabControl ControlTab;
         private System.Windows.Forms.TabPage FindTab;
@@ -645,9 +635,7 @@ namespace lab6
         private System.Windows.Forms.TextBox RemoveText;
         private System.Windows.Forms.Button ClearButton;
         private System.Windows.Forms.Label DateValue;
-        private System.Windows.Forms.Label FontLabel;
         private System.Windows.Forms.Label FontValue;
-        private System.Windows.Forms.Label SymbolsLabel;
         private System.Windows.Forms.Label SymbolsValue;
         private System.Windows.Forms.Timer Timer;
         private System.Windows.Forms.RichTextBox InputText;
@@ -682,5 +670,7 @@ namespace lab6
         private Button FindLiteralButton;
         private TextBox LiteralTextBox;
         private Button variant8_2btn;
+        private StatusStrip statusStrip1;
+        private ToolStripStatusLabel toolStripStatusLabel1;
     }
 }

@@ -15,18 +15,19 @@ namespace laba8
 
         private void buttonEnterData_Click(object sender, EventArgs e)
         {
-            var ointment = new Ointment();
-            var pills = new Pills();
-
+            
             if (radioButtonPills.Checked)
             {
+                var pills = new Pills();
                 var pillsForm = new PillsForm(pills);
                 pillsForm.Show();
                 _medicines.Add(pills);
+                return;
             }
 
             if (!radioButtonOintment.Checked)
             {
+                var ointment = new Ointment();
                 var ointmentForm = new OintmentForm(ointment);
                 ointmentForm.Show();
                 _medicines.Add(ointment);
@@ -39,7 +40,7 @@ namespace laba8
 
             foreach (var med in _medicines)
             {
-                listBoxMedicine.Items.Add(med);
+                listBoxMedicine.Items.Add(med.ToString());
             }
         }
 

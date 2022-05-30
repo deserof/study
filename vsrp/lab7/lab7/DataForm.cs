@@ -31,7 +31,16 @@ namespace lab7
             else
             {
                 _medicine.Country = comboBoxCountry.Text;
-                _medicine.NumberOfTablets = int.Parse(textBoxNumberOfTablets.Text);
+                if(int.TryParse(textBoxNumberOfTablets.Text, out int numOfT))
+                {
+                    _medicine.NumberOfTablets = numOfT;
+                }
+                else
+                {
+                    MessageBox.Show("error input");
+                    return;
+                }
+
                 _medicine.Title = textBoxNumberOfTablets.Text;
                 _medicine.ShelfLife = textBoxShelfLife.Text;
                 labelError.Visible = false;
