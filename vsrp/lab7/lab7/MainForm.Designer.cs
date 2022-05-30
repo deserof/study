@@ -43,7 +43,7 @@
             this.buttonEnterData.TabIndex = 0;
             this.buttonEnterData.Text = "Ввести данные";
             this.buttonEnterData.UseVisualStyleBackColor = true;
-            this.buttonEnterData.Click += new System.EventHandler(this.buttonEnterData_Click);
+            this.buttonEnterData.Click += new System.EventHandler(this.InputButton_Click);
             // 
             // buttonShowData
             // 
@@ -56,7 +56,7 @@
             this.buttonShowData.TabIndex = 1;
             this.buttonShowData.Text = "Посмотреть данные";
             this.buttonShowData.UseVisualStyleBackColor = true;
-            this.buttonShowData.Click += new System.EventHandler(this.buttonShowData_Click);
+            this.buttonShowData.Click += new System.EventHandler(this.ShowButton_Click);
             // 
             // MainForm
             // 

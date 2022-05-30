@@ -14,15 +14,15 @@ namespace lab7
             _computer = new Medicine();
         }
 
-        private void buttonEnterData_Click(object sender, EventArgs e)
+        private void InputButton_Click(object sender, EventArgs e)
         {
-            var dataForm = new DataForm(_computer);
+            var dataForm = new Input(_computer);
             dataForm.Show();
         }
 
-        private void buttonShowData_Click(object sender, EventArgs e)
+        private void ShowButton_Click(object sender, EventArgs e)
         {
-            var showDataForm = new ShowDataForm(_computer);
+            var showDataForm = new Show(_computer);
             showDataForm.Show();
         }
     }

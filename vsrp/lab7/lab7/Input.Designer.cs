@@ -1,6 +1,6 @@
 ﻿namespace lab7
 {
-    partial class DataForm
+    partial class Input
     {
         /// <summary>
         /// Required designer variable.

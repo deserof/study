@@ -14,7 +14,7 @@ namespace lab7
         {
             get => _country.ToString();
 
-            set => _country = (Country)Enum.Parse(typeof(Country), value);
+            set => Enum.TryParse(value, out _country);
         }
 
         private int _numberOfTablets;
@@ -27,7 +27,7 @@ namespace lab7
             {
                 if (value > 100)
                 {
-                    throw new ArgumentException("Tablets more than 50");
+                    throw new ArgumentException("Tablets more than 100");
                 }
 
                 _numberOfTablets = value;

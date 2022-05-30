@@ -1,6 +1,6 @@
 ﻿namespace lab7
 {
-    partial class ShowDataForm
+    partial class Show
     {
         /// <summary>
         /// Required designer variable.

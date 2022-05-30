@@ -3,9 +3,9 @@ using System.Windows.Forms;
 
 namespace lab7
 {
-    public partial class ShowDataForm : Form
+    public partial class Show : Form
     {
-        public ShowDataForm(Medicine medicine)
+        public Show(Medicine medicine)
         {
             InitializeComponent();
 
