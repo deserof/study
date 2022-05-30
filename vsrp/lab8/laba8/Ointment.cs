@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace laba8
+﻿namespace laba8
 {
     public class Ointment : Medicine
     {
@@ -14,11 +8,9 @@ namespace laba8
 
         public Ointment(int volume,
             string type)
-            : base()
         {
-            this.Volume = volume;
-
-            this.Type = type;
+            Volume = volume;
+            Type = type;
         }
 
         public Ointment(int volume)
@@ -33,33 +25,31 @@ namespace laba8
 
         public override bool Equals(object obj)
         {
-            if (obj is Pills
-                && obj != null)
-            {
-                Ointment ointment = (Ointment)obj;
+            if (!(obj is Pills)) return false;
 
-                if (this.Title == ointment.Title
-                    && this.ShelfLife == ointment.ShelfLife
-                    && this.MinimalAge == ointment.MinimalAge
-                    && this.Country == ointment.Country
-                    && this.Volume == ointment.Volume
-                    && this.Type == ointment.Type)
-                {
-                    return true;
-                }
-            }
+            var ointment = obj as Ointment;
 
-            return false;
+            return Title == ointment.Title
+                   && ShelfLife == ointment.ShelfLife
+                   && MinimalAge == ointment.MinimalAge
+                   && Country == ointment.Country
+                   && Volume == ointment.Volume
+                   && Type == ointment.Type;
         }
 
-        public override string Show() => $"Название: {Title}\n" +
-          $"Страна производства: {Country}\n" +
-          $"Минимальный возраст для употребления: {MinimalAge} лет\n" +
-          $"Срок годности: {ShelfLife}\n" +
-          $"Объем: {Volume} мл\n" +
-          $"Тип: {Type}";
+        public override string Show()
+        {
+            return $"Название: {Title}\n" +
+                 $"Страна производства: {Country}\n" +
+                 $"Минимальный возраст для употребления: {MinimalAge} лет\n" +
+                 $"Срок годности: {ShelfLife}\n" +
+                 $"Объем: {Volume} мл\n" +
+                 $"Тип: {Type}";
+        }
 
-        public override string ToString() => string.Format($"Мазь| Название: {Title} " +
-            $"Срок годности: {ShelfLife}");
+        public override string ToString()
+        {
+            return $"Мазь| Название: {Title}, Срок годности: {ShelfLife}";
+        }
     }
 }

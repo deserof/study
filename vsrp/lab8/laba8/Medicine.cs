@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace laba8
+﻿namespace laba8
 {
     public class Medicine
     {
@@ -21,58 +15,47 @@ namespace laba8
             string shelfLife,
             int minimalAge)
         {
-            this.Title = title;
-
-            this.ShelfLife = shelfLife;
-
-            this.MinimalAge = minimalAge;
-
-            this.Country = country;
+            Title = title;
+            ShelfLife = shelfLife;
+            MinimalAge = minimalAge;
+            Country = country;
         }
 
-        public Medicine(string title, string country, string shelfLife) : this(title,
-           country,
-           shelfLife,
-           8)
+        public Medicine(
+            string title,
+            string country,
+            string shelfLife)
+            : this(title, country, shelfLife, 8)
         {
 
         }
 
-        public Medicine(string title, string country) : this(title,
-            country,
-            "2 года")
+        public Medicine(
+            string title,
+            string country)
+            : this(title, country, "2 года")
         {
-
         }
 
-        public Medicine(string title) : this(title,
+        public Medicine(string title)
+            : this(title,
             "Беларусь")
         {
-
         }
 
-        public Medicine() : this("Парацетамол")
+        public Medicine()
+            : this("Парацетамол")
         {
-
         }
 
         public override bool Equals(object obj)
         {
-            if (obj is Medicine
-                && obj != null)
-            {
-                Medicine tempComputer = (Medicine)obj;
+            if (!(obj is Medicine tempComputer)) return false;
 
-                if (this.Title == tempComputer.Title
-                    && this.ShelfLife == tempComputer.ShelfLife
-                    && this.MinimalAge == tempComputer.MinimalAge
-                    && this.Country == tempComputer.Country)
-                {
-                    return true;
-                }
-            }
-
-            return false;
+            return Title == tempComputer.Title
+                   && ShelfLife == tempComputer.ShelfLife
+                   && MinimalAge == tempComputer.MinimalAge
+                   && Country == tempComputer.Country;
         }
 
         public virtual string Show()
