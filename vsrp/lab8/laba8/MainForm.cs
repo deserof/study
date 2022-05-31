@@ -15,7 +15,6 @@ namespace laba8
 
         private void buttonEnterData_Click(object sender, EventArgs e)
         {
-            
             if (radioButtonPills.Checked)
             {
                 var pills = new Pills();
@@ -40,15 +39,23 @@ namespace laba8
 
             foreach (var med in _medicines)
             {
-                listBoxMedicine.Items.Add(med.ToString());
+                listBoxMedicine.Items.Add(med);
             }
         }
 
         private void buttonShowData_Click(object sender, EventArgs e)
         {
-            var item = (Medicine) listBoxMedicine.SelectedItem;
+            if (GetItem() == null)
+            {
+                return;
+            }
 
-            MessageBox.Show(item.Show());
+            MessageBox.Show(GetItem().Show());
+        }
+
+        private Medicine GetItem()
+        {
+            return (Medicine)listBoxMedicine.SelectedItem;
         }
     }
 }

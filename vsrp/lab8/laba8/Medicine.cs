@@ -10,7 +10,8 @@
 
         public int MinimalAge { get; set; }
 
-        public Medicine(string title,
+        public Medicine(
+            string title,
             string country,
             string shelfLife,
             int minimalAge)
@@ -27,7 +28,6 @@
             string shelfLife)
             : this(title, country, shelfLife, 8)
         {
-
         }
 
         public Medicine(

@@ -6,7 +6,8 @@
 
         public string Type { get; set; }
 
-        public Ointment(int volume,
+        public Ointment(
+            int volume,
             string type)
         {
             Volume = volume;
