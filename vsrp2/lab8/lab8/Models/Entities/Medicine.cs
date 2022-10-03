@@ -91,6 +91,7 @@ namespace laba8.Models.Entities
             ShelfLife = medicine.ShelfLife;
             MinimalAge = medicine.MinimalAge;
             ChangeEntityDateTime = medicine.ChangeEntityDateTime;
+            Price = medicine.Price;
         }
 
         public Medicine(
