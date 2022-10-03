@@ -1,4 +1,5 @@
 ﻿using lab2.Models.Entities;
+using lab2.Storage;
 
 namespace lab2
 {
@@ -7,16 +8,13 @@ namespace lab2
         public ShowDataForm()
         {
             InitializeComponent();
-        }
 
-        public ShowDataForm(List<ResidentialBuilding> residentialBuildings)
-            : this()
-        {
-            //addressViewlabel.Text = residentialBuilding.Address;
-            //entrancesViewlabel.Text = residentialBuilding.Entrances.ToString();
-            //floorsViewlabel.Text = residentialBuilding.Floors.ToString();
-            //constrStatusViewlabel.Text = residentialBuilding.ConstructionStatusType;
-            //createdTimeViewlabel.Text = residentialBuilding.CreatedEntityYear.ToString();
+            buildingsListBox.Items.Clear();
+
+            foreach (var building in EntitiesStorage.ResidentialBuildings)
+            {
+                buildingsListBox.Items.Add(building);
+            }
         }
     }
 }

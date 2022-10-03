@@ -7,51 +7,64 @@ namespace lab2
 {
     public partial class EnterDataForm : Form
     {
+        private ResidentialBuilding _residentialBuilding;
+
         public EnterDataForm()
         {
             InitializeComponent();
             validLabel.Visible = false;
             constructionStatusComboBox.Items.AddRange(GetDescriptions<ConstructionStatusType>().ToArray());
             constructionStatusComboBox.SelectedIndex = 0;
-            appartmentHouseRadioButton.Checked = true;
+        }
+
+        public EnterDataForm(ResidentialBuilding residentialBuilding)
+            : this()
+        {
+            _residentialBuilding = residentialBuilding;
+
+
+            if (_residentialBuilding is ApartmentHouse)
+            {
+                windowsTextBox.ReadOnly = true;
+                roomsTextBox.ReadOnly = true;
+                roomsTextBox.ReadOnly = true;
+            }
         }
 
         private void addDataButton_Click(object sender, EventArgs e)
         {
             if (IsEmptyOrDefaultString(addressTextBox, entrancesTextBox, floorsTextBox) ||
-                IsNotNumber(entrancesTextBox, floorsTextBox) ||
-                IsNegativeNumber(entrancesTextBox, floorsTextBox))
+                IsNotNumber(entrancesTextBox, floorsTextBox, windowsTextBox, roomsTextBox) ||
+                IsNegativeNumber(entrancesTextBox, floorsTextBox, windowsTextBox, roomsTextBox))
             {
                 validLabel.Visible = true;
 
                 return;
             }
 
-            var residentalBuilding = new ResidentialBuilding();
-
-            if (appartmentHouseRadioButton.Checked)
+            if (_residentialBuilding is ApartmentHouse)
             {
-                residentalBuilding = new ApartmentHouse
-                {
-                    Address = addressTextBox.Text,
-                    ConstructionStatusType = constructionStatusComboBox.Text,
-                    Entrances = Convert.ToInt32(entrancesTextBox.Text),
-                    Floors = Convert.ToInt32(floorsTextBox.Text)
-                };
+                ApartmentHouse cottage = (ApartmentHouse)_residentialBuilding;
+
+                cottage.Address = addressTextBox.Text;
+                cottage.ConstructionStatusType = constructionStatusComboBox.Text;
+                cottage.Entrances = Convert.ToInt32(entrancesTextBox.Text);
+                cottage.Floors = Convert.ToInt32(floorsTextBox.Text);
             }
 
-            if (cottageRadioButton.Checked)
+            if (_residentialBuilding is Cottage)
             {
-                residentalBuilding = new Cottage
-                {
-                    Address = addressTextBox.Text,
-                    ConstructionStatusType = constructionStatusComboBox.Text,
-                    Entrances = Convert.ToInt32(entrancesTextBox.Text),
-                    Floors = Convert.ToInt32(floorsTextBox.Text)
-                };
+                Cottage cottage = (Cottage)_residentialBuilding;
+
+                cottage.Address = addressTextBox.Text;
+                cottage.ConstructionStatusType = constructionStatusComboBox.Text;
+                cottage.Entrances = Convert.ToInt32(entrancesTextBox.Text);
+                cottage.Floors = Convert.ToInt32(floorsTextBox.Text);
+                cottage.Windows = Convert.ToInt32(windowsTextBox.Text);
+                cottage.Rooms = Convert.ToInt32(roomsTextBox.Text);
             }
 
-            EntitiesStorage.ResidentialBuildings.Add(residentalBuilding);
+            EntitiesStorage.ResidentialBuildings.Add(_residentialBuilding);
 
             Close();            
         }
@@ -60,6 +73,11 @@ namespace lab2
         {
             foreach (var value in values)
             {
+                if (value.ReadOnly)
+                {
+                    continue;
+                }
+
                 if (value.Text == string.Empty)
                 {
                     return true;
@@ -73,6 +91,11 @@ namespace lab2
         {
             foreach (var value in values)
             {
+                if (value.ReadOnly)
+                {
+                    continue;
+                }
+
                 if (!int.TryParse(value.Text, out _))
                 {
                     return true;
@@ -86,6 +109,11 @@ namespace lab2
         {
             foreach (var value in values)
             {
+                if (value.ReadOnly)
+                {
+                    continue;
+                }
+
                 if (int.TryParse(value.Text, out int number))
                 {
                     if (number < 0)

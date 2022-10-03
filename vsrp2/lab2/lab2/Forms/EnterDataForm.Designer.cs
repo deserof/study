@@ -38,6 +38,12 @@
             this.constructionStatusLabel = new System.Windows.Forms.Label();
             this.addDataButton = new System.Windows.Forms.Button();
             this.validLabel = new System.Windows.Forms.Label();
+            this.windowsTextBox = new System.Windows.Forms.TextBox();
+            this.windowsLabel = new System.Windows.Forms.Label();
+            this.roomsTextBox = new System.Windows.Forms.TextBox();
+            this.roomsLabel = new System.Windows.Forms.Label();
+            this.squareLabel = new System.Windows.Forms.Label();
+            this.squareTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // addressTextBox
@@ -111,7 +117,7 @@
             // 
             // addDataButton
             // 
-            this.addDataButton.Location = new System.Drawing.Point(276, 187);
+            this.addDataButton.Location = new System.Drawing.Point(277, 257);
             this.addDataButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.addDataButton.Name = "addDataButton";
             this.addDataButton.Size = new System.Drawing.Size(82, 22);
@@ -130,11 +136,68 @@
             this.validLabel.TabIndex = 9;
             this.validLabel.Text = "Wrong Input";
             // 
+            // windowsTextBox
+            // 
+            this.windowsTextBox.Location = new System.Drawing.Point(259, 179);
+            this.windowsTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.windowsTextBox.Name = "windowsTextBox";
+            this.windowsTextBox.Size = new System.Drawing.Size(133, 23);
+            this.windowsTextBox.TabIndex = 10;
+            // 
+            // windowsLabel
+            // 
+            this.windowsLabel.AutoSize = true;
+            this.windowsLabel.Location = new System.Drawing.Point(130, 179);
+            this.windowsLabel.Name = "windowsLabel";
+            this.windowsLabel.Size = new System.Drawing.Size(56, 15);
+            this.windowsLabel.TabIndex = 11;
+            this.windowsLabel.Text = "Windows";
+            // 
+            // roomsTextBox
+            // 
+            this.roomsTextBox.Location = new System.Drawing.Point(259, 218);
+            this.roomsTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.roomsTextBox.Name = "roomsTextBox";
+            this.roomsTextBox.Size = new System.Drawing.Size(133, 23);
+            this.roomsTextBox.TabIndex = 12;
+            // 
+            // roomsLabel
+            // 
+            this.roomsLabel.AutoSize = true;
+            this.roomsLabel.Location = new System.Drawing.Point(130, 221);
+            this.roomsLabel.Name = "roomsLabel";
+            this.roomsLabel.Size = new System.Drawing.Size(44, 15);
+            this.roomsLabel.TabIndex = 13;
+            this.roomsLabel.Text = "Rooms";
+            // 
+            // squareLabel
+            // 
+            this.squareLabel.AutoSize = true;
+            this.squareLabel.Location = new System.Drawing.Point(538, 48);
+            this.squareLabel.Name = "squareLabel";
+            this.squareLabel.Size = new System.Drawing.Size(43, 15);
+            this.squareLabel.TabIndex = 15;
+            this.squareLabel.Text = "Square";
+            // 
+            // squareTextBox
+            // 
+            this.squareTextBox.Location = new System.Drawing.Point(667, 46);
+            this.squareTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.squareTextBox.Name = "squareTextBox";
+            this.squareTextBox.Size = new System.Drawing.Size(133, 23);
+            this.squareTextBox.TabIndex = 14;
+            // 
             // EnterDataForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(582, 270);
+            this.ClientSize = new System.Drawing.Size(838, 355);
+            this.Controls.Add(this.squareLabel);
+            this.Controls.Add(this.squareTextBox);
+            this.Controls.Add(this.roomsLabel);
+            this.Controls.Add(this.roomsTextBox);
+            this.Controls.Add(this.windowsLabel);
+            this.Controls.Add(this.windowsTextBox);
             this.Controls.Add(this.validLabel);
             this.Controls.Add(this.addDataButton);
             this.Controls.Add(this.constructionStatusLabel);
@@ -165,5 +228,11 @@
         private Label constructionStatusLabel;
         private Button addDataButton;
         private Label validLabel;
+        private TextBox windowsTextBox;
+        private Label windowsLabel;
+        private TextBox roomsTextBox;
+        private Label roomsLabel;
+        private Label squareLabel;
+        private TextBox squareTextBox;
     }
 }

@@ -28,24 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.buildingsListBox = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
-            // listBox1
+            // buildingsListBox
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 15;
-            this.listBox1.Location = new System.Drawing.Point(12, 32);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(645, 244);
-            this.listBox1.TabIndex = 0;
+            this.buildingsListBox.FormattingEnabled = true;
+            this.buildingsListBox.ItemHeight = 15;
+            this.buildingsListBox.Location = new System.Drawing.Point(12, 32);
+            this.buildingsListBox.Name = "buildingsListBox";
+            this.buildingsListBox.Size = new System.Drawing.Size(645, 244);
+            this.buildingsListBox.TabIndex = 0;
             // 
             // ShowDataForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(700, 338);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.buildingsListBox);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ShowDataForm";
             this.Text = "ShowDataForm";
@@ -55,6 +55,6 @@
 
         #endregion
 
-        private ListBox listBox1;
+        private ListBox buildingsListBox;
     }
 }

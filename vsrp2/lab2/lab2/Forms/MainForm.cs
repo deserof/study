@@ -1,3 +1,4 @@
+using lab2.Models.Entities;
 using lab2.Storage;
 
 namespace lab2
@@ -8,11 +9,22 @@ namespace lab2
         {
             InitializeComponent();
             validLabel.Visible = false;
+            appartmentHouseRadioButton.Checked = true;
         }
 
         private void enterData_Click(object sender, EventArgs e)
         {
-            var enterDataForm = new EnterDataForm();
+            EnterDataForm enterDataForm;
+
+            if (appartmentHouseRadioButton.Checked)
+            {
+                enterDataForm = new(new ApartmentHouse()); 
+            }
+            else
+            {
+                enterDataForm = new(new Cottage());
+            }
+
             enterDataForm.ShowDialog();
         }
 
@@ -20,7 +32,7 @@ namespace lab2
         {
             if (EntitiesStorage.ResidentialBuildings is not null)
             {
-                var showDataForm = new ShowDataForm(EntitiesStorage.ResidentialBuildings);
+                var showDataForm = new ShowDataForm();
                 showDataForm.ShowDialog();
             }
             else

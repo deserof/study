@@ -62,5 +62,23 @@ namespace lab2.Models.Entities
         {
             return _createdEntityDateTime.ToString("MM/dd/yyyy");
         }
+
+        public override string ToString()
+        {
+            return $"{nameof(_address)} {_address} - {nameof(_entrances)} {_entrances} - {nameof(_floors)} {_floors} - " +
+                $"{nameof(ConstructionStatusType)} {ConstructionStatusType} - {nameof(GetCreatedDateTime)}{GetCreatedDateTime()}";
+        }
+
+        public override bool Equals(object? obj )
+        {
+            if (!(obj is ResidentialBuilding)) return false;
+
+            var res = obj as ResidentialBuilding;
+
+            return _address == res._address
+                   && _entrances == res._entrances
+                   && _floors == res._floors
+                   && ConstructionStatusType == res.ConstructionStatusType;
+        }
     }
 }
