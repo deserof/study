@@ -23,7 +23,10 @@ namespace laba8
             if (int.TryParse(comboBoxMinimalAge.Text, out int minimalAge) 
                 && (minimalAge == 6 || minimalAge == 10 || minimalAge == 18)
                 && int.TryParse(textBoxQuantity.Text, out int quantity) 
-                && quantity > 0 && quantity < 50)
+                && quantity > 0 && quantity < 50
+                && decimal.TryParse(priceTextBox.Text, out decimal price)
+                && price > 0
+                && int.TryParse(yearTextBox.Text, out int year))
             {
                 _pills.ShelfLife = comboBoxShelfLife.Text;
                 _pills.Title = comboBoxTitle.Text;
@@ -31,6 +34,8 @@ namespace laba8
                 _pills.Country = comboBoxCountry.Text;
                 _pills.Color = textBoxColor.Text;
                 _pills.Quantity = quantity;
+                _pills.Price = price;
+                _pills.ChangeEntityDateTime = year;
             }
             else
             {
@@ -40,11 +45,6 @@ namespace laba8
             }
 
             Close();
-        }
-
-        private void PillsForm_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

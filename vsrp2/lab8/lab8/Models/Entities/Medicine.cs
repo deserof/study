@@ -5,13 +5,17 @@ namespace laba8.Models.Entities
 {
     public class Medicine
     {
-        protected readonly DateTime _createdEntityDateTime = DateTime.Now;
+        protected DateTime _createdEntityDateTime = DateTime.Now;
 
         public string Title { get; set; }
 
         public string Country { get; set; }
 
         public string ShelfLife { get; set; }
+
+        private decimal _price;
+
+        private static double nds = 20;
 
         private MinimalAgeType _minimalAgeType;
 
@@ -27,16 +31,66 @@ namespace laba8.Models.Entities
             }
         }
 
-        public int CreatedEntityYear
+        public DateTime ShowEntityDateTime
         {
+            get
+            {
+                return _createdEntityDateTime;
+            }
+        }
+
+        public int ChangeEntityDateTime
+        {
+            set
+            {
+                _createdEntityDateTime = _createdEntityDateTime.AddYears(Math.Abs(_createdEntityDateTime.Year - value));
+            }
             get
             {
                 return _createdEntityDateTime.Year;
             }
+        }
+
+        public decimal Price
+        {
+            get
+            {
+                return _price;
+            }
             set
             {
-                _createdEntityDateTime.AddYears(value);
+                _price = value;
             }
+        }
+
+        public decimal PriceWithNds
+        {
+            get
+            {
+                return _price + _price * (decimal)(nds / 100);
+            }
+        }
+
+        public bool this[decimal price]
+        {
+            get
+            {
+                if (price > _price)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+        }
+
+        public Medicine(Medicine medicine)
+        {
+            Title = medicine.Title;
+            Country = medicine.Country;
+            ShelfLife = medicine.ShelfLife;
+            MinimalAge = medicine.MinimalAge;
+            ChangeEntityDateTime = medicine.ChangeEntityDateTime;
         }
 
         public Medicine(
@@ -84,12 +138,18 @@ namespace laba8.Models.Entities
 
         public override bool Equals(object obj)
         {
-            if (!(obj is Medicine tempComputer)) return false;
+            if (obj == null)
+            {
+                return false;
+            }
 
-            return Title == tempComputer.Title
-                   && ShelfLife == tempComputer.ShelfLife
-                   && MinimalAge == tempComputer.MinimalAge
-                   && Country == tempComputer.Country;
+            if (!(obj is Medicine medicine)) return false;
+
+            return Title == medicine.Title
+                   && ShelfLife == medicine.ShelfLife
+                   && MinimalAge == medicine.MinimalAge
+                   && Country == medicine.Country
+                   && ShowEntityDateTime == medicine.ShowEntityDateTime;
         }
 
         public virtual string Show()
@@ -97,12 +157,23 @@ namespace laba8.Models.Entities
             return @$"Название: {Title}
 Страна производства: {Country}
 Минимальный возраст для употребления: {MinimalAge} лет
-Срок годности: {ShelfLife}";
+Срок годности: {ShelfLife}
+Цена: {PriceWithNds}";
         }
 
         public override string ToString()
         {
             return $"{Title}, {Country}, {MinimalAge}, {ShelfLife}";
+        }
+
+        public static bool operator ==(Medicine med1, Medicine med2)
+        {
+            return med1.Equals(med2);
+        }
+
+        public static bool operator !=(Medicine med1, Medicine med2)
+        {
+            return !med1.Equals(med2);
         }
     }
 }

@@ -21,6 +21,13 @@ namespace laba8.Models.Entities
             }
         }
 
+        public Ointment(Ointment ointment)
+            : base(ointment)
+        {
+            Volume = ointment.Volume;
+            OitmentType = ointment.OitmentType;
+        }
+
         public Ointment(
             int volume,
             string type)
@@ -47,12 +54,15 @@ namespace laba8.Models.Entities
         public override bool Equals(object obj)
         {
             if (!(obj is Pills)) return false;
-
+          
             var ointment = obj as Ointment;
 
-            return Title == ointment.Title
-                   && ShelfLife == ointment.ShelfLife
-                   && MinimalAge == ointment.MinimalAge
+            if (ointment is null)
+            {
+                return false;
+            }
+
+            return base.Equals(ointment)
                    && Country == ointment.Country
                    && Volume == ointment.Volume
                    && OitmentType == ointment.OitmentType;
@@ -66,12 +76,24 @@ namespace laba8.Models.Entities
 Срок годности: {ShelfLife}
 Объем: {Volume} мл
 Тип: {OitmentType}
-"Дата создания: {_createdEntityDateTime}";
+Дата создания: {_createdEntityDateTime}
+Цена c НДС: {PriceWithNds}
+Цена без НДС {Price}";
         }
 
         public override string ToString()
         {
             return $"Мазь| Название: {Title}, Срок годности: {ShelfLife}";
+        }
+
+        public static bool operator ==(Ointment med1, Ointment med2)
+        {
+            return med1.Equals(med2);
+        }
+
+        public static bool operator !=(Ointment med1, Ointment med2)
+        {
+            return !med1.Equals(med2);
         }
     }
 }

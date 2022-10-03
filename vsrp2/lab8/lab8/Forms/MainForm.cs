@@ -60,5 +60,10 @@ namespace laba8
         {
             return (Medicine)listBoxMedicine.SelectedItem;
         }
+
+        private void сopyButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

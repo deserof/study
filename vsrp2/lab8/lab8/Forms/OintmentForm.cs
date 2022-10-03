@@ -26,7 +26,10 @@ namespace laba8
             if (int.TryParse(comboBoxMinimalAge.Text, out int minimalAge) 
                 && (minimalAge == 6 || minimalAge == 10 || minimalAge == 18)
                 && int.TryParse(textBoxVolume.Text, out int volume) 
-                && volume > 0 && volume < 999)
+                && volume > 0 && volume < 999
+                && decimal.TryParse(priceTextBox.Text, out decimal price)
+                && price > 0
+                && int.TryParse(yearTextBox.Text, out int year))
             {
                 _ointment.ShelfLife = comboBoxShelfLife.Text;
                 _ointment.Title = comboBoxTitle.Text;
@@ -34,6 +37,8 @@ namespace laba8
                 _ointment.Country = comboBoxCountry.Text;
                 _ointment.Volume = volume;
                 _ointment.OitmentType = comboBoxType.Text;
+                _ointment.Price = price;
+                _ointment.ChangeEntityDateTime = year;
             }
             else
             {
@@ -43,11 +48,6 @@ namespace laba8
             }
 
             Close();
-        }
-
-        private void OintmentForm_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
