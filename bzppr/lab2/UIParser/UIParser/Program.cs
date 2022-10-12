@@ -20,12 +20,12 @@ namespace UIParser
         // Phone selectors
 
         private static By NameElement => By.XPath("//h1[@class='catalog-masthead__title js-nav-header']");
-        private static By ScreenResolutionElement => By.XPath("//td[contains(text(), 'Разрешение экрана')]/following-sibling::td[1]");
-        private static By RAMElement => By.XPath("//td[contains(text(), 'Оперативная память')]/following-sibling::td[1]");
-        private static By MemoryElement => By.XPath("//td[contains(text(), 'Встроенная память')]/following-sibling::td[1]");
-        private static By GPSElement => By.XPath("//td[contains(text(), 'GPS')]/following-sibling::td[1]");
-        private static By LTEElement => By.XPath("//td[contains(text(), 'LTE')]/following-sibling::td[1]");
-        private static By G5Element => By.XPath("//td[contains(text(), '5G')]/following-sibling::td[1]");
+        private static By ScreenResolutionElement => By.XPath("//td[contains(text(), 'Разрешение экрана')]/following-sibling::td[1]//span");
+        private static By RAMElement => By.XPath("//td[contains(text(), 'Оперативная память')]/following-sibling::td[1]//span");
+        private static By MemoryElement => By.XPath("//td[contains(text(), 'Встроенная память')]/following-sibling::td[1]//span");
+        private static By GPSElement => By.XPath("//td[contains(text(), 'GPS')]/following-sibling::td[1]//span");
+        private static By LTEElement => By.XPath("//td[contains(text(), 'LTE')]/following-sibling::td[1]//span");
+        private static By G5Element => By.XPath("//td[contains(text(), '5G')]/following-sibling::td[1]//span");
 
         // Main
 
