@@ -92,7 +92,7 @@ namespace UIParser
                 ScreenResolution = webDriver.GetElementTextFromTable(ScreenResolutionElement),
                 RAM = webDriver.GetElementTextFromTable(RAMElement),
                 Memory = webDriver.GetElementTextFromTable(MemoryElement),
-                GPS = webDriver.GetElementTextFromTable(G5Element),
+                GPS = webDriver.GetElementTextFromTable(GPSElement),
                 LTE = webDriver.GetElementTextFromTable(LTEElement),
                 G5 = webDriver.GetElementTextFromTable(G5Element)
             };
