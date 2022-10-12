@@ -31,52 +31,57 @@ namespace UIParser
 
         static void Main(string[] args)
         {
-            using var webDriver = new ChromeDriver();
-            webDriver.Manage().Window.Maximize();
-
-            webDriver.Navigate().GoToUrl(BaseUrl);
-            webDriver.WaitForPageLoad();
-
-            IList<IWebElement> entities = webDriver.FindElements(entityTitleElement);
-
             List<Phone> phones = new List<Phone>();
 
-            for (int i = 0; i < PagesNumber; i++)
+            try
             {
-                for (int j = 0; j < entities.Count; j++)
+                using var webDriver = new ChromeDriver();
+                webDriver.Manage().Window.Maximize();
+
+                webDriver.Navigate().GoToUrl(BaseUrl);
+                webDriver.WaitForPageLoad();
+
+                IList<IWebElement> entities = webDriver.FindElements(entityTitleElement);
+
+                for (int i = 0; i < PagesNumber; i++)
                 {
-                    string previousPageUrl = webDriver.Url;
+                    for (int j = 0; j < entities.Count; j++)
+                    {
+                        string previousPageUrl = webDriver.Url;
 
-                    webDriver.ScrollTo(entities[j]);
-                    Wait.Until(() => entities[j].Enabled && entities[j].Displayed);
-                    entities[j].Click();
+                        webDriver.ScrollTo(entities[j]);
+                        Wait.Until(() => entities[j].Enabled && entities[j].Displayed);
+                        entities[j].Click();
 
-                    phones.Add(GetPhone(webDriver));
+                        phones.Add(GetPhone(webDriver));
 
-                    webDriver.Navigate().GoToUrl(previousPageUrl);
-                    webDriver.WaitForPageLoad();
+                        webDriver.Navigate().GoToUrl(previousPageUrl);
+                        webDriver.WaitForPageLoad();
 
-                    entities = webDriver.FindElements(entityTitleElement);
+                        entities = webDriver.FindElements(entityTitleElement);
+                    }
+
+                    if (i == PagesNumber - 1)
+                    {
+                        break;
+                    }
+
+                    var pagination = webDriver.FindElement(paginationElement);
+                    webDriver.ScrollTo(pagination);
+                    Wait.Until(() => pagination.Enabled && pagination.Displayed);
+                    pagination.Click();
+
+                    Wait.For(TimeSpan.FromSeconds(1));
+                    IList<IWebElement> pages = webDriver.FindElements(pageElement);
+                    webDriver.ScrollTo(pages[i]);
+                    Wait.Until(() => pages[i].Enabled && pages[i].Displayed);
+                    pages[i].Click();
                 }
-
-                if (i == PagesNumber - 1)
-                {
-                    break;
-                }
-
-                var pagination = webDriver.FindElement(paginationElement);
-                webDriver.ScrollTo(pagination);
-                Wait.Until(() => pagination.Enabled && pagination.Displayed);
-                pagination.Click();
-
-                Wait.For(TimeSpan.FromSeconds(1));
-                IList<IWebElement> pages = webDriver.FindElements(pageElement);
-                webDriver.ScrollTo(pages[i]);
-                Wait.Until(() => pages[i].Enabled && pages[i].Displayed);
-                pages[i].Click();
             }
-
-            ExcelExporter<Phone>.ExportDataToExcel(phones, "Parsed Phones", "phones");
+            finally
+            {
+                ExcelExporter<Phone>.ExportDataToExcel(phones, "Parsed Phones", "phones");
+            }
         }
 
         private static Phone GetPhone(WebDriver webDriver)
