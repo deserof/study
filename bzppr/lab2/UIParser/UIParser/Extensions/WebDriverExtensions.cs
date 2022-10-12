@@ -1,7 +1,5 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using System.Runtime.CompilerServices;
-using System.Runtime.Intrinsics.Arm;
 using UIParser.Uitls;
 
 namespace UIParser.Extensions
@@ -41,7 +39,7 @@ namespace UIParser.Extensions
 
             if (elements[0].GetAttribute("class") == "i-tip")
             {
-               return "есть";
+                return "есть";
             }
 
             if (elements[0].GetAttribute("class") == "i-x")

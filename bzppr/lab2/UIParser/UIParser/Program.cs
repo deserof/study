@@ -39,11 +39,7 @@ namespace UIParser
 
             IList<IWebElement> entities = webDriver.FindElements(entityTitleElement);
 
-            List<Phone> phones = new List<Phone>
-            {
-                new Phone {G5 = "wer", LTE = "ye", Name = "ph"},
-                new Phone {Memory = "355", LTE = "ye", Name = "ph"}
-            };
+            List<Phone> phones = new List<Phone>();
 
             for (int i = 0; i < PagesNumber; i++)
             {
