@@ -32,6 +32,9 @@ namespace UIParser
         static void Main(string[] args)
         {
             List<Phone> phones = new List<Phone>();
+            string exception = string.Empty;
+            string source = string.Empty;
+            string stackTrace = string.Empty;
 
             try
             {
@@ -78,9 +81,27 @@ namespace UIParser
                     pages[i].Click();
                 }
             }
+            catch (Exception e)
+            {
+                exception = e.Message;
+                source = e.Source;
+                stackTrace = e.StackTrace;
+            }
             finally
             {
                 ExcelExporter<Phone>.ExportDataToExcel(phones, "Parsed Phones", "phones");
+
+                if (string.IsNullOrEmpty(source) ||
+                    string.IsNullOrEmpty(exception) ||
+                    string.IsNullOrEmpty(stackTrace))
+                {
+                    Console.WriteLine("EXCEPTION!!!");
+                    Console.WriteLine($"{nameof(source)} {source}");
+                    Console.WriteLine(new string('-', 15));
+                    Console.WriteLine($"{nameof(exception)} {exception}");
+                    Console.WriteLine(new string('-', 15));
+                    Console.WriteLine($"{nameof(stackTrace)} {stackTrace}");
+                }
             }
         }
 
