@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using Newtonsoft.Json;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using UIParser.Extensions;
 using UIParser.Uitls;
@@ -49,7 +50,9 @@ namespace UIParser
                         Wait.Until(() => entities[j].Enabled && entities[j].Displayed);
                         entities[j].Click();
 
-                        phones.Add(GetPhone(webDriver));
+                        dynamic phone = GetPhone(webDriver);
+                        phones.Add(phone);
+                        Console.WriteLine($"{DateTime.Now.ToString("hh:mm:ss")} -> added {phone.Name}");
 
                         webDriver.Navigate().GoToUrl(previousPageUrl);
                         webDriver.WaitForPageLoad();
