@@ -8,7 +8,7 @@ namespace UIParser
 {
     public class Program
     {
-        private const int PagesNumber = 50;
+        private const int PagesNumber = 35;
 
         // Mobile Page
 
@@ -59,6 +59,9 @@ namespace UIParser
                         webDriver.Navigate().GoToUrl(previousPageUrl);
                         webDriver.WaitForPageLoad();
 
+                        // может не успеть прогрузить каталог
+                        Wait.For(TimeSpan.FromSeconds(5));
+
                         entities = webDriver.FindElements(entityTitleElement);
                     }
 
@@ -72,7 +75,7 @@ namespace UIParser
                     Wait.Until(() => pagination.Enabled && pagination.Displayed);
                     pagination.Click();
 
-                    Wait.For(TimeSpan.FromSeconds(1));
+                    Wait.For(TimeSpan.FromSeconds(2));
                     IList<IWebElement> pages = webDriver.FindElements(pageElement);
                     webDriver.ScrollTo(pages[i]);
                     Wait.Until(() => pages[i].Enabled && pages[i].Displayed);
