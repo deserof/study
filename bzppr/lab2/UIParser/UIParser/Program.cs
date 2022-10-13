@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System.Text;
 using UIParser.Extensions;
