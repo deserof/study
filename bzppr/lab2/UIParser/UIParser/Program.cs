@@ -32,9 +32,10 @@ namespace UIParser
             string source = string.Empty;
             string stackTrace = string.Empty;
 
+            using var webDriver = new ChromeDriver();
+
             try
             {
-                using var webDriver = new ChromeDriver();
                 webDriver.Manage().Window.Maximize();
 
                 webDriver.Navigate().GoToUrl(BaseUrl);
@@ -46,6 +47,8 @@ namespace UIParser
                 {
                     for (int j = 0; j < entities.Count; j++)
                     {
+                        entities = webDriver.FindElements(entityTitleElement);
+
                         string previousPageUrl = webDriver.Url;
 
                         webDriver.ScrollTo(entities[j]);
@@ -59,10 +62,8 @@ namespace UIParser
                         webDriver.Navigate().GoToUrl(previousPageUrl);
                         webDriver.WaitForPageLoad();
 
-                        // может не успеть прогрузить каталог
+                        // может не успеть прогрузить каталог. написать нормальный вейтер
                         Wait.For(TimeSpan.FromSeconds(5));
-
-                        entities = webDriver.FindElements(entityTitleElement);
                     }
 
                     if (i == PagesNumber)
@@ -77,9 +78,13 @@ namespace UIParser
 
                     Wait.For(TimeSpan.FromSeconds(2));
                     IList<IWebElement> pages = webDriver.FindElements(pageElement);
+                    // скорее всего поломается на скроле в бок, там где 40+ страница
                     webDriver.ScrollTo(pages[i]);
                     Wait.Until(() => pages[i].Enabled && pages[i].Displayed);
                     pages[i].Click();
+
+                    // может не успеть прогрузить каталог. написать нормальный вейтер
+                    Wait.For(TimeSpan.FromSeconds(15));
                 }
             }
             catch (Exception e)
@@ -102,6 +107,9 @@ namespace UIParser
                     Console.WriteLine($"{nameof(exception)} {exception}");
                     Console.WriteLine(new string('-', 15));
                     Console.WriteLine($"{nameof(stackTrace)} {stackTrace}");
+
+                    Screenshot ss = ((ITakesScreenshot)webDriver).GetScreenshot();
+                    ss.SaveAsFile("C:\\UIParserScr.png", ScreenshotImageFormat.Png);
                 }
             }
         }
