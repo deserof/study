@@ -1,7 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using UIParser.Extensions;
-using UIParser.Models;
 using UIParser.Uitls;
 
 namespace UIParser
@@ -25,7 +24,7 @@ namespace UIParser
 
         static void Main(string[] args)
         {
-            List<Phone> phones = new List<Phone>();
+            List<dynamic> phones = new List<dynamic>();
             string exception = string.Empty;
             string source = string.Empty;
             string stackTrace = string.Empty;
@@ -83,7 +82,7 @@ namespace UIParser
             }
             finally
             {
-                ExcelExporter<Phone>.ExportDataToExcel(phones, "Parsed Phones", "phones");
+                ExcelExporter.ExportDataToExcel(phones, "Parsed Phones", "phones");
 
                 if (!string.IsNullOrEmpty(source) ||
                     !string.IsNullOrEmpty(exception) ||
@@ -99,9 +98,9 @@ namespace UIParser
             }
         }
 
-        private static Phone GetPhone(WebDriver webDriver)
+        private static dynamic GetPhone(WebDriver webDriver)
         {
-            Phone phone = new()
+            dynamic phone = new
             {
                 Name = webDriver.GetElement(NameElement),
                 OS = webDriver.GetElementTextFromTable("Операционная система"),

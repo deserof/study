@@ -5,9 +5,9 @@ using System.Data;
 
 namespace UIParser.Uitls
 {
-    public static class ExcelExporter<T>
+    public static class ExcelExporter
     {
-        public static void ExportDataToExcel(List<T> exportData, string fileName, string sheetName)
+        public static void ExportDataToExcel(dynamic exportData, string fileName, string sheetName)
         {
             DataTable table = (DataTable)JsonConvert.DeserializeObject(JsonConvert.SerializeObject(exportData), typeof(DataTable));
 
