@@ -8,7 +8,7 @@ namespace UIParser
 {
     public class Program
     {
-        private const int PagesNumber = 35;
+        private const int PagesNumber = 50;
 
         // Mobile Page
 
