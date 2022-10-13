@@ -8,7 +8,7 @@ namespace UIParser
 {
     public class Program
     {
-        private const int PagesNumber = 2;
+        private const int PagesNumber = 50;
 
         // Mobile Page
 
@@ -17,15 +17,9 @@ namespace UIParser
         private static By paginationElement => By.XPath("//div[@class='schema-pagination__secondary']");
         private static By pageElement => By.XPath("//li[@class='schema-pagination__pages-item']//a");
 
-        // Phone selectors
+        // Phone Name
 
         private static By NameElement => By.XPath("//h1[@class='catalog-masthead__title js-nav-header']");
-        private static By ScreenResolutionElement => By.XPath("//td[contains(text(), 'Разрешение экрана')]/following-sibling::td[1]//span");
-        private static By RAMElement => By.XPath("//td[contains(text(), 'Оперативная память')]/following-sibling::td[1]//span");
-        private static By MemoryElement => By.XPath("//td[contains(text(), 'Встроенная память')]/following-sibling::td[1]//span");
-        private static By GPSElement => By.XPath("//td[contains(text(), 'GPS')]/following-sibling::td[1]//span");
-        private static By LTEElement => By.XPath("//td[contains(text(), 'LTE')]/following-sibling::td[1]//span");
-        private static By G5Element => By.XPath("//td[contains(text(), '5G')]/following-sibling::td[1]//span");
 
         // Main
 
@@ -64,7 +58,7 @@ namespace UIParser
                         entities = webDriver.FindElements(entityTitleElement);
                     }
 
-                    if (i == PagesNumber - 1)
+                    if (i == PagesNumber)
                     {
                         break;
                     }
@@ -110,12 +104,27 @@ namespace UIParser
             Phone phone = new()
             {
                 Name = webDriver.GetElement(NameElement),
+                OS = webDriver.GetElementTextFromTable("Операционная система"),
+                ScreenTechnology = webDriver.GetElementTextFromTable("Технология экрана"),
+                ScreenRefreshRate = webDriver.GetElementTextFromTable("Частота обновления экрана"),
+                NumberOfMatrixPoints = webDriver.GetElementTextFromTable("Количество точек матрицы"),
+                CameraSpecifications = webDriver.GetElementTextFromTable("Характеристики камеры"),
+                MaximumVideoResolution = webDriver.GetElementTextFromTable("Максимальное разрешение видео"),
+                NumberOfSIMCards = webDriver.GetElementTextFromTable("Количество SIM-карт"),
                 ScreenResolution = webDriver.GetElementTextFromTable("Разрешение экрана"),
                 RAM = webDriver.GetElementTextFromTable("Оперативная память"),
                 Memory = webDriver.GetElementTextFromTable("Встроенная память"),
+                Processor = webDriver.GetElementTextFromTable("Процессор"),
+                ProcessorClockSpeed = webDriver.GetElementTextFromTable("Тактовая частота процессора"),
+                ProcessTechnology = webDriver.GetElementTextFromTable("Техпроцесс"),
+                Material = webDriver.GetElementTextFromTable("Материал корпуса"),
+                SimFormat = webDriver.GetElementTextFromTable("Формат SIM-карты"),
+                SensorScreen = webDriver.GetElementTextFromTable("Сенсорный экран"),
+                ScratchProtection = webDriver.GetElementTextFromTable("Защита от царапин"),
                 GPS = webDriver.GetElementTextFromTable("GPS"),
                 LTE = webDriver.GetElementTextFromTable("LTE"),
-                G5 = webDriver.GetElementTextFromTable("5G")
+                G5 = webDriver.GetElementTextFromTable("5G"),
+                BatteryCapacity = webDriver.GetElementTextFromTable("Емкость аккумулятора"),
             };
 
             return phone;

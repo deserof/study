@@ -3,6 +3,8 @@
     public class Phone
     {
         public string Name { get; set; }
+
+        public string OS { get; set; }
         
         public string ScreenResolution { get; set; }
         
