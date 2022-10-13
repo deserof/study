@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using System.Text;
 using UIParser.Extensions;
 using UIParser.Uitls;
 
@@ -25,6 +26,8 @@ namespace UIParser
 
         static void Main(string[] args)
         {
+            Console.OutputEncoding = Encoding.UTF8;
+
             List<dynamic> phones = new List<dynamic>();
             string exception = string.Empty;
             string source = string.Empty;
