@@ -25,9 +25,11 @@ namespace UIParser.Extensions
             wait.Until(driver1 => ExecuteJavaScript(driver, "return document.readyState").Equals("complete"));
         }
 
-        public static string GetElementTextFromTable(this WebDriver webDriver, By by)
+        public static string GetElementTextFromTable(this WebDriver webDriver, string text)
         {
-            var elements = webDriver.FindElements(by);
+            By locator = By.XPath($"//td[contains(text(), '{text}')]/following-sibling::td[1]//span");
+
+            var elements = webDriver.FindElements(locator);
 
             if (elements.Count == 0)
             {
@@ -46,6 +48,21 @@ namespace UIParser.Extensions
             {
                 return "нет";
             }
+
+            return elements[0].Text.Trim();
+        }
+
+        public static string GetElement(this WebDriver webDriver, By locator)
+        {
+            var elements = webDriver.FindElements(locator);
+
+            if (elements.Count == 0)
+            {
+                return string.Empty;
+            }
+
+            webDriver.ScrollTo(elements[0]);
+            Wait.Until(() => elements[0].Enabled && elements[0].Displayed);
 
             return elements[0].Text.Trim();
         }

@@ -84,16 +84,16 @@ namespace UIParser
             catch (Exception e)
             {
                 exception = e.Message;
-                source = e.Source;
-                stackTrace = e.StackTrace;
+                source = e.Source!;
+                stackTrace = e.StackTrace!;
             }
             finally
             {
                 ExcelExporter<Phone>.ExportDataToExcel(phones, "Parsed Phones", "phones");
 
-                if (string.IsNullOrEmpty(source) ||
-                    string.IsNullOrEmpty(exception) ||
-                    string.IsNullOrEmpty(stackTrace))
+                if (!string.IsNullOrEmpty(source) ||
+                    !string.IsNullOrEmpty(exception) ||
+                    !string.IsNullOrEmpty(stackTrace))
                 {
                     Console.WriteLine("EXCEPTION!!!");
                     Console.WriteLine($"{nameof(source)} {source}");
@@ -109,13 +109,13 @@ namespace UIParser
         {
             Phone phone = new()
             {
-                Name = webDriver.GetElementTextFromTable(NameElement),
-                ScreenResolution = webDriver.GetElementTextFromTable(ScreenResolutionElement),
-                RAM = webDriver.GetElementTextFromTable(RAMElement),
-                Memory = webDriver.GetElementTextFromTable(MemoryElement),
-                GPS = webDriver.GetElementTextFromTable(GPSElement),
-                LTE = webDriver.GetElementTextFromTable(LTEElement),
-                G5 = webDriver.GetElementTextFromTable(G5Element)
+                Name = webDriver.GetElement(NameElement),
+                ScreenResolution = webDriver.GetElementTextFromTable("Разрешение экрана"),
+                RAM = webDriver.GetElementTextFromTable("Оперативная память"),
+                Memory = webDriver.GetElementTextFromTable("Встроенная память"),
+                GPS = webDriver.GetElementTextFromTable("GPS"),
+                LTE = webDriver.GetElementTextFromTable("LTE"),
+                G5 = webDriver.GetElementTextFromTable("5G")
             };
 
             return phone;

@@ -11,7 +11,7 @@ namespace UIParser.Uitls
         {
             DataTable table = (DataTable)JsonConvert.DeserializeObject(JsonConvert.SerializeObject(exportData), typeof(DataTable));
 
-            using (var fs = new FileStream($"{fileName}.xlsx", FileMode.Create, FileAccess.Write))
+            using (var fs = new FileStream($"..\\..\\..\\..\\..\\{fileName}.xlsx", FileMode.Create, FileAccess.Write))
             {
                 IWorkbook workbook = new XSSFWorkbook();
                 ISheet excelSheet = workbook.CreateSheet($"{sheetName}");
