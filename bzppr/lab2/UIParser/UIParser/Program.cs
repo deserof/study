@@ -109,7 +109,7 @@ namespace UIParser
                     Console.WriteLine($"{nameof(stackTrace)} {stackTrace}");
 
                     Screenshot ss = ((ITakesScreenshot)webDriver).GetScreenshot();
-                    ss.SaveAsFile("C:\\UIParserScr.png", ScreenshotImageFormat.Png);
+                    ss.SaveAsFile("..\\..\\..\\..\\..\\UIParserScr.png", ScreenshotImageFormat.Png);
                 }
             }
         }
