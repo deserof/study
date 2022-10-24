@@ -20,6 +20,7 @@ namespace UIParser
         // Phone Name
 
         private static By NameElement => By.XPath("//h1[@class='catalog-masthead__title js-nav-header']");
+        private static By PriceElement => By.XPath("//div[@class='offers-description__price-group']//div//a");
 
         // Main
 
@@ -119,6 +120,7 @@ namespace UIParser
             dynamic phone = new
             {
                 Name = webDriver.GetElement(NameElement),
+                Price = webDriver.GetElement(PriceElement).Split(",")[0],
                 OS = webDriver.GetElementTextFromTable("Операционная система"),
                 ScreenTechnology = webDriver.GetElementTextFromTable("Технология экрана"),
                 ScreenRefreshRate = webDriver.GetElementTextFromTable("Частота обновления экрана"),
