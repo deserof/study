@@ -1,9 +1,10 @@
-﻿using lab8.Models.Enums;
+﻿using lab8.Interfaces;
+using lab8.Models.Enums;
 using static lab8.Extensions.EnumExtension;
 
 namespace laba8.Models.Entities
 {
-    public class Medicine
+    public class Medicine : ISell, IComparable, IComparable<Medicine>
     {
         protected DateTime _createdEntityDateTime = DateTime.Now;
 
@@ -70,6 +71,12 @@ namespace laba8.Models.Entities
                 return _price + _price * (decimal)(nds / 100);
             }
         }
+
+        public bool IsSold { get; set; }
+
+        public string Customer { get; set; }
+
+        public DateTime SaleDate { get; set; }
 
         public bool this[decimal price]
         {
@@ -165,6 +172,22 @@ namespace laba8.Models.Entities
         public override string ToString()
         {
             return $"{Title}, {Country}, {MinimalAge}, {ShelfLife}";
+        }
+
+        public void Sell()
+        {
+            IsSold = !IsSold;
+        }
+
+        public int CompareTo(object? obj)
+        {
+            return _price.CompareTo(obj);
+        }
+
+        public int CompareTo(Medicine? other)
+        {
+            // _createdEntityDateTime
+            throw new NotImplementedException();
         }
 
         public static bool operator ==(Medicine med1, Medicine med2)

@@ -1,4 +1,4 @@
-﻿using lab8.Models.Enums;
+﻿using lab8.Interfaces;
 
 namespace laba8.Models.Entities
 {

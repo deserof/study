@@ -1,4 +1,5 @@
 ﻿using lab8;
+using lab8.Forms;
 using laba8.Models.Entities;
 
 namespace laba8
@@ -14,9 +15,9 @@ namespace laba8
         private readonly JournalList<Medicine> _medicines = new JournalList<Medicine>();
 
         public MainForm()
-        {
+        {          
             InitializeComponent();
-            Listener.l_OnMyAddMedicine()
+            //Listener.l_OnMyAddMedicine()
             //_medicines.OnAdd += new EventHandler(JournalList<Medicine>.l_OnAdd);
             //_medicines.OnDelete += new EventHandler(JournalList<Medicine>.l_OnDelete);
             //_medicines.OnChange += new EventHandler(JournalList<Medicine>.l_OnChange);

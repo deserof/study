@@ -3,7 +3,7 @@ using static lab8.Extensions.EnumExtension;
 
 namespace laba8.Models.Entities
 {
-    public class Ointment : Medicine
+    public class Ointment : Medicine, IComparable<Ointment>
     {
         public int Volume { get; set; }
 
@@ -84,6 +84,12 @@ namespace laba8.Models.Entities
         public override string ToString()
         {
             return $"Мазь| Название: {Title}, Срок годности: {ShelfLife}";
+        }
+
+        public int CompareTo(Ointment? other)
+        {
+            // Volume
+            throw new NotImplementedException();
         }
 
         public static bool operator ==(Ointment med1, Ointment med2)

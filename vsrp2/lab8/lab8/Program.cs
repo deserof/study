@@ -1,4 +1,5 @@
-﻿using laba8;
+﻿using lab8.Forms;
+using laba8;
 using System;
 
 namespace lab8
@@ -14,7 +15,7 @@ namespace lab8
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new MainForm());
+            Application.Run(new AccountForm());
         }
     }
 }
