@@ -1,6 +1,7 @@
 ﻿using lab8.Forms;
-using laba8;
-using System;
+using lab8.Services.Implementations;
+using lab8.Services.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace lab8
 {
@@ -12,10 +13,16 @@ namespace lab8
         [STAThread]
         static void Main()
         {
+            var container = new ServiceCollection();
+
+            container.AddSingleton<IHttpService, HttpService>();
+
+            var serviceProvider = container.BuildServiceProvider();
+
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new AccountForm());
+            Application.Run(new AccountForm(serviceProvider));
         }
     }
 }
