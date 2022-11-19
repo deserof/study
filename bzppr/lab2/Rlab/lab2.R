@@ -11,62 +11,133 @@ library('GGally')
 library('MASS')
 library('lmtest')
 library('FNN')
-library("caret")
-library("ggplot2")
+library('caret')
 library(stargazer)
 library(dbplyr)
 library(readxl)
-
-# Цель: исследовать набор данных phones, построить регрессионную модель,
-# взяв за Y - Price, а в качестве X: ScreenRefreshRate, ProcessorClockSpeed, BatteryCapacity, ProcessTechnology, OS
-# сделать вывод о пригодности модели для прогноза. Сравнить с методом k ближайших соседей по MSE на тестовой выборке.
+library('GGally')
+library('stringi')
+library("ggplot2")
 
 my.seed <- 12345
 phones.percent <- 0.85
 options("ggmatrix.progress.bar" = FALSE)
 
-phones <- read_excel("D:\\Users\\deserof\\Desktop\\study\\bzppr\\lab2\\Rlab\\lab2.xlsx");
-
+phones <- read_excel("C:/Users/Artsiom_Kharkevich/Study/study/bzppr/lab2/Rlab/lab2.xlsx")
 ?phones
 str(phones)
 set.seed(my.seed)
+
+phones$RAM<- as.factor(phones$`RAM гб`)
 
 #обучающая выборка
 inPhones <- sample(seq_along(phones$`Price (byn)`), 
                    nrow(phones) * phones.percent)
 
-df.phones <- phones[inPhones, c(1:5)]
+df.phones <- phones[inPhones, c(2,5,6,9,11,12,14,15,23)]
+df.test <- phones[-inPhones, c(2,5,6,9,11,12,14,15,23)]
 
-df.test <- phones[-inPhones, c(1:5)]
+p_ <- GGally::print_if_interactive
 
-ggp <- ggpairs(df.phones, cardinality_threshold = 306)
+ggp <- ggpairs(df.phones, cardinality_threshold = 233, columns = 2:4)
 
-ggplot(ggp, mapping = ggplot2::aes(color = phones$`Price (byn)`))
+p_(ggp)
 
-print(ggp, bins = 400)
+ggp <- ggpairs(df.phones, 
+               #mapping = aes(color = phones$`Price (byn)`),
+               ggplot2::aes(color="red"),
+               cardinality_threshold=233,
+               columns = 1:4)
 
-ggp <- ggpairs(df.phones,
-               cardinality_threshold = 306)
+p_(ggp)
 
-print(ggp, bins = 400)
+print(ggp, progress = FALSE)
+
 model.1 <-  lm(phones$`Price (byn)` ~
                  phones$`ScreenRefreshRate (Гц)`
                + phones$`ProcessorClockSpeed(МГц)`
+               + phones$`NumberOfMatrixPoints мп`
+               + phones$ NumberOfSIMCards
                + phones$`BatteryCapacity(мА·ч)`
-               + phones$ProcessTechnology
-               + phones$OS)
+               + phones$ ProcessTechnology
+               + phones$`Memory(Гб)`
+               + phones$`RAM гб`,
+               data = df.phones)
 summary(model.1)
 
-###
+#Некоторые регрессоры, входящие в модель незначимы, постепенно исключаем их:
 
-ES1 <- as.data.frame(phones[2:5], min_max_norm)
-ES1<-round(ES1,2)
-
-relation <- lm(phones$`Price (byn)` ~
-                 phones$`ScreenRefreshRate (Гц)`
-               + phones$`ProcessorClockSpeed(МГц)`
+model.2 <-  lm(phones$`Price (byn)` ~
+                 phones$`ProcessorClockSpeed(МГц)`
+               + phones$`NumberOfMatrixPoints мп`
+               + phones$ NumberOfSIMCards
                + phones$`BatteryCapacity(мА·ч)`
-               + phones$ProcessTechnology
-               + phones$OS)
+               + phones$ ProcessTechnology
+               + phones$`Memory(Гб)`
+               + phones$`RAM гб`,
+               data = df.phones)
+summary(model.2)
 
-print(summary(relation))
+model.3 <-  lm(phones$`Price (byn)` ~
+                 phones$`ProcessorClockSpeed(МГц)`
+               + phones$ NumberOfSIMCards
+               + phones$`BatteryCapacity(мА·ч)`
+               + phones$ ProcessTechnology
+               + phones$`Memory(Гб)`
+               + phones$`RAM гб`,
+               data = df.phones)
+summary(model.3)
+
+model.4 <-  lm(phones$`Price (byn)` ~
+                 phones$`ProcessorClockSpeed(МГц)`
+               + phones$`BatteryCapacity(мА·ч)`
+               + phones$ ProcessTechnology
+               + phones$`Memory(Гб)`
+               + phones$`RAM гб`,
+               data = df.phones)
+summary(model.4)
+
+model.5 <-  lm(phones$`Price (byn)` ~
+                 phones$`ProcessorClockSpeed(МГц)`
+               + phones$ ProcessTechnology
+               + phones$`Memory(Гб)`
+               + phones$`RAM гб`,
+               data = df.phones)
+summary(model.5)
+
+model.6 <-  lm(phones$`Price (byn)` ~
+                 phones$`ProcessorClockSpeed(МГц)`
+               + phones$`Memory(Гб)`
+               + phones$`RAM гб`,
+               data = df.phones)
+summary(model.6)
+
+model.7 <-  lm(phones$`Price (byn)` ~
+                 phones$`ProcessorClockSpeed(МГц)`
+               + phones$`RAM гб`,
+               data = df.phones)
+summary(model.7)
+
+# качество модели на контрольной выборке 
+
+P <- predict(model.7, df.test)
+
+x <- as.numeric(df.test$`Price (byn)`)
+y <- P
+
+plot(x, y[1: length (x)])
+
+ER <- x - predict(model.7,df.test)
+
+MSE.lm <- sum(ER^2) / length(P)
+
+#прогноз
+new<-data.frame(ProcessorClockSpeed = phones$`ProcessorClockSpeed(МГц)`,
+                ram = mean(phones$`RAM гб`))
+hist(ER)
+plot(1:54, x, type = 'b', col = 'darkgreen',
+     xlab = 'порядковый номер тестовой выборки',
+     ylab = 'эмпирические и теоретические значения на тестовой выборке')
+
+lines(1:54, x, type = 'b', col = 'red')
+shapiro.test(ER)
