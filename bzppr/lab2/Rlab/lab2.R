@@ -122,7 +122,7 @@ summary(model.7)
 
 P <- predict(model.7, df.test)
 
-x <- as.numeric(df.test$`Price (byn)`)
+x <- df.test$`Price (byn)`
 y <- P
 
 plot(x, y[1: length (x)])
@@ -141,3 +141,13 @@ plot(1:54, x, type = 'b', col = 'darkgreen',
 
 lines(1:54, x, type = 'b', col = 'red')
 shapiro.test(ER)
+
+#КНН регрессия (пофиксить)
+knn_fit <- train(phones$`Price (byn)` ~
+                   phones$`ProcessorClockSpeed(МГц)`
+                 + phones$`RAM гб`,
+                 preProcess = c("center","scale"), 
+                 method = "knn",
+                 data=df.phones,
+                 na.action=na.exclude)
+knn_fit$results
