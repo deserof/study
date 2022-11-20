@@ -1,6 +1,4 @@
-﻿using System.Net.Http.Headers;
-
-namespace lab8.Services.Interfaces
+﻿namespace lab8.Services.Interfaces
 {
     public interface IHttpService
     {
