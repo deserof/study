@@ -1,0 +1,17 @@
+﻿using Domain.Enums;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
+namespace Domain.Models
+{
+    public class UserModel
+    {
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+        public string Password { get; set; }
+
+        public PositionType Position { get; set; }
+    }
+}

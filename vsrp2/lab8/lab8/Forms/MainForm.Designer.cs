@@ -42,22 +42,22 @@
             // listBoxMedicine
             // 
             this.listBoxMedicine.FormattingEnabled = true;
-            this.listBoxMedicine.ItemHeight = 20;
-            this.listBoxMedicine.Location = new System.Drawing.Point(339, 28);
-            this.listBoxMedicine.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.listBoxMedicine.ItemHeight = 15;
+            this.listBoxMedicine.Location = new System.Drawing.Point(297, 21);
+            this.listBoxMedicine.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.listBoxMedicine.Name = "listBoxMedicine";
-            this.listBoxMedicine.Size = new System.Drawing.Size(509, 284);
+            this.listBoxMedicine.Size = new System.Drawing.Size(446, 214);
             this.listBoxMedicine.TabIndex = 0;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.radioButtonOintment);
             this.groupBox1.Controls.Add(this.radioButtonPills);
-            this.groupBox1.Location = new System.Drawing.Point(39, 159);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox1.Location = new System.Drawing.Point(34, 119);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox1.Size = new System.Drawing.Size(267, 154);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(234, 116);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Выберите";
@@ -65,10 +65,10 @@
             // radioButtonOintment
             // 
             this.radioButtonOintment.AutoSize = true;
-            this.radioButtonOintment.Location = new System.Drawing.Point(8, 98);
-            this.radioButtonOintment.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.radioButtonOintment.Location = new System.Drawing.Point(7, 74);
+            this.radioButtonOintment.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButtonOintment.Name = "radioButtonOintment";
-            this.radioButtonOintment.Size = new System.Drawing.Size(66, 24);
+            this.radioButtonOintment.Size = new System.Drawing.Size(53, 19);
             this.radioButtonOintment.TabIndex = 1;
             this.radioButtonOintment.Text = "Мазь";
             this.radioButtonOintment.UseVisualStyleBackColor = true;
@@ -77,10 +77,10 @@
             // 
             this.radioButtonPills.AutoSize = true;
             this.radioButtonPills.Checked = true;
-            this.radioButtonPills.Location = new System.Drawing.Point(8, 42);
-            this.radioButtonPills.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.radioButtonPills.Location = new System.Drawing.Point(7, 32);
+            this.radioButtonPills.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButtonPills.Name = "radioButtonPills";
-            this.radioButtonPills.Size = new System.Drawing.Size(93, 24);
+            this.radioButtonPills.Size = new System.Drawing.Size(75, 19);
             this.radioButtonPills.TabIndex = 0;
             this.radioButtonPills.TabStop = true;
             this.radioButtonPills.Text = "Таблетки";
@@ -88,10 +88,10 @@
             // 
             // buttonEnterData
             // 
-            this.buttonEnterData.Location = new System.Drawing.Point(39, 71);
-            this.buttonEnterData.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.buttonEnterData.Location = new System.Drawing.Point(34, 53);
+            this.buttonEnterData.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonEnterData.Name = "buttonEnterData";
-            this.buttonEnterData.Size = new System.Drawing.Size(267, 35);
+            this.buttonEnterData.Size = new System.Drawing.Size(234, 26);
             this.buttonEnterData.TabIndex = 2;
             this.buttonEnterData.Text = "Ввести данные";
             this.buttonEnterData.UseVisualStyleBackColor = true;
@@ -99,10 +99,10 @@
             // 
             // buttonShortData
             // 
-            this.buttonShortData.Location = new System.Drawing.Point(484, 335);
-            this.buttonShortData.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.buttonShortData.Location = new System.Drawing.Point(424, 251);
+            this.buttonShortData.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonShortData.Name = "buttonShortData";
-            this.buttonShortData.Size = new System.Drawing.Size(167, 35);
+            this.buttonShortData.Size = new System.Drawing.Size(146, 26);
             this.buttonShortData.TabIndex = 3;
             this.buttonShortData.Text = "Краткие сведения";
             this.buttonShortData.UseVisualStyleBackColor = true;
@@ -110,10 +110,10 @@
             // 
             // buttonShowData
             // 
-            this.buttonShowData.Location = new System.Drawing.Point(484, 380);
-            this.buttonShowData.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.buttonShowData.Location = new System.Drawing.Point(424, 285);
+            this.buttonShowData.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonShowData.Name = "buttonShowData";
-            this.buttonShowData.Size = new System.Drawing.Size(167, 35);
+            this.buttonShowData.Size = new System.Drawing.Size(146, 26);
             this.buttonShowData.TabIndex = 4;
             this.buttonShowData.Text = "Просмотреть данные";
             this.buttonShowData.UseVisualStyleBackColor = true;
@@ -121,10 +121,10 @@
             // 
             // сopyButton
             // 
-            this.сopyButton.Location = new System.Drawing.Point(339, 335);
-            this.сopyButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.сopyButton.Location = new System.Drawing.Point(297, 251);
+            this.сopyButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.сopyButton.Name = "сopyButton";
-            this.сopyButton.Size = new System.Drawing.Size(137, 35);
+            this.сopyButton.Size = new System.Drawing.Size(120, 26);
             this.сopyButton.TabIndex = 5;
             this.сopyButton.Text = "Копировать";
             this.сopyButton.UseVisualStyleBackColor = true;
@@ -132,16 +132,16 @@
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(861, 434);
+            this.ClientSize = new System.Drawing.Size(753, 326);
             this.Controls.Add(this.сopyButton);
             this.Controls.Add(this.buttonShowData);
             this.Controls.Add(this.buttonShortData);
             this.Controls.Add(this.buttonEnterData);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.listBoxMedicine);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MainForm";
             this.Text = "Лабораторная работа ";
             this.groupBox1.ResumeLayout(false);

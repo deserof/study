@@ -1,6 +1,7 @@
 ﻿using lab8;
 using lab8.Forms;
 using laba8.Models.Entities;
+using System.Diagnostics;
 
 namespace laba8
 {
@@ -90,6 +91,14 @@ namespace laba8
                 var copiedItem = new Pills(pills);
                 _medicines.Add(copiedItem);
                 listBoxMedicine.Items.Add(copiedItem);
+            }
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                Application.Exit();
             }
         }
     }

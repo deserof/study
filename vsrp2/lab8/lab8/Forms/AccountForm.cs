@@ -1,4 +1,5 @@
 ﻿using lab8.Services.Interfaces;
+using laba8;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace lab8.Forms
@@ -16,13 +17,21 @@ namespace lab8.Forms
 
         private void adminRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            var response = _httpService.Send(HttpMethod.Get, "https://google.com");
-            var coc = _httpService.Cookies;
+            userNameTextBox.Enabled = true;
+            passwordTextBox.Enabled = true;
         }
 
         private void authButton_Click(object sender, EventArgs e)
         {
+            var mainForm = new MainForm();
+            this.Hide();
+            mainForm.ShowDialog();
+        }
 
+        private void userRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            userNameTextBox.Enabled = false;
+            passwordTextBox.Enabled = false;
         }
     }
 }

@@ -1,0 +1,19 @@
+[
+  {
+    "FirstName": "admin1 name",
+    "LastName": "admin2 lastname",
+    "Position": "Manager",
+    "Password": "123"
+  },
+  {
+    "FirstName": "admin2 name",
+    "LastName": "admin2 lastname",
+    "Position": "Accountant",
+    "Password": "123"
+  },
+  {
+    "FirstName": "admin3 name",
+    "LastName": "admin3 lastname",
+    "Password": "123"
+  }
+]

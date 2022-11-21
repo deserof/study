@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Domain.Models;
+using Identity.API.Services;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Identity.API.Controllers
 {
@@ -11,10 +13,10 @@ namespace Identity.API.Controllers
         }
 
         [HttpPost]
-        //[ProducesResponseType(typeof(User), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(UserLoginResponseModel), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> RegisterAsync()
+        public async Task<IActionResult> LoginAsync(UserLoginRequestModel userLoginRequestModel)
         {
             return Ok();
         }
