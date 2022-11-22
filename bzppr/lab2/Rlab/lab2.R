@@ -18,19 +18,23 @@ library(readxl)
 library('GGally')
 library('stringi')
 library("ggplot2")
-library(randomForest)
-
+library('randomForest')
+library('Hmisc')
 my.seed <- 12345
 phones.percent <- 0.85
 options("ggmatrix.progress.bar" = FALSE)
 
 phones <- read_excel("C:/Users/Artsiom_Kharkevich/Study/study/bzppr/lab2/Rlab/lab2.xlsx")
 
-?phones
+
 str(phones)
-set.seed(my.seed)
 
 phones$RAM<- as.factor(phones$`RAM гб`)
+
+ph <- as.data.frame(df.phones)
+stargazer(ph,type="html", 
+          dep.var.labels="mpg", 
+          out="models1_3.htm")#
 
 #обучающая выборка
 inPhones <- sample(seq_along(phones$`Price (byn)`), 
@@ -44,20 +48,9 @@ df.test[is.na(df.test)] <- 0
 
 p_ <- GGally::print_if_interactive
 
-ggp <- ggpairs(df.phones, cardinality_threshold = 233, columns = 2:4)
-
-p_(ggp)
-
-ggp <- ggpairs(df.phones, 
-               #mapping = aes(color = phones$`Price (byn)`),
-               ggplot2::aes(color="red"),
-               cardinality_threshold=233,
-               columns = 1:4)
-
-p_(ggp)
-
+ggp <- ggpairs(df.phones,cardinality_threshold=18,columns = c(1,5,7))
 print(ggp, progress = FALSE)
-
+p_(ggp)
 model.1 <-  lm(phones$`Price (byn)` ~
                  phones$`ScreenRefreshRate (Гц)`
                + phones$`ProcessorClockSpeed(МГц)`
@@ -116,11 +109,12 @@ model.6 <-  lm(phones$`Price (byn)` ~
                data = df.phones)
 summary(model.6)
 
-model.7 <-  lm(phones$`Price (byn)` ~
-                 phones$`ProcessorClockSpeed(МГц)`
-               + phones$`RAM гб`,
-               data = df.phones)
+model.7 <-  lm(phones$`Price (byn)` ~phones$`ProcessorClockSpeed(МГц)`+ phones$`RAM гб`,  data = df.phones)
+
+
+
 summary(model.7)
+
 
 # качество модели на контрольной выборке 
 P <- predict(model.7, df.test)
@@ -138,11 +132,11 @@ MSE.lm <- sum(ER^2) / length(P)
 new<-data.frame(ProcessorClockSpeed = mean(phones$`ProcessorClockSpeed(МГц)`),
                 ram = mean(phones$`RAM гб`))
 hist(ER)
-plot(1:54, x, type = 'b', col = 'darkgreen',
+plot(1:49, x, type = 'b', col = 'darkgreen',
      xlab = 'порядковый номер тестовой выборки',
      ylab = 'эмпирические и теоретические значения на тестовой выборке')
 
-lines(1:54, x, type = 'b', col = 'red')
+lines(1:49, x, type = 'b', col = 'red')
 shapiro.test(ER)
 
 #КНН регрессия (пофиксить)
@@ -154,21 +148,25 @@ knn_fit <- train(`Price (byn)` ~ `ProcessorClockSpeed(МГц)` + `RAM гб`,
 knn_fit$results
 
 # качество модели на контрольной выборке 
+
+
 Pknn<-predict(knn_fit, df.test)
-plot(1:54, Pknn, type = 'b', col = 'darkgreen',
+plot(1:49, Pknn, type = 'b', col = 'darkgreen',
      xlab = 'порядковый номер тестовой выборки',
      ylab = 'эмпирические и теоретические значения на тестовой выборке')
-lines(1:54, df.test$`Price (byn)`, type = 'b', col = 'red')
+lines(1:49, df.test$`Price (byn)`, type = 'b', col = 'red')
 ERKN<-df.test$`Price (byn)` - Pknn
 MSEknn <- sum(ERKN^2) / length(Pknn)#RMSE^2
 
+pred<-cbind(df.phones$`Price (byn)`,df.phones$`ProcessorClockSpeed(МГц)`,Pknn)
+
 #Три графика вместе 
-plot(1:54, Pknn, type = 'b', col = 'darkgreen',
+plot(1:49, Pknn, type = 'b', col = 'darkgreen',
      xlab = 'порядковый номер тестовой выборки',
      ylab = 'эмпирические и теоретические значения на тестовой выборке')
 
-lines(1:360, P, type = 'b', col = 'black')
-lines(1:54, df.test$`Price (byn)`, type = 'b', col = 'red')
+lines(1:325, P, type = 'b', col = 'black')
+lines(1:49, df.test$`Price (byn)`, type = 'b', col = 'red')
 
 #прогноз
 new <- data.frame(`ProcessorClockSpeed(МГц)` <- mean(df.phones$`ProcessorClockSpeed(МГц)`),
@@ -213,3 +211,4 @@ conf.m[1, 1] / sum(conf.m[1, ])
 sum(diag(conf.m)) / sum(conf.m)
 logit.or = exp(coef(model.logit))
 logit.or
+

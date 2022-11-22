@@ -11,7 +11,7 @@ namespace lab8.Forms
         public AccountForm(IServiceProvider serviceProvider)
         {
             _httpService = serviceProvider.GetRequiredService<IHttpService>();
-
+            //_httpService.Send("");
             InitializeComponent();
         }
 
