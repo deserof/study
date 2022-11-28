@@ -37,6 +37,29 @@ namespace lab8.Services.Implementations
             return JsonConvert.DeserializeObject<T>(jsonString);
         }
 
+        public T Send<T>(HttpMethod httpMethod, string requestUri, Dictionary<string, IEnumerable<string>>? headers = null)
+        {
+            var client = new HttpClient();
+
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(ApplicationJson));
+
+            var request = new HttpRequestMessage
+            {
+                Method = httpMethod,
+                RequestUri = new Uri(requestUri),
+            };
+
+            AddHeaders(request, headers);
+
+            HttpResponseMessage response = client.Send(request);
+
+            Cookies = response.Headers.SingleOrDefault(header => header.Key == SetCoockie).Value;
+
+            string jsonString = response.Content.ReadAsStringAsync().Result;
+
+            return JsonConvert.DeserializeObject<T>(jsonString);
+        }
+
         public HttpResponseMessage Send<T>(HttpMethod httpMethod, string requestUri, T model, Dictionary<string, IEnumerable<string>>? headers = null)
         {
             var client = new HttpClient();

@@ -4,9 +4,9 @@ using static lab8.Extensions.EnumExtension;
 
 namespace laba8.Models.Entities
 {
-    public class Medicine : ISell, IComparable, IComparable<Medicine>
+    public class Medicine : ISell, IComparable
     {
-        protected DateTime _createdEntityDateTime = DateTime.Now;
+        internal protected DateTime _createdEntityDateTime = DateTime.Now;
 
         public string Title { get; set; }
 
@@ -179,15 +179,17 @@ namespace laba8.Models.Entities
             IsSold = !IsSold;
         }
 
-        public int CompareTo(object? obj)
+        public int CompareTo(object obj)
         {
-            return _price.CompareTo(obj);
-        }
+            if (obj is Medicine medicine)
+            {
 
-        public int CompareTo(Medicine? other)
-        {
-            // _createdEntityDateTime
-            throw new NotImplementedException();
+                return Price.CompareTo(medicine.Price);
+            }
+            else
+            {
+                throw new ArgumentException("Error");
+            }
         }
 
         public static bool operator ==(Medicine med1, Medicine med2)
@@ -198,6 +200,52 @@ namespace laba8.Models.Entities
         public static bool operator !=(Medicine med1, Medicine med2)
         {
             return !med1.Equals(med2);
+        }
+
+        public static bool operator >=(Medicine med1, Medicine med2)
+        {
+            if ((med1.Equals(med2))
+                || ((med1.Price >= med2.Price
+                || med1.MinimalAge >= med2.MinimalAge)))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public static bool operator <=(Medicine med1, Medicine med2)
+        {
+            if ((med1.Equals(med2)
+                || (med1.Price <= med2.Price
+                || med1.MinimalAge <= med2.MinimalAge)))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public static bool operator >(Medicine med1, Medicine med2)
+        {
+            if (((med1.Price > med2.Price
+                || med1.MinimalAge > med2.MinimalAge)))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public static bool operator <(Medicine med1, Medicine med2)
+        {
+            if (((med1.Price < med2.Price
+                || med1.MinimalAge < med2.MinimalAge)))
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

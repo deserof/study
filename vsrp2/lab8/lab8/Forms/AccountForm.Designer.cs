@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.authButton = new System.Windows.Forms.Button();
-            this.userNameTextBox = new System.Windows.Forms.TextBox();
             this.passwordTextBox = new System.Windows.Forms.TextBox();
             this.adminRadioButton = new System.Windows.Forms.RadioButton();
             this.userRadioButton = new System.Windows.Forms.RadioButton();
             this.userNameLabel = new System.Windows.Forms.Label();
             this.passwordLabel = new System.Windows.Forms.Label();
+            this.usersComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // authButton
@@ -47,14 +47,6 @@
             this.authButton.Text = "Login";
             this.authButton.UseVisualStyleBackColor = true;
             this.authButton.Click += new System.EventHandler(this.authButton_Click);
-            // 
-            // userNameTextBox
-            // 
-            this.userNameTextBox.Location = new System.Drawing.Point(141, 140);
-            this.userNameTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.userNameTextBox.Name = "userNameTextBox";
-            this.userNameTextBox.Size = new System.Drawing.Size(129, 23);
-            this.userNameTextBox.TabIndex = 1;
             // 
             // passwordTextBox
             // 
@@ -108,17 +100,26 @@
             this.passwordLabel.TabIndex = 6;
             this.passwordLabel.Text = "Password";
             // 
+            // usersComboBox
+            // 
+            this.usersComboBox.AccessibleDescription = "";
+            this.usersComboBox.FormattingEnabled = true;
+            this.usersComboBox.Location = new System.Drawing.Point(141, 140);
+            this.usersComboBox.Name = "usersComboBox";
+            this.usersComboBox.Size = new System.Drawing.Size(129, 23);
+            this.usersComboBox.TabIndex = 7;
+            // 
             // AccountForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(404, 361);
+            this.Controls.Add(this.usersComboBox);
             this.Controls.Add(this.passwordLabel);
             this.Controls.Add(this.userNameLabel);
             this.Controls.Add(this.userRadioButton);
             this.Controls.Add(this.adminRadioButton);
             this.Controls.Add(this.passwordTextBox);
-            this.Controls.Add(this.userNameTextBox);
             this.Controls.Add(this.authButton);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "AccountForm";
@@ -131,11 +132,11 @@
         #endregion
 
         private Button authButton;
-        private TextBox userNameTextBox;
         private TextBox passwordTextBox;
         private RadioButton adminRadioButton;
         private RadioButton userRadioButton;
         private Label userNameLabel;
         private Label passwordLabel;
+        private ComboBox usersComboBox;
     }
 }

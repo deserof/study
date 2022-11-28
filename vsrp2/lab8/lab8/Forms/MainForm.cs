@@ -1,5 +1,6 @@
 ﻿using lab8;
 using lab8.Forms;
+using lab8.Storage;
 using laba8.Models.Entities;
 using System.Diagnostics;
 
@@ -18,6 +19,7 @@ namespace laba8
         public MainForm()
         {
             InitializeComponent();
+            _medicines.AddRange(UserStorage.Medicines);
             //Listener.l_OnMyAddMedicine()
             //_medicines.OnAdd += new EventHandler(JournalList<Medicine>.l_OnAdd);
             //_medicines.OnDelete += new EventHandler(JournalList<Medicine>.l_OnDelete);
@@ -100,6 +102,11 @@ namespace laba8
             {
                 Application.Exit();
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

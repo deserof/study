@@ -8,8 +8,11 @@ namespace Identity.API.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
-        public AccountController()
+        private readonly IReaderService _readerService;
+
+        public AccountController(IReaderService readerService)
         {
+            _readerService = readerService;
         }
 
         [HttpPost]
@@ -18,7 +21,21 @@ namespace Identity.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> LoginAsync(UserLoginRequestModel userLoginRequestModel)
         {
-            return Ok();
+            IEnumerable<UserModel> users = await _readerService.ReadListAsync<UserModel>("Administrators.json");
+
+            var user = users.FirstOrDefault(x=>x.LastName == userLoginRequestModel.LastName);
+
+            if (user.Password == userLoginRequestModel.Password)
+            {
+                return Ok(new UserLoginResponseModel
+                {
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    Position = user.Position
+                });
+            }
+
+            return Unauthorized();
         }
     }
 }

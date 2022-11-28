@@ -4,7 +4,7 @@ using System.Collections;
 
 namespace lab8.Collections
 {
-    public class CustomMedicineCollection : IEnumerable
+    public class CustomMedicineCollection : IEnumerable, IComparer<Medicine>
     {
         private readonly List<Medicine> medicines;
         private readonly OintmentEnumerator ointmentEnumerator;
@@ -34,6 +34,22 @@ namespace lab8.Collections
         {
             get => this.medicines[index];
             set => this.medicines[index] = value;
+        }
+
+        public int Compare(Medicine x, Medicine y)
+        {
+            int result = 0;
+
+            if (x._createdEntityDateTime < y._createdEntityDateTime)
+            {
+                result = 1;
+            }
+            else if (x._createdEntityDateTime > y._createdEntityDateTime)
+            {
+                result = -1;
+            }
+
+            return result;
         }
     }
 }

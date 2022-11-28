@@ -12,7 +12,8 @@ namespace UIParser
 
         // Mobile Page
 
-        private const string BaseUrl = "https://catalog.onliner.by/mobile";
+        //private const string BaseUrl = "https://catalog.onliner.by/mobile";
+        private const string BaseUrl = "https://catalog.onliner.by/notebook";
         private static By entityTitleElement => By.XPath("//span[@data-bind='html: product.extended_name || product.full_name']/parent::a");
         private static By paginationElement => By.XPath("//div[@class='schema-pagination__secondary']");
         private static By pageElement => By.XPath("//li[@class='schema-pagination__pages-item']//a");
@@ -121,27 +122,30 @@ namespace UIParser
             {
                 Name = webDriver.GetElement(NameElement),
                 Price = webDriver.GetElement(PriceElement).Split(",")[0],
-                OS = webDriver.GetElementTextFromTable("Операционная система"),
-                ScreenTechnology = webDriver.GetElementTextFromTable("Технология экрана"),
-                ScreenRefreshRate = webDriver.GetElementTextFromTable("Частота обновления экрана"),
-                NumberOfMatrixPoints = webDriver.GetElementTextFromTable("Количество точек матрицы"),
-                CameraSpecifications = webDriver.GetElementTextFromTable("Характеристики камеры"),
-                MaximumVideoResolution = webDriver.GetElementTextFromTable("Максимальное разрешение видео"),
-                NumberOfSIMCards = webDriver.GetElementTextFromTable("Количество SIM-карт"),
-                ScreenResolution = webDriver.GetElementTextFromTable("Разрешение экрана"),
-                RAM = webDriver.GetElementTextFromTable("Оперативная память"),
-                Memory = webDriver.GetElementTextFromTable("Встроенная память"),
-                Processor = webDriver.GetElementTextFromTable("Процессор"),
-                ProcessorClockSpeed = webDriver.GetElementTextFromTable("Тактовая частота процессора"),
-                ProcessTechnology = webDriver.GetElementTextFromTable("Техпроцесс"),
-                Material = webDriver.GetElementTextFromTable("Материал корпуса"),
-                SimFormat = webDriver.GetElementTextFromTable("Формат SIM-карты"),
-                SensorScreen = webDriver.GetElementTextFromTable("Сенсорный экран"),
-                ScratchProtection = webDriver.GetElementTextFromTable("Защита от царапин"),
-                GPS = webDriver.GetElementTextFromTable("GPS"),
-                LTE = webDriver.GetElementTextFromTable("LTE"),
-                G5 = webDriver.GetElementTextFromTable("5G"),
-                BatteryCapacity = webDriver.GetElementTextFromTable("Емкость аккумулятора"),
+                //OS = webDriver.GetElementTextFromTable("Операционная система"),
+                //ScreenTechnology = webDriver.GetElementTextFromTable("Технология экрана"),
+                //ScreenRefreshRate = webDriver.GetElementTextFromTable("Частота обновления экрана"),
+                //NumberOfMatrixPoints = webDriver.GetElementTextFromTable("Количество точек матрицы"),
+                //CameraSpecifications = webDriver.GetElementTextFromTable("Характеристики камеры"),
+                //MaximumVideoResolution = webDriver.GetElementTextFromTable("Максимальное разрешение видео"),
+                //NumberOfSIMCards = webDriver.GetElementTextFromTable("Количество SIM-карт"),
+                //ScreenResolution = webDriver.GetElementTextFromTable("Разрешение экрана"),
+                //RAM = webDriver.GetElementTextFromTable("Оперативная память"),
+                //Memory = webDriver.GetElementTextFromTable("Встроенная память"),
+                //Processor = webDriver.GetElementTextFromTable("Процессор"),
+                //ProcessorClockSpeed = webDriver.GetElementTextFromTable("Тактовая частота процессора"),
+                //ProcessTechnology = webDriver.GetElementTextFromTable("Техпроцесс"),
+                //Material = webDriver.GetElementTextFromTable("Материал корпуса"),
+                //SimFormat = webDriver.GetElementTextFromTable("Формат SIM-карты"),
+                //SensorScreen = webDriver.GetElementTextFromTable("Сенсорный экран"),
+                //ScratchProtection = webDriver.GetElementTextFromTable("Защита от царапин"),
+                //GPS = webDriver.GetElementTextFromTable("GPS"),
+                //LTE = webDriver.GetElementTextFromTable("LTE"),
+                //G5 = webDriver.GetElementTextFromTable("5G"),
+                //BatteryCapacity = webDriver.GetElementTextFromTable("Емкость аккумулятора"),
+                A = webDriver.GetElementTextFromTable("Дата выхода на рынок"),
+                B = webDriver.GetElementTextFromTable("Процессор"),
+                C = webDriver.GetElementTextFromTable("Объём памяти"),
             };
 
             return phone;

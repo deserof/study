@@ -1,7 +1,7 @@
 [
   {
     "FirstName": "admin1 name",
-    "LastName": "admin2 lastname",
+    "LastName": "admin1 lastname",
     "Position": "Manager",
     "Password": "123"
   },

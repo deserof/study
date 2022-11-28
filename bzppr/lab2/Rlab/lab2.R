@@ -27,6 +27,10 @@ options("ggmatrix.progress.bar" = FALSE)
 phones <- read_excel("C:/Users/Artsiom_Kharkevich/Study/study/bzppr/lab2/Rlab/lab2.xlsx")
 
 
+plot(phones$`ProcessorClockSpeed(МГц)`, phones$`Price (byn)`)
+plot(phones$`ScreenRefreshRate (Гц)`, phones$`Price (byn)`)
+plot(phones$`NumberOfMatrixPoints мп`, phones$`Price (byn)`)
+
 str(phones)
 
 phones$RAM<- as.factor(phones$`RAM гб`)
@@ -62,6 +66,8 @@ model.1 <-  lm(phones$`Price (byn)` ~
                + phones$`RAM гб`,
                data = df.phones)
 summary(model.1)
+
+#cor.test(phones$`Price (byn)`, phones$`ScreenRefreshRate (Гц)`)
 
 #Некоторые регрессоры, входящие в модель незначимы, постепенно исключаем их:
 model.2 <-  lm(phones$`Price (byn)` ~
@@ -109,10 +115,9 @@ model.6 <-  lm(phones$`Price (byn)` ~
                data = df.phones)
 summary(model.6)
 
-model.7 <-  lm(phones$`Price (byn)` ~phones$`ProcessorClockSpeed(МГц)`+ phones$`RAM гб`,  data = df.phones)
-
-
-
+model.7 <-  lm(phones$`Price (byn)`
+               ~phones$`ProcessorClockSpeed(МГц)`
+               + phones$`RAM гб`,  data = df.phones)
 summary(model.7)
 
 
@@ -139,7 +144,7 @@ plot(1:49, x, type = 'b', col = 'darkgreen',
 lines(1:49, x, type = 'b', col = 'red')
 shapiro.test(ER)
 
-#КНН регрессия (пофиксить)
+#КНН регрессия
 knn_fit <- train(`Price (byn)` ~ `ProcessorClockSpeed(МГц)` + `RAM гб`,
                  preProcess = c("center","scale"), 
                  method = "knn",
@@ -148,8 +153,6 @@ knn_fit <- train(`Price (byn)` ~ `ProcessorClockSpeed(МГц)` + `RAM гб`,
 knn_fit$results
 
 # качество модели на контрольной выборке 
-
-
 Pknn<-predict(knn_fit, df.test)
 plot(1:49, Pknn, type = 'b', col = 'darkgreen',
      xlab = 'порядковый номер тестовой выборки',
@@ -159,6 +162,7 @@ ERKN<-df.test$`Price (byn)` - Pknn
 MSEknn <- sum(ERKN^2) / length(Pknn)#RMSE^2
 
 pred<-cbind(df.phones$`Price (byn)`,df.phones$`ProcessorClockSpeed(МГц)`,Pknn)
+summary(pred)
 
 #Три графика вместе 
 plot(1:49, Pknn, type = 'b', col = 'darkgreen',
