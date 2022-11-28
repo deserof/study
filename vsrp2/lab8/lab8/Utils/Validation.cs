@@ -47,7 +47,7 @@
                     continue;
                 }
 
-                if (int.TryParse(value.Text, out int number))
+                if (int.TryParse(value.Text, out var number))
                 {
                     if (number < 0)
                     {

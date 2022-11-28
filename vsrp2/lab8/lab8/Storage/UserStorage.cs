@@ -1,7 +1,4 @@
-﻿using Domain.Models;
-using laba8.Models.Entities;
-
-namespace lab8.Storage
+﻿namespace lab8.Storage
 {
     internal static class UserStorage
     {

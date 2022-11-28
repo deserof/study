@@ -1,8 +1,4 @@
-﻿using Domain.Enums;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-
-namespace Domain.Models
+﻿namespace Domain.Models
 {
     public class UserModel
     {

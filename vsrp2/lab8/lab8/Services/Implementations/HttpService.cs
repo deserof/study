@@ -1,9 +1,4 @@
-﻿using lab8.Services.Interfaces;
-using Newtonsoft.Json;
-using System.Net.Http.Headers;
-using System.Text;
-
-namespace lab8.Services.Implementations
+﻿namespace lab8.Services.Implementations
 {
     public class HttpService : IHttpService
     {
@@ -28,11 +23,11 @@ namespace lab8.Services.Implementations
 
             AddHeaders(request, headers);
 
-            HttpResponseMessage response = client.Send(request);
+            var response = client.Send(request);
 
             Cookies = response.Headers.SingleOrDefault(header => header.Key == SetCoockie).Value;
 
-            string jsonString = response.Content.ReadAsStringAsync().Result;
+            var jsonString = response.Content.ReadAsStringAsync().Result;
 
             return JsonConvert.DeserializeObject<T>(jsonString);
         }
@@ -51,11 +46,11 @@ namespace lab8.Services.Implementations
 
             AddHeaders(request, headers);
 
-            HttpResponseMessage response = client.Send(request);
+            var response = client.Send(request);
 
             Cookies = response.Headers.SingleOrDefault(header => header.Key == SetCoockie).Value;
 
-            string jsonString = response.Content.ReadAsStringAsync().Result;
+            var jsonString = response.Content.ReadAsStringAsync().Result;
 
             return JsonConvert.DeserializeObject<T>(jsonString);
         }
@@ -75,7 +70,7 @@ namespace lab8.Services.Implementations
 
             AddHeaders(request, headers);
 
-            HttpResponseMessage response = client.Send(request);
+            var response = client.Send(request);
 
             Cookies = response.Headers.SingleOrDefault(header => header.Key == SetCoockie).Value;
 
@@ -96,7 +91,7 @@ namespace lab8.Services.Implementations
 
             AddHeaders(request, headers);
 
-            HttpResponseMessage response = client.Send(request);
+            var response = client.Send(request);
 
             Cookies = response.Headers.SingleOrDefault(header => header.Key == SetCoockie).Value;
 

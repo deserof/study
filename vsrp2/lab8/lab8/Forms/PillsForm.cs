@@ -1,8 +1,4 @@
-﻿using lab8.Models.Enums;
-using laba8.Models.Entities;
-using static lab8.Extensions.EnumExtension;
-
-namespace laba8
+﻿namespace laba8
 {
     public partial class PillsForm : Form
     {
@@ -20,13 +16,13 @@ namespace laba8
 
         private void buttonSetData_Click(object sender, EventArgs e)
         {
-            if (int.TryParse(comboBoxMinimalAge.Text, out int minimalAge) 
+            if (int.TryParse(comboBoxMinimalAge.Text, out var minimalAge) 
                 && (minimalAge == 6 || minimalAge == 10 || minimalAge == 18)
-                && int.TryParse(textBoxQuantity.Text, out int quantity) 
+                && int.TryParse(textBoxQuantity.Text, out var quantity) 
                 && quantity > 0 && quantity < 50
-                && decimal.TryParse(priceTextBox.Text, out decimal price)
+                && decimal.TryParse(priceTextBox.Text, out var price)
                 && price > 0
-                && int.TryParse(yearTextBox.Text, out int year))
+                && int.TryParse(yearTextBox.Text, out var year))
             {
                 _pills.ShelfLife = comboBoxShelfLife.Text;
                 _pills.Title = comboBoxTitle.Text;

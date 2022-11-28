@@ -1,7 +1,4 @@
-﻿using laba8.Models.Entities;
-using System.Collections;
-
-namespace lab8.Collections
+﻿namespace lab8.Collections
 {
     internal class OintmentCollection : IEnumerable, IComparer<Ointment>
     {
@@ -46,7 +43,7 @@ namespace lab8.Collections
 
         public IEnumerator GetEnumerator()
         {
-            for (int i = 0; i < _ointment.Count; i++)
+            for (var i = 0; i < _ointment.Count; i++)
             {
                 yield return _ointment[i];
             }

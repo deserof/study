@@ -1,10 +1,4 @@
-﻿using lab8;
-using lab8.Forms;
-using lab8.Storage;
-using laba8.Models.Entities;
-using System.Diagnostics;
-
-namespace laba8
+﻿namespace laba8
 {
     public partial class MainForm : Form
     {

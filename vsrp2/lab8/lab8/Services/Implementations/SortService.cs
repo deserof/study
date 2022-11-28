@@ -1,14 +1,10 @@
-﻿using lab8.Collections;
-using lab8.Storage;
-using laba8.Models.Entities;
-
-namespace lab8.Services.Implementations
+﻿namespace lab8.Services.Implementations
 {
     internal class SortService
     {
         public static Medicine[] SortPillsByDate(CustomMedicineCollection collection)
         {
-            List<Medicine> result = new List<Medicine>();
+            var result = new List<Medicine>();
 
             foreach (var item in UserStorage.Medicines)
             {
@@ -27,7 +23,7 @@ namespace lab8.Services.Implementations
 
         public static Medicine[] SortOintmentsByDate(CustomMedicineCollection collection)
         {
-            List<Medicine> result = new List<Medicine>();
+            var result = new List<Medicine>();
 
             foreach (var item in UserStorage.Medicines)
             {
@@ -64,7 +60,7 @@ namespace lab8.Services.Implementations
 
         public static List<Medicine> SortPillsByPrice()
         {
-            List<Medicine> result = new List<Medicine>();
+            var result = new List<Medicine>();
 
             foreach (var item in UserStorage.Medicines)
             {
@@ -81,7 +77,7 @@ namespace lab8.Services.Implementations
 
         public static List<Medicine> SortOintmentsByPrice()
         {
-            List<Medicine> result = new List<Medicine>();
+            var result = new List<Medicine>();
 
             foreach (var item in UserStorage.Medicines)
             {
@@ -98,7 +94,7 @@ namespace lab8.Services.Implementations
 
         public static Medicine[] SortPillsByCreatedDate(PillsCollection collection)
         {
-            List<Pills> result = new List<Pills>();
+            var result = new List<Pills>();
 
             foreach (var item in UserStorage.Medicines)
             {
@@ -117,7 +113,7 @@ namespace lab8.Services.Implementations
 
         public static Medicine[] SortOintmentsByTitle(OintmentCollection collection)
         {
-            List<Ointment> result = new List<Ointment>();
+            var result = new List<Ointment>();
 
             foreach (var item in UserStorage.Medicines)
             {

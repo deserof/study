@@ -1,12 +1,4 @@
-﻿using Domain.Models;
-using lab8.Models.Enums;
-using lab8.Services.Interfaces;
-using lab8.Storage;
-using laba8;
-using Microsoft.Extensions.DependencyInjection;
-using System.Windows.Forms;
-
-namespace lab8.Forms
+﻿namespace lab8.Forms
 {
     public partial class AccountForm : Form
     {

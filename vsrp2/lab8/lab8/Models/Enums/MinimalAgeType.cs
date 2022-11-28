@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace lab8.Models.Enums
+﻿namespace lab8.Models.Enums
 {
     public enum MinimalAgeType
     {

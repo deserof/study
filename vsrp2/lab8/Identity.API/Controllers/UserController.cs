@@ -1,8 +1,4 @@
-﻿using Domain.Models;
-using Identity.API.Services;
-using Microsoft.AspNetCore.Mvc;
-
-namespace Identity.API.Controllers
+﻿namespace Identity.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -21,7 +17,7 @@ namespace Identity.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetUsers()
         {
-            IEnumerable<UserModel> users = await _readerService.ReadListAsync<UserModel>("Administrators.json");
+            var users = await _readerService.ReadListAsync<UserModel>("Administrators.json");
 
             return Ok(users);
         }

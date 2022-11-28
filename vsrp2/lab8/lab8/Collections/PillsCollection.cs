@@ -1,7 +1,4 @@
-﻿using laba8.Models.Entities;
-using System.Collections;
-
-namespace lab8.Collections
+﻿namespace lab8.Collections
 {
     internal class PillsCollection : IEnumerable, IComparer<Pills>
     {
@@ -14,7 +11,7 @@ namespace lab8.Collections
 
         public int Compare(Pills x, Pills y)
         {
-            int result = 0;
+            var result = 0;
 
             if (x._createdEntityDateTime < y._createdEntityDateTime)
             {

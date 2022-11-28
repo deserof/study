@@ -1,7 +1,4 @@
-﻿using System.ComponentModel;
-using System.Reflection;
-
-namespace lab8.Extensions
+﻿namespace lab8.Extensions
 {
     public static class EnumExtension
     {
@@ -12,7 +9,7 @@ namespace lab8.Extensions
                 throw new ArgumentNullException(nameof(enumValue));
             }
 
-            FieldInfo fieldInfo = enumValue.GetType().GetField(enumValue.ToString());
+            var fieldInfo = enumValue.GetType().GetField(enumValue.ToString());
             var attributes = (DescriptionAttribute[])fieldInfo.GetCustomAttributes(typeof(DescriptionAttribute), false);
 
             if (attributes.Length > 0)
@@ -25,14 +22,14 @@ namespace lab8.Extensions
 
         public static T GetEnumFromDescription<T>(string description) where T : Enum
         {
-            Type type = typeof(T);
+            var type = typeof(T);
 
             if (!type.IsEnum)
             {
                 throw new InvalidOperationException();
             }
 
-            foreach (FieldInfo field in type.GetFields())
+            foreach (var field in type.GetFields())
             {
                 if (Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute)) is DescriptionAttribute attribute)
                 {

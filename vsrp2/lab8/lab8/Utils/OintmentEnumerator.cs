@@ -1,7 +1,4 @@
-﻿using lab8.Collections;
-using System.Collections;
-
-namespace lab8.Utils
+﻿namespace lab8.Utils
 {
     public class OintmentEnumerator : IEnumerator
     {

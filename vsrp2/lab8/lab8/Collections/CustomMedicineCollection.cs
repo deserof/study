@@ -1,8 +1,4 @@
-﻿using lab8.Utils;
-using laba8.Models.Entities;
-using System.Collections;
-
-namespace lab8.Collections
+﻿namespace lab8.Collections
 {
     public class CustomMedicineCollection : IEnumerable, IComparer<Medicine>
     {
@@ -38,7 +34,7 @@ namespace lab8.Collections
 
         public int Compare(Medicine x, Medicine y)
         {
-            int result = 0;
+            var result = 0;
 
             if (x._createdEntityDateTime < y._createdEntityDateTime)
             {

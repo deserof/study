@@ -1,6 +1,3 @@
-using Identity.API.Services;
-using System.Xml;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

@@ -1,6 +1,4 @@
-﻿using lab8.Interfaces;
-
-namespace laba8.Models.Entities
+﻿namespace laba8.Models.Entities
 {
     public class Pills : Medicine
     {
