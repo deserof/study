@@ -14,7 +14,7 @@ namespace UIParser.Extensions
             }
 
             var javaScriptExecutor = driver as IJavaScriptExecutor;
-            object result = javaScriptExecutor!.ExecuteScript(script, args);
+            var result = javaScriptExecutor!.ExecuteScript(script, args);
 
             return result;
         }
@@ -27,7 +27,7 @@ namespace UIParser.Extensions
 
         public static string GetElementTextFromTable(this WebDriver webDriver, string text)
         {
-            By locator = By.XPath($"//td[contains(text(), '{text}')]/following-sibling::td[1]//span");
+            var locator = By.XPath($"//td[contains(text(), '{text}')]/following-sibling::td[1]//span");
 
             var elements = webDriver.FindElements(locator);
 

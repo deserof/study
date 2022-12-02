@@ -9,16 +9,16 @@ namespace UIParser.Uitls
     {
         public static void ExportDataToExcel(dynamic exportData, string fileName, string sheetName)
         {
-            DataTable table = (DataTable)JsonConvert.DeserializeObject(JsonConvert.SerializeObject(exportData), typeof(DataTable));
+            var table = (DataTable)JsonConvert.DeserializeObject(JsonConvert.SerializeObject(exportData), typeof(DataTable));
 
-            using (var fs = new FileStream($"..\\..\\..\\..\\..\\{fileName}.xlsx", FileMode.Create, FileAccess.Write))
+            using (var fs = new FileStream($"..\\..\\..\\..\\{fileName}.xlsx", FileMode.Create, FileAccess.Write))
             {
                 IWorkbook workbook = new XSSFWorkbook();
-                ISheet excelSheet = workbook.CreateSheet($"{sheetName}");
+                var excelSheet = workbook.CreateSheet($"{sheetName}");
 
-                List<string> columns = new List<string>();
-                IRow row = excelSheet.CreateRow(0);
-                int columnIndex = 0;
+                var columns = new List<string>();
+                var row = excelSheet.CreateRow(0);
+                var columnIndex = 0;
 
                 foreach (DataColumn column in table!.Columns)
                 {
@@ -27,14 +27,14 @@ namespace UIParser.Uitls
                     columnIndex++;
                 }
 
-                int rowIndex = 1;
+                var rowIndex = 1;
 
                 foreach (DataRow dsrow in table.Rows)
                 {
                     row = excelSheet.CreateRow(rowIndex);
-                    int cellIndex = 0;
+                    var cellIndex = 0;
 
-                    foreach (string col in columns)
+                    foreach (var col in columns)
                     {
                         row.CreateCell(cellIndex).SetCellValue(dsrow[col].ToString());
                         cellIndex++;

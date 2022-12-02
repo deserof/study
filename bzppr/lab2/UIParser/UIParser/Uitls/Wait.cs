@@ -35,7 +35,7 @@ namespace UIParser.Uitls
                     Thread.Sleep(tickSize);
                 }
 
-                string timeOutExceptionText = exceptionText ?? $"Timed out after {timeout} seconds. {waitForFunction.Method.Name}";
+                var timeOutExceptionText = exceptionText ?? $"Timed out after {timeout} seconds. {waitForFunction.Method.Name}";
 
                 throw new TimeoutException(timeOutExceptionText);
             }
