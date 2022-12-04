@@ -1,12 +1,16 @@
-﻿namespace lab8.Forms
+﻿using Microsoft.Extensions.DependencyInjection;
+
+namespace lab8.Forms
 {
     public partial class AccountForm : Form
     {
         private readonly IHttpService _httpService;
-
+        private readonly IServiceProvider _serviceProvider;
         public AccountForm(IServiceProvider serviceProvider)
         {
+            _serviceProvider = serviceProvider;
             _httpService = serviceProvider.GetRequiredService<IHttpService>();
+
             InitializeComponent();
 
             var users = _httpService.Send<List<UserModel>>(HttpMethod.Get, "https://localhost:7292/api/User");
@@ -33,7 +37,7 @@
                     Password = passwordTextBox.Text
                 };
 
-                var response = _httpService.Send<UserLoginResponseModel, UserLoginRequestModel>(HttpMethod.Post, "https://localhost:7292/api/Account", requestModel);
+                var response = _httpService.Send<UserModel, UserLoginRequestModel>(HttpMethod.Post, "https://localhost:7292/api/Account", requestModel);
 
                 if (response.FirstName == null && response.LastName == null)
                 {
@@ -41,10 +45,10 @@
                     return;
                 }
 
-                Storage.UserStorage.Current = response;
+                Storage.CurrentUser = response;
             }
 
-            var mainForm = new MainForm();
+            var mainForm = new MainForm(_serviceProvider);
             this.Hide();
             mainForm.ShowDialog();
         }

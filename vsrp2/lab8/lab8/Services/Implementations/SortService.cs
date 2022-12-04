@@ -6,7 +6,7 @@
         {
             var result = new List<Medicine>();
 
-            foreach (var item in UserStorage.Medicines)
+            foreach (var item in Storage.Medicines)
             {
                 if (item is Pills)
                 {
@@ -25,7 +25,7 @@
         {
             var result = new List<Medicine>();
 
-            foreach (var item in UserStorage.Medicines)
+            foreach (var item in Storage.Medicines)
             {
                 if (item is Ointment)
                 {
@@ -42,7 +42,7 @@
 
         public static Medicine[] SortAllByDate(CustomMedicineCollection collection)
         {
-            var arrResult = UserStorage.Medicines.ToArray();
+            var arrResult = Storage.Medicines.ToArray();
 
             Array.Sort(arrResult, collection);
 
@@ -51,7 +51,7 @@
 
         public static List<Medicine> SortAllByPrice()
         {
-            var list = UserStorage.Medicines;
+            var list = Storage.Medicines;
 
             list.Sort();
 
@@ -62,7 +62,7 @@
         {
             var result = new List<Medicine>();
 
-            foreach (var item in UserStorage.Medicines)
+            foreach (var item in Storage.Medicines)
             {
                 if (item is Pills)
                 {
@@ -79,7 +79,7 @@
         {
             var result = new List<Medicine>();
 
-            foreach (var item in UserStorage.Medicines)
+            foreach (var item in Storage.Medicines)
             {
                 if (item is Ointment)
                 {
@@ -96,7 +96,7 @@
         {
             var result = new List<Pills>();
 
-            foreach (var item in UserStorage.Medicines)
+            foreach (var item in Storage.Medicines)
             {
                 if (item is Pills)
                 {
@@ -115,7 +115,7 @@
         {
             var result = new List<Ointment>();
 
-            foreach (var item in UserStorage.Medicines)
+            foreach (var item in Storage.Medicines)
             {
                 if (item is Ointment)
                 {

@@ -1,7 +1,10 @@
-﻿namespace laba8
+﻿using Microsoft.Extensions.DependencyInjection;
+
+namespace laba8
 {
     public partial class MainForm : Form
     {
+        private readonly IServiceProvider _serviceProvider;
         //public event EventHandler OnAdd;
 
         public delegate void AddDelegate(Medicine item);
@@ -10,10 +13,11 @@
 
         private readonly JournalList<Medicine> _medicines = new JournalList<Medicine>();
 
-        public MainForm()
+        public MainForm(IServiceProvider serviceProvider)
         {
+            _serviceProvider = serviceProvider;
             InitializeComponent();
-            _medicines.AddRange(UserStorage.Medicines);
+            _medicines.AddRange(Storage.Medicines);
             //Listener.l_OnMyAddMedicine()
             //_medicines.OnAdd += new EventHandler(JournalList<Medicine>.l_OnAdd);
             //_medicines.OnDelete += new EventHandler(JournalList<Medicine>.l_OnDelete);
@@ -98,9 +102,37 @@
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void SellButton_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void listBoxMedicine_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Medicine selectedMed = (Medicine)listBoxMedicine.SelectedItem;
+
+            if (selectedMed is null)
+            {
+                return;
+            }
+
+            selectedMed.Sell();
+
+            if (selectedMed.IsSold)
+            {
+                var index = listBoxMedicine.SelectedIndex;
+                listBoxMedicine.Items.RemoveAt(index);
+            }
+
+            var wr = _serviceProvider.GetRequiredService<IWriterService>();
+            wr.Write(Storage.Medicines, "..\\..\\..\\Products.json");
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            UserForm userForm = new(_serviceProvider);
+
+            userForm.ShowDialog();
         }
     }
 }

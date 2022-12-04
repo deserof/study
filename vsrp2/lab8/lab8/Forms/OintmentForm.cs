@@ -20,7 +20,7 @@
         private void buttonSetData_Click(object sender, EventArgs e)
         {
             if (int.TryParse(comboBoxMinimalAge.Text, out var minimalAge) 
-                && (minimalAge == 6 || minimalAge == 10 || minimalAge == 18)
+                && (minimalAge == 8 || minimalAge == 14 || minimalAge == 18)
                 && int.TryParse(textBoxVolume.Text, out var volume) 
                 && volume > 0 && volume < 999
                 && decimal.TryParse(priceTextBox.Text, out var price)

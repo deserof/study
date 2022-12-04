@@ -1,19 +1,23 @@
 [
   {
-    "FirstName": "admin1 name",
+    "Id": 0,
+    "FirstName": "admin1 name1",
     "LastName": "admin1 lastname",
-    "Position": "Manager",
-    "Password": "123"
+    "Password": "123",
+    "Position": 1
   },
   {
+    "Id": 1,
     "FirstName": "admin2 name",
     "LastName": "admin2 lastname",
-    "Position": "Accountant",
-    "Password": "123"
+    "Password": "123",
+    "Position": 2
   },
   {
+    "Id": 2,
     "FirstName": "admin3 name",
     "LastName": "admin3 lastname",
-    "Password": "123"
+    "Password": "123",
+    "Position": 0
   }
 ]

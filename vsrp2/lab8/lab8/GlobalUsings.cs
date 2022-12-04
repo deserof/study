@@ -12,7 +12,7 @@ global using lab8.Forms;
 global using lab8.Models.Enums;
 global using lab8.Services.Implementations;
 global using lab8.Services.Interfaces;
-global using lab8.Storage;
+global using lab8.Data;
 global using lab8.Utils;
 global using laba8;
 global using laba8.Models.Entities;

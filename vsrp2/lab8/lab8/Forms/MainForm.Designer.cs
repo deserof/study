@@ -36,6 +36,7 @@
             this.buttonShortData = new System.Windows.Forms.Button();
             this.buttonShowData = new System.Windows.Forms.Button();
             this.сopyButton = new System.Windows.Forms.Button();
+            this.sellButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -49,6 +50,7 @@
             this.listBoxMedicine.Name = "listBoxMedicine";
             this.listBoxMedicine.Size = new System.Drawing.Size(446, 214);
             this.listBoxMedicine.TabIndex = 0;
+            this.listBoxMedicine.SelectedIndexChanged += new System.EventHandler(this.listBoxMedicine_SelectedIndexChanged);
             // 
             // groupBox1
             // 
@@ -131,13 +133,23 @@
             this.сopyButton.UseVisualStyleBackColor = true;
             this.сopyButton.Click += new System.EventHandler(this.сopyButton_Click);
             // 
+            // sellButton
+            // 
+            this.sellButton.Location = new System.Drawing.Point(595, 251);
+            this.sellButton.Name = "sellButton";
+            this.sellButton.Size = new System.Drawing.Size(102, 26);
+            this.sellButton.TabIndex = 6;
+            this.sellButton.Text = "Sell";
+            this.sellButton.UseVisualStyleBackColor = true;
+            this.sellButton.Click += new System.EventHandler(this.SellButton_Click);
+            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(595, 251);
+            this.button1.Location = new System.Drawing.Point(297, 284);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(102, 26);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Sell";
+            this.button1.Size = new System.Drawing.Size(120, 26);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Личные данные";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -147,6 +159,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(753, 326);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.sellButton);
             this.Controls.Add(this.сopyButton);
             this.Controls.Add(this.buttonShowData);
             this.Controls.Add(this.buttonShortData);
@@ -172,6 +185,7 @@
         private System.Windows.Forms.Button buttonShortData;
         private System.Windows.Forms.Button buttonShowData;
         private Button сopyButton;
+        private Button sellButton;
         private Button button1;
     }
 }

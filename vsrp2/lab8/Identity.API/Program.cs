@@ -7,6 +7,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IReaderService, ReaderService>();
+builder.Services.AddScoped<IWriterService, WriterService>();
 
 var app = builder.Build();
 

@@ -12,10 +12,10 @@
         }
 
         [HttpPost]
-        [ProducesResponseType(typeof(UserLoginResponseModel), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(UserModel), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> LoginAsync(UserLoginRequestModel userLoginRequestModel)
+        public async Task<IActionResult> LoginAsync(UserModel userLoginRequestModel)
         {
             var users = await _readerService.ReadListAsync<UserModel>("Administrators.json");
 
@@ -23,11 +23,13 @@
 
             if (user.Password == userLoginRequestModel.Password)
             {
-                return Ok(new UserLoginResponseModel
+                return Ok(new UserModel
                 {
+                    Id = user.Id,
                     FirstName = user.FirstName,
                     LastName = user.LastName,
-                    Position = user.Position
+                    Position = user.Position,
+                    Password = user.Password,
                 });
             }
 

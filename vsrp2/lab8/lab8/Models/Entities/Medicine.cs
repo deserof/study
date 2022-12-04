@@ -18,6 +18,10 @@ namespace laba8.Models.Entities
 
         private MinimalAgeType _minimalAgeType;
 
+        public DateTime SoldDateTime { get; set; }
+
+        public string Owner { get; set; }
+
         public int MinimalAge
         {
             get
@@ -174,7 +178,9 @@ namespace laba8.Models.Entities
 
         public void Sell()
         {
-            IsSold = !IsSold;
+            IsSold = true;
+            Owner = "admin3 lastname";
+            SoldDateTime = DateTime.Now;
         }
 
         public int CompareTo(object obj)
