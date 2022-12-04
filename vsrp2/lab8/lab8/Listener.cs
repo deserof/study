@@ -1,4 +1,6 @@
-﻿namespace lab8
+﻿using lab8.Models.Entities;
+
+namespace lab8
 {
     public class Listener
     {

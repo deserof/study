@@ -2,6 +2,6 @@
 {
     public interface IReaderService
     {
-        Task<IEnumerable<T>> ReadListAsync<T>(string fileName);
+        T Read<T>(string fileName);
     }
 }

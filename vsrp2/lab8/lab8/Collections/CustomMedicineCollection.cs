@@ -1,4 +1,6 @@
-﻿namespace lab8.Collections
+﻿using lab8.Models.Entities;
+
+namespace lab8.Collections
 {
     public class CustomMedicineCollection : IEnumerable, IComparer<Medicine>
     {

@@ -2,11 +2,14 @@
 {
     public class ReaderService : IReaderService
     {
-        public async Task<IEnumerable<T>> ReadListAsync<T>(string fileName)
+        public T Read<T>(string fileName)
         {
-            var json = await File.ReadAllTextAsync(fileName);
+            var json = File.ReadAllText(fileName);
 
-            return JsonConvert.DeserializeObject<IEnumerable<T>>(json);
+            return JsonConvert.DeserializeObject<T>(json, new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.Objects
+            });
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace laba8.Models.Entities
+﻿namespace lab8.Models.Entities
 {
     public class Ointment : Medicine, IComparable<Ointment>
     {

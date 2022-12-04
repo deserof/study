@@ -6,7 +6,7 @@
         {
             var json = JsonConvert.SerializeObject(item, Formatting.Indented, new JsonSerializerSettings
             {
-                TypeNameHandling = TypeNameHandling.All
+                TypeNameHandling = TypeNameHandling.Objects
             });
 
             File.WriteAllText(path, json);

@@ -1,6 +1,6 @@
 ﻿using lab8.Interfaces;
 
-namespace laba8.Models.Entities
+namespace lab8.Models.Entities
 {
     public class Medicine : ISell, IComparable
     {

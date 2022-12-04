@@ -1,4 +1,6 @@
-﻿namespace lab8.Collections
+﻿using lab8.Models.Entities;
+
+namespace lab8.Collections
 {
     internal class OintmentCollection : IEnumerable, IComparer<Ointment>
     {

@@ -1,4 +1,6 @@
-﻿namespace lab8.Data
+﻿using lab8.Models.Entities;
+
+namespace lab8.Data
 {
     internal static class Storage
     {

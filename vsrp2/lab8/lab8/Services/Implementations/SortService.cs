@@ -1,4 +1,6 @@
-﻿namespace lab8.Services.Implementations
+﻿using lab8.Models.Entities;
+
+namespace lab8.Services.Implementations
 {
     internal class SortService
     {

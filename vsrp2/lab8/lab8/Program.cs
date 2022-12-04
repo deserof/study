@@ -1,4 +1,4 @@
-﻿using lab8.Data;
+﻿using lab8.Models.Entities;
 
 namespace lab8
 {
@@ -15,7 +15,13 @@ namespace lab8
 
             var serviceProvider = container.BuildServiceProvider();
 
-            GenerateData();
+            //GenerateData();
+            //var wr = serviceProvider.GetRequiredService<IWriterService>();
+            //wr.Write(Storage.Medicines, "..\\..\\..\\Products.json");
+
+            var reader = serviceProvider.GetRequiredService<IReaderService>();
+            var readedMeds = reader.Read<List<Medicine>>("..\\..\\..\\Products.json");
+            Storage.Medicines.AddRange(readedMeds);
 
             ApplicationConfiguration.Initialize();
             Application.Run(new AccountForm(serviceProvider));
@@ -51,8 +57,8 @@ namespace lab8
                 .RuleFor(x => x.Volume, c => c.Random.Number(50, 200))
                 .RuleFor(x => x.ShelfLife, c => c.PickRandom(shelfLife));
 
-            var pills = pillsFaker.Generate(10);
-            var ointment = ointmentFaker.Generate(10);
+            var pills = pillsFaker.Generate(30);
+            var ointment = ointmentFaker.Generate(30);
 
             Storage.Pills.AddRange(pills);
 

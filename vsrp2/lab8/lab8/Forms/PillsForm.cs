@@ -1,4 +1,6 @@
-﻿namespace laba8
+﻿using lab8.Models.Entities;
+
+namespace laba8
 {
     public partial class PillsForm : Form
     {

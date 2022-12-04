@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using lab8.Models.Entities;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace laba8
 {
@@ -17,7 +18,10 @@ namespace laba8
         {
             _serviceProvider = serviceProvider;
             InitializeComponent();
-            _medicines.AddRange(Storage.Medicines);
+
+
+            _medicines.AddRange(Storage.Medicines.Where(x=> !x.IsSold));
+
             //Listener.l_OnMyAddMedicine()
             //_medicines.OnAdd += new EventHandler(JournalList<Medicine>.l_OnAdd);
             //_medicines.OnDelete += new EventHandler(JournalList<Medicine>.l_OnDelete);

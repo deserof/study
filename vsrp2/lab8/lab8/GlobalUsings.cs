@@ -15,7 +15,6 @@ global using lab8.Services.Interfaces;
 global using lab8.Data;
 global using lab8.Utils;
 global using laba8;
-global using laba8.Models.Entities;
 global using Microsoft.Extensions.DependencyInjection;
 global using Newtonsoft.Json;
 global using static lab8.Extensions.EnumExtension;
