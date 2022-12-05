@@ -1,5 +1,7 @@
-﻿using lab8.Models.Entities;
+﻿using Domain.Enums;
+using lab8.Models.Entities;
 using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace laba8
 {
@@ -15,6 +17,8 @@ namespace laba8
             comboBoxMinimalAge.SelectedIndex = 0;
 
             _pills = pills;
+
+            SetPermissions();
         }
 
         public PillsForm(Pills pills, string qwe)
@@ -34,6 +38,55 @@ namespace laba8
             yearTextBox.Text = pills.ChangeEntityDateTime.ToString();
 
             _pills = pills;
+
+            SetPermissions();
+        }
+
+        private void SetPermissions()
+        {
+            if (Storage.CurrentUser.Position == PositionType.Accountant)
+            {
+                SetPermissionsForAccountant();
+            }
+
+            if (Storage.CurrentUser.Position == PositionType.Manager)
+            {
+                SetPermissionsForSalesDepartment();
+            }
+
+            if (Storage.CurrentUser.Position == PositionType.Admin)
+            {
+                SetPermissionsForAdmin();
+            }
+
+            if (Storage.CurrentUser.Position == PositionType.Unknown)
+            {
+                SetPermissionsForUnknown();
+            }
+        }
+
+        private void SetPermissionsForUnknown()
+        {
+        }
+
+        private void SetPermissionsForAdmin()
+        {
+        }
+
+        private void SetPermissionsForSalesDepartment()
+        {
+        }
+
+        private void SetPermissionsForAccountant()
+        {
+            comboBoxShelfLife.Enabled = false;
+            comboBoxTitle.Enabled = false;
+            comboBoxMinimalAge.Enabled = false;
+            comboBoxCountry.Enabled = false;
+            textBoxColor.Enabled = false;
+            textBoxQuantity.Enabled = false;
+            priceTextBox.Enabled = true;
+            yearTextBox.Enabled = false;
         }
 
         private void buttonSetData_Click(object sender, EventArgs e)

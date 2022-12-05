@@ -21,10 +21,7 @@ namespace laba8
 
             _medicines.AddRange(Storage.Medicines);
 
-            if (Storage.CurrentUser.Position == PositionType.Accountant)
-            {
-                SetPermissionsForAccountant();
-            }
+            SetPermissions();
 
             //Listener.l_OnMyAddMedicine()
             //_medicines.OnAdd += new EventHandler(JournalList<Medicine>.l_OnAdd);
@@ -32,20 +29,77 @@ namespace laba8
             //_medicines.OnChange += new EventHandler(JournalList<Medicine>.l_OnChange);
         }
 
+        private void SetPermissions()
+        {
+            if (Storage.CurrentUser.Position == PositionType.Accountant)
+            {
+                SetPermissionsForAccountant();
+            }
+
+            if (Storage.CurrentUser.Position == PositionType.Manager)
+            {
+                SetPermissionsForSalesDepartment();
+            }
+
+            if (Storage.CurrentUser.Position == PositionType.Admin)
+            {
+                SetPermissionsForAdmin();
+            }
+
+            if (Storage.CurrentUser.Position == PositionType.Unknown)
+            {
+                SetPermissionsForUnknown();
+            }
+        }
+
         private void SetPermissionsForAccountant()
         {
             buttonEnterData.Enabled = false;
             radioButtonOintment.Enabled = false;
-            radioButtonOintment.Checked = false;
+            radioButtonPills.Enabled = false;
             сopyButton.Enabled = false;
-            formSearch.Enabled = false;
             sellButton.Enabled = false;
             textBoxEnterPRice.Enabled = false;
+            button2.Enabled = true;
+            button1.Enabled = true;
         }
 
         private void SetPermissionsForSalesDepartment()
         {
+            buttonEnterData.Enabled = true;
+            radioButtonOintment.Enabled = true;
+            radioButtonPills.Enabled = true;
+            сopyButton.Enabled = false;
+            sellButton.Enabled = true;
+            textBoxEnterPRice.Enabled = true;
+            button2.Enabled = false;
+            button1.Enabled = true;
+        }
 
+        private void SetPermissionsForAdmin()
+        {
+            buttonEnterData.Enabled = true;
+            radioButtonOintment.Enabled = true;
+            radioButtonPills.Enabled = true;
+            сopyButton.Enabled = true;
+            sellButton.Enabled = true;
+            textBoxEnterPRice.Enabled = true;
+            button2.Enabled = true;
+            button1.Enabled = true;
+            changeButton.Enabled = true;
+        }
+
+        private void SetPermissionsForUnknown()
+        {
+            buttonEnterData.Enabled = false;
+            radioButtonOintment.Enabled = false;
+            radioButtonPills.Enabled = false;
+            сopyButton.Enabled = false;
+            sellButton.Enabled = false;
+            textBoxEnterPRice.Enabled = false;
+            button2.Enabled = false;
+            button1.Enabled = false;
+            changeButton.Enabled = false;
         }
 
         private void buttonEnterData_Click(object sender, EventArgs e)
@@ -78,6 +132,11 @@ namespace laba8
             buttonEnterData.Enabled = true;
             sellButton.Enabled = true;
             textBoxEnterPRice.Enabled = true;
+            SetPermissions();
+            if (Storage.CurrentUser.Position == PositionType.Accountant)
+            {
+                SetPermissionsForAccountant();
+            }
 
             listBoxMedicine.Items.Clear();
 
@@ -176,6 +235,8 @@ namespace laba8
             UserForm userForm = new(_serviceProvider);
 
             userForm.ShowDialog();
+
+            SetPermissions();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -184,7 +245,7 @@ namespace laba8
             buttonEnterData.Enabled = false;
             sellButton.Enabled = false;
             textBoxEnterPRice.Enabled = false;
-
+            SetPermissions();
             listBoxMedicine.Items.Clear();
 
             foreach (var med in _medicines.Where(med => med.IsSold))
