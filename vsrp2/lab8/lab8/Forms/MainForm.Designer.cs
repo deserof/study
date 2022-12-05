@@ -38,6 +38,10 @@
             this.сopyButton = new System.Windows.Forms.Button();
             this.sellButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.textBoxEnterPRice = new System.Windows.Forms.TextBox();
+            this.formSearch = new System.Windows.Forms.Button();
+            this.changeButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,7 +54,6 @@
             this.listBoxMedicine.Name = "listBoxMedicine";
             this.listBoxMedicine.Size = new System.Drawing.Size(446, 214);
             this.listBoxMedicine.TabIndex = 0;
-            this.listBoxMedicine.SelectedIndexChanged += new System.EventHandler(this.listBoxMedicine_SelectedIndexChanged);
             // 
             // groupBox1
             // 
@@ -102,18 +105,18 @@
             // 
             // buttonShortData
             // 
-            this.buttonShortData.Location = new System.Drawing.Point(424, 251);
+            this.buttonShortData.Location = new System.Drawing.Point(359, 251);
             this.buttonShortData.Margin = new System.Windows.Forms.Padding(4);
             this.buttonShortData.Name = "buttonShortData";
-            this.buttonShortData.Size = new System.Drawing.Size(146, 26);
+            this.buttonShortData.Size = new System.Drawing.Size(118, 26);
             this.buttonShortData.TabIndex = 3;
-            this.buttonShortData.Text = "Краткие сведения";
+            this.buttonShortData.Text = "Товары";
             this.buttonShortData.UseVisualStyleBackColor = true;
             this.buttonShortData.Click += new System.EventHandler(this.buttonShortData_Click);
             // 
             // buttonShowData
             // 
-            this.buttonShowData.Location = new System.Drawing.Point(424, 285);
+            this.buttonShowData.Location = new System.Drawing.Point(486, 285);
             this.buttonShowData.Margin = new System.Windows.Forms.Padding(4);
             this.buttonShowData.Name = "buttonShowData";
             this.buttonShowData.Size = new System.Drawing.Size(146, 26);
@@ -124,10 +127,10 @@
             // 
             // сopyButton
             // 
-            this.сopyButton.Location = new System.Drawing.Point(297, 251);
+            this.сopyButton.Location = new System.Drawing.Point(223, 251);
             this.сopyButton.Margin = new System.Windows.Forms.Padding(4);
             this.сopyButton.Name = "сopyButton";
-            this.сopyButton.Size = new System.Drawing.Size(120, 26);
+            this.сopyButton.Size = new System.Drawing.Size(130, 26);
             this.сopyButton.TabIndex = 5;
             this.сopyButton.Text = "Копировать";
             this.сopyButton.UseVisualStyleBackColor = true;
@@ -135,29 +138,70 @@
             // 
             // sellButton
             // 
-            this.sellButton.Location = new System.Drawing.Point(595, 251);
+            this.sellButton.Location = new System.Drawing.Point(641, 251);
             this.sellButton.Name = "sellButton";
-            this.sellButton.Size = new System.Drawing.Size(102, 26);
+            this.sellButton.Size = new System.Drawing.Size(102, 27);
             this.sellButton.TabIndex = 6;
-            this.sellButton.Text = "Sell";
+            this.sellButton.Text = "Продать";
             this.sellButton.UseVisualStyleBackColor = true;
             this.sellButton.Click += new System.EventHandler(this.SellButton_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(297, 284);
+            this.button1.Location = new System.Drawing.Point(359, 284);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(120, 26);
+            this.button1.Size = new System.Drawing.Size(120, 27);
             this.button1.TabIndex = 7;
             this.button1.Text = "Личные данные";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(85, 251);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(131, 27);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "Проданные товары";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // textBoxEnterPRice
+            // 
+            this.textBoxEnterPRice.Location = new System.Drawing.Point(641, 288);
+            this.textBoxEnterPRice.Name = "textBoxEnterPRice";
+            this.textBoxEnterPRice.Size = new System.Drawing.Size(100, 23);
+            this.textBoxEnterPRice.TabIndex = 9;
+            // 
+            // formSearch
+            // 
+            this.formSearch.Location = new System.Drawing.Point(221, 284);
+            this.formSearch.Name = "formSearch";
+            this.formSearch.Size = new System.Drawing.Size(132, 27);
+            this.formSearch.TabIndex = 10;
+            this.formSearch.Text = "Форма поиска";
+            this.formSearch.UseVisualStyleBackColor = true;
+            this.formSearch.Click += new System.EventHandler(this.formSearch_Click);
+            // 
+            // changeButton
+            // 
+            this.changeButton.Location = new System.Drawing.Point(486, 251);
+            this.changeButton.Name = "changeButton";
+            this.changeButton.Size = new System.Drawing.Size(146, 27);
+            this.changeButton.TabIndex = 11;
+            this.changeButton.Text = "Изменить";
+            this.changeButton.UseVisualStyleBackColor = true;
+            this.changeButton.Click += new System.EventHandler(this.changeButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(753, 326);
+            this.ClientSize = new System.Drawing.Size(757, 340);
+            this.Controls.Add(this.changeButton);
+            this.Controls.Add(this.formSearch);
+            this.Controls.Add(this.textBoxEnterPRice);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.sellButton);
             this.Controls.Add(this.сopyButton);
@@ -172,6 +216,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -187,6 +232,10 @@
         private Button сopyButton;
         private Button sellButton;
         private Button button1;
+        private Button button2;
+        private TextBox textBoxEnterPRice;
+        private Button formSearch;
+        private Button changeButton;
     }
 }
 

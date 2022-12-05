@@ -6,9 +6,11 @@ namespace Domain.Enums
     {
         [Description("Unknown")]
         Unknown = 0,
-        [Description("Manager")]
-        Manager = 1,
-        [Description("Accountant")]
-        Accountant = 2
+        [Description("Начальник")]
+        Admin = 1,
+        [Description("Отдел продаж")]
+        Manager = 2,
+        [Description("Бухгалтер")]
+        Accountant = 3
     }
 }

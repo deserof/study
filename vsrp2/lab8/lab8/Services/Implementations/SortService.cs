@@ -94,7 +94,7 @@ namespace lab8.Services.Implementations
             return result;
         }
 
-        public static Medicine[] SortPillsByCreatedDate(PillsCollection collection)
+        public static Medicine[] SortPillsByQuantity(PillsCollection collection)
         {
             var result = new List<Pills>();
 

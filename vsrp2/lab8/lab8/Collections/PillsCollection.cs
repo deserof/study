@@ -15,11 +15,11 @@ namespace lab8.Collections
         {
             var result = 0;
 
-            if (x._createdEntityDateTime < y._createdEntityDateTime)
+            if (x.Quantity < y.Quantity)
             {
                 result = 1;
             }
-            else if (x._createdEntityDateTime > y._createdEntityDateTime)
+            else if (x.Quantity > y.Quantity)
             {
                 result = -1;
             }

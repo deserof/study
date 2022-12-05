@@ -8,6 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Forms\MainForm.cs~RFda77065.TMP" />
+    <None Remove="Forms\PillsForm.resx~RFdb8cbb2.TMP" />
     <None Remove="History.json" />
     <None Remove="Products.json" />
   </ItemGroup>

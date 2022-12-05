@@ -46,7 +46,7 @@ namespace lab8
                 .RuleFor(x => x.Country, c => c.PickRandom(country))
                 .RuleFor(x => x.ShelfLife, c => c.PickRandom(shelfLife))
                 .RuleFor(x => x.Color, c => c.PickRandom(pillsColor))
-                .RuleFor(x => x.Quantity, c => c.Random.Number(10, 100));
+                .RuleFor(x => x.Quantity, c => c.Random.Number(10, 49));
 
             var ointmentFaker = new Faker<Ointment>()
                 .RuleFor(x => x.Price, c => c.Random.Number(5, 100))

@@ -32,6 +32,11 @@ namespace Identity.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> UpdateUser(UserModel userModel)
         {
+            if (userModel.Id is null)
+            {
+                return Ok();
+            }
+
             var users = await _readerService.ReadListAsync<UserModel>("Administrators.json");
 
             var user = users.FirstOrDefault(x => x.Id == userModel.Id);

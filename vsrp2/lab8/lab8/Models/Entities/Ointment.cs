@@ -80,7 +80,7 @@
 
         public override string ToString()
         {
-            return $"Мазь| Название: {Title}, Срок годности: {ShelfLife}";
+            return $"Мазь| Название: {Title}, Срок годности: {ShelfLife}, Цена: {PriceWithNds}, Дата: {_createdEntityDateTime}";
         }
 
         public int CompareTo(Ointment? other)

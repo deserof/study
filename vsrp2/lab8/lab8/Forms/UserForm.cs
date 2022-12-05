@@ -1,4 +1,5 @@
 ﻿using Domain.Enums;
+using Microsoft.VisualBasic.ApplicationServices;
 
 namespace lab8.Forms
 {
@@ -21,6 +22,8 @@ namespace lab8.Forms
             lastNameTb.ReadOnly = true;
             passwordTb.ReadOnly = true;
             positionCb.Enabled = false;
+            positionCb.DropDownStyle = ComboBoxStyle.DropDownList;
+            positionCb.Text = Storage.CurrentUser.Position.GetDescription();
         }
 
         private void InitData()

@@ -62,7 +62,7 @@
 
         public override string ToString()
         {
-            return $"Таблетки| Название: {Title}, Срок годности: {ShelfLife}, Количество: {Quantity}";
+            return $"Таблетки| Название: {Title}, Срок годности: {ShelfLife}, Количество: {Quantity}, Цена: {PriceWithNds}, Дата: {_createdEntityDateTime}";
         }
 
         public static bool operator ==(Pills med1, Pills med2)

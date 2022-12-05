@@ -1,4 +1,5 @@
 ﻿using lab8.Models.Entities;
+using System.Diagnostics;
 
 namespace laba8
 {
@@ -15,6 +16,28 @@ namespace laba8
 
             comboBoxMinimalAge.Items.AddRange(GetDescriptions<MinimalAgeType>().ToArray());
             comboBoxMinimalAge.SelectedIndex = 0;
+
+            _ointment = ointment;
+        }
+
+        public OintmentForm(Ointment ointment, string qwe)
+        {
+            InitializeComponent();
+
+            comboBoxType.Items.AddRange(GetDescriptions<OitmentType>().ToArray());
+            comboBoxType.SelectedIndex = 0;
+
+            comboBoxMinimalAge.Items.AddRange(GetDescriptions<MinimalAgeType>().ToArray());
+            comboBoxMinimalAge.SelectedIndex = 0;
+
+            comboBoxShelfLife.Text = ointment.ShelfLife;
+            comboBoxTitle.Text = ointment.Title;
+            comboBoxMinimalAge.Text = ointment.MinimalAge.ToString();
+            comboBoxCountry.Text = ointment.Country;
+            textBoxVolume.Text = ointment.Volume.ToString();
+            comboBoxType.Text = ointment.OitmentType;
+            priceTextBox.Text = ointment.Price.ToString();
+            yearTextBox.Text = ointment._createdEntityDateTime.Year.ToString();
 
             _ointment = ointment;
         }

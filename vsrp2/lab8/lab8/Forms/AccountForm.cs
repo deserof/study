@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-
-namespace lab8.Forms
+﻿namespace lab8.Forms
 {
     public partial class AccountForm : Form
     {
@@ -48,8 +46,17 @@ namespace lab8.Forms
                 Storage.CurrentUser = response;
             }
 
+            if (userRadioButton.Checked)
+            {
+                Storage.CurrentUser.Id = null;
+                Storage.CurrentUser.FirstName = "Unknown";
+                Storage.CurrentUser.LastName = "Unknown";
+                Storage.CurrentUser.Password = "Unknown";
+                Storage.CurrentUser.Position = 0;
+            }
+
             var mainForm = new MainForm(_serviceProvider);
-            this.Hide();
+            //this.Hide();
             mainForm.ShowDialog();
         }
 

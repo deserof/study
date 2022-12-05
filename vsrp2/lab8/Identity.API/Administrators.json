@@ -1,7 +1,7 @@
 [
   {
     "Id": 0,
-    "FirstName": "admin1 name1",
+    "FirstName": "admin1 name",
     "LastName": "admin1 lastname",
     "Password": "123",
     "Position": 1
@@ -18,6 +18,6 @@
     "FirstName": "admin3 name",
     "LastName": "admin3 lastname",
     "Password": "123",
-    "Position": 0
+    "Position": 3
   }
 ]

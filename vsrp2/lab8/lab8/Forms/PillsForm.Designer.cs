@@ -57,10 +57,10 @@
             "Омепразол",
             "Мегасеф",
             "Биоблис"});
-            this.comboBoxTitle.Location = new System.Drawing.Point(296, 39);
-            this.comboBoxTitle.Margin = new System.Windows.Forms.Padding(5);
+            this.comboBoxTitle.Location = new System.Drawing.Point(259, 29);
+            this.comboBoxTitle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxTitle.Name = "comboBoxTitle";
-            this.comboBoxTitle.Size = new System.Drawing.Size(159, 28);
+            this.comboBoxTitle.Size = new System.Drawing.Size(140, 23);
             this.comboBoxTitle.TabIndex = 0;
             // 
             // comboBoxShelfLife
@@ -73,77 +73,77 @@
             "6 месяцев",
             "1 год",
             "3 года"});
-            this.comboBoxShelfLife.Location = new System.Drawing.Point(296, 167);
-            this.comboBoxShelfLife.Margin = new System.Windows.Forms.Padding(5);
+            this.comboBoxShelfLife.Location = new System.Drawing.Point(259, 125);
+            this.comboBoxShelfLife.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxShelfLife.Name = "comboBoxShelfLife";
-            this.comboBoxShelfLife.Size = new System.Drawing.Size(159, 28);
+            this.comboBoxShelfLife.Size = new System.Drawing.Size(140, 23);
             this.comboBoxShelfLife.TabIndex = 1;
             // 
             // labelTitle
             // 
             this.labelTitle.AutoSize = true;
-            this.labelTitle.Location = new System.Drawing.Point(206, 43);
-            this.labelTitle.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.labelTitle.Location = new System.Drawing.Point(180, 32);
+            this.labelTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(77, 20);
+            this.labelTitle.Size = new System.Drawing.Size(59, 15);
             this.labelTitle.TabIndex = 3;
             this.labelTitle.Text = "Название";
             // 
             // labelShelfLife
             // 
             this.labelShelfLife.AutoSize = true;
-            this.labelShelfLife.Location = new System.Drawing.Point(174, 171);
-            this.labelShelfLife.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.labelShelfLife.Location = new System.Drawing.Point(152, 128);
+            this.labelShelfLife.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelShelfLife.Name = "labelShelfLife";
-            this.labelShelfLife.Size = new System.Drawing.Size(110, 20);
+            this.labelShelfLife.Size = new System.Drawing.Size(88, 15);
             this.labelShelfLife.TabIndex = 4;
             this.labelShelfLife.Text = "Срок годности";
             // 
             // labelQuantity
             // 
             this.labelQuantity.AutoSize = true;
-            this.labelQuantity.Location = new System.Drawing.Point(125, 301);
-            this.labelQuantity.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.labelQuantity.Location = new System.Drawing.Point(109, 226);
+            this.labelQuantity.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelQuantity.Name = "labelQuantity";
-            this.labelQuantity.Size = new System.Drawing.Size(155, 20);
+            this.labelQuantity.Size = new System.Drawing.Size(124, 15);
             this.labelQuantity.TabIndex = 5;
             this.labelQuantity.Text = "Количество таблеток";
             // 
             // labelMinimalAge
             // 
             this.labelMinimalAge.AutoSize = true;
-            this.labelMinimalAge.Location = new System.Drawing.Point(14, 236);
-            this.labelMinimalAge.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.labelMinimalAge.Location = new System.Drawing.Point(12, 177);
+            this.labelMinimalAge.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelMinimalAge.Name = "labelMinimalAge";
-            this.labelMinimalAge.Size = new System.Drawing.Size(306, 20);
+            this.labelMinimalAge.Size = new System.Drawing.Size(241, 15);
             this.labelMinimalAge.TabIndex = 6;
             this.labelMinimalAge.Text = "Минимальный возраст при употреблении";
             // 
             // textBoxColor
             // 
-            this.textBoxColor.Location = new System.Drawing.Point(296, 359);
-            this.textBoxColor.Margin = new System.Windows.Forms.Padding(5);
+            this.textBoxColor.Location = new System.Drawing.Point(259, 269);
+            this.textBoxColor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxColor.Name = "textBoxColor";
-            this.textBoxColor.Size = new System.Drawing.Size(159, 27);
+            this.textBoxColor.Size = new System.Drawing.Size(140, 23);
             this.textBoxColor.TabIndex = 9;
             // 
             // labelColor
             // 
             this.labelColor.AutoSize = true;
-            this.labelColor.Location = new System.Drawing.Point(235, 359);
-            this.labelColor.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.labelColor.Location = new System.Drawing.Point(206, 269);
+            this.labelColor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelColor.Name = "labelColor";
-            this.labelColor.Size = new System.Drawing.Size(42, 20);
+            this.labelColor.Size = new System.Drawing.Size(33, 15);
             this.labelColor.TabIndex = 10;
             this.labelColor.Text = "Цвет";
             // 
             // labelCountry
             // 
             this.labelCountry.AutoSize = true;
-            this.labelCountry.Location = new System.Drawing.Point(134, 105);
-            this.labelCountry.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.labelCountry.Location = new System.Drawing.Point(117, 79);
+            this.labelCountry.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelCountry.Name = "labelCountry";
-            this.labelCountry.Size = new System.Drawing.Size(153, 20);
+            this.labelCountry.Size = new System.Drawing.Size(119, 15);
             this.labelCountry.TabIndex = 12;
             this.labelCountry.Text = "Срана производства";
             // 
@@ -156,18 +156,18 @@
             "Россия",
             "Китай",
             "Германия"});
-            this.comboBoxCountry.Location = new System.Drawing.Point(296, 100);
-            this.comboBoxCountry.Margin = new System.Windows.Forms.Padding(5);
+            this.comboBoxCountry.Location = new System.Drawing.Point(259, 75);
+            this.comboBoxCountry.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxCountry.Name = "comboBoxCountry";
-            this.comboBoxCountry.Size = new System.Drawing.Size(159, 28);
+            this.comboBoxCountry.Size = new System.Drawing.Size(140, 23);
             this.comboBoxCountry.TabIndex = 13;
             // 
             // buttonSetData
             // 
-            this.buttonSetData.Location = new System.Drawing.Point(316, 531);
-            this.buttonSetData.Margin = new System.Windows.Forms.Padding(5);
+            this.buttonSetData.Location = new System.Drawing.Point(276, 398);
+            this.buttonSetData.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonSetData.Name = "buttonSetData";
-            this.buttonSetData.Size = new System.Drawing.Size(107, 35);
+            this.buttonSetData.Size = new System.Drawing.Size(94, 26);
             this.buttonSetData.TabIndex = 14;
             this.buttonSetData.Text = "Подтвердить";
             this.buttonSetData.UseVisualStyleBackColor = true;
@@ -175,76 +175,76 @@
             // 
             // textBoxQuantity
             // 
-            this.textBoxQuantity.Location = new System.Drawing.Point(297, 297);
-            this.textBoxQuantity.Margin = new System.Windows.Forms.Padding(5);
+            this.textBoxQuantity.Location = new System.Drawing.Point(260, 223);
+            this.textBoxQuantity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxQuantity.Name = "textBoxQuantity";
-            this.textBoxQuantity.Size = new System.Drawing.Size(159, 27);
+            this.textBoxQuantity.Size = new System.Drawing.Size(140, 23);
             this.textBoxQuantity.TabIndex = 15;
             // 
             // comboBoxMinimalAge
             // 
             this.comboBoxMinimalAge.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxMinimalAge.FormattingEnabled = true;
-            this.comboBoxMinimalAge.Location = new System.Drawing.Point(296, 232);
-            this.comboBoxMinimalAge.Margin = new System.Windows.Forms.Padding(5);
+            this.comboBoxMinimalAge.Location = new System.Drawing.Point(259, 174);
+            this.comboBoxMinimalAge.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxMinimalAge.Name = "comboBoxMinimalAge";
-            this.comboBoxMinimalAge.Size = new System.Drawing.Size(159, 28);
+            this.comboBoxMinimalAge.Size = new System.Drawing.Size(140, 23);
             this.comboBoxMinimalAge.TabIndex = 16;
             // 
             // labelAge
             // 
             this.labelAge.AutoSize = true;
-            this.labelAge.Location = new System.Drawing.Point(475, 235);
+            this.labelAge.Location = new System.Drawing.Point(416, 176);
             this.labelAge.Name = "labelAge";
-            this.labelAge.Size = new System.Drawing.Size(31, 20);
+            this.labelAge.Size = new System.Drawing.Size(25, 15);
             this.labelAge.TabIndex = 17;
             this.labelAge.Text = "лет";
             // 
             // priceTextBox
             // 
-            this.priceTextBox.Location = new System.Drawing.Point(296, 408);
-            this.priceTextBox.Margin = new System.Windows.Forms.Padding(5);
+            this.priceTextBox.Location = new System.Drawing.Point(259, 306);
+            this.priceTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.priceTextBox.Name = "priceTextBox";
-            this.priceTextBox.Size = new System.Drawing.Size(159, 27);
+            this.priceTextBox.Size = new System.Drawing.Size(140, 23);
             this.priceTextBox.TabIndex = 48;
             this.priceTextBox.UseWaitCursor = true;
             // 
             // priceLabel
             // 
             this.priceLabel.AutoSize = true;
-            this.priceLabel.Location = new System.Drawing.Point(232, 411);
-            this.priceLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.priceLabel.Location = new System.Drawing.Point(203, 308);
+            this.priceLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.priceLabel.Name = "priceLabel";
-            this.priceLabel.Size = new System.Drawing.Size(45, 20);
+            this.priceLabel.Size = new System.Drawing.Size(35, 15);
             this.priceLabel.TabIndex = 47;
             this.priceLabel.Text = "Цена";
             this.priceLabel.UseWaitCursor = true;
             // 
             // yearTextBox
             // 
-            this.yearTextBox.Location = new System.Drawing.Point(300, 460);
-            this.yearTextBox.Margin = new System.Windows.Forms.Padding(5);
+            this.yearTextBox.Location = new System.Drawing.Point(262, 345);
+            this.yearTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.yearTextBox.Name = "yearTextBox";
-            this.yearTextBox.Size = new System.Drawing.Size(159, 27);
+            this.yearTextBox.Size = new System.Drawing.Size(140, 23);
             this.yearTextBox.TabIndex = 50;
             this.yearTextBox.UseWaitCursor = true;
             // 
             // dataLabel
             // 
             this.dataLabel.AutoSize = true;
-            this.dataLabel.Location = new System.Drawing.Point(172, 463);
-            this.dataLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.dataLabel.Location = new System.Drawing.Point(150, 347);
+            this.dataLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.dataLabel.Name = "dataLabel";
-            this.dataLabel.Size = new System.Drawing.Size(105, 20);
+            this.dataLabel.Size = new System.Drawing.Size(82, 15);
             this.dataLabel.TabIndex = 49;
             this.dataLabel.Text = "Изменить год";
             this.dataLabel.UseWaitCursor = true;
             // 
             // PillsForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(716, 602);
+            this.ClientSize = new System.Drawing.Size(626, 452);
             this.Controls.Add(this.yearTextBox);
             this.Controls.Add(this.dataLabel);
             this.Controls.Add(this.priceTextBox);
@@ -263,7 +263,7 @@
             this.Controls.Add(this.labelTitle);
             this.Controls.Add(this.comboBoxShelfLife);
             this.Controls.Add(this.comboBoxTitle);
-            this.Margin = new System.Windows.Forms.Padding(5);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "PillsForm";
             this.Text = "Таблетки";
             this.ResumeLayout(false);

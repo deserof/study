@@ -1,4 +1,5 @@
 ﻿using lab8.Models.Entities;
+using System.Diagnostics;
 
 namespace laba8
 {
@@ -16,10 +17,29 @@ namespace laba8
             _pills = pills;
         }
 
+        public PillsForm(Pills pills, string qwe)
+        {
+            InitializeComponent();
+
+            comboBoxMinimalAge.Items.AddRange(GetDescriptions<MinimalAgeType>().ToArray());
+            comboBoxMinimalAge.SelectedIndex = 0;
+
+            comboBoxShelfLife.Text = pills.ShelfLife;
+            comboBoxTitle.Text = pills.Title;
+            comboBoxMinimalAge.Text = pills.MinimalAge.ToString();
+            comboBoxCountry.Text = pills.Country;
+            textBoxColor.Text = pills.Color;
+            textBoxQuantity.Text = pills.Quantity.ToString();
+            priceTextBox.Text = pills.Price.ToString();
+            yearTextBox.Text = pills.ChangeEntityDateTime.ToString();
+
+            _pills = pills;
+        }
+
         private void buttonSetData_Click(object sender, EventArgs e)
         {
             if (int.TryParse(comboBoxMinimalAge.Text, out var minimalAge) 
-                && (minimalAge == 6 || minimalAge == 10 || minimalAge == 18)
+                && (minimalAge == 8 || minimalAge == 14 || minimalAge == 18)
                 && int.TryParse(textBoxQuantity.Text, out var quantity) 
                 && quantity > 0 && quantity < 50
                 && decimal.TryParse(priceTextBox.Text, out var price)
