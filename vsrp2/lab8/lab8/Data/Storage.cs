@@ -12,6 +12,6 @@ namespace lab8.Data
 
         public static List<Pills> Pills { get; set; } = new();
 
-        public static List<Medicine> History { get; set; }
+        public static List<string> History { get; set; } = new();
     }
 }

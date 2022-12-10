@@ -17,7 +17,6 @@
             {
                 if (position == -1 || position >= customMedicineCollection.Length)
                 {
-#pragma warning disable S2372 // Exceptions should not be thrown from property getters
                     throw new ArgumentException(nameof(position));
                 }
 

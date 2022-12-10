@@ -2,15 +2,15 @@
 {
     public class JournalList<T> : List<T>
     {
-        public delegate void AddDelegate(T item);
+        public delegate void CustomDelegate(T item);
 
-        public event AddDelegate OnMyAdd;
+        public event CustomDelegate OnMyAdd;
 
         public event EventHandler OnAdd;
 
         public event EventHandler OnDelete;
 
-        public event EventHandler OnChange;
+        public event CustomDelegate OnChange;
 
         public new void Add(T item)
         {
@@ -22,6 +22,12 @@
             base.Add(item);
         }
 
-        public List<string> History = new List<string>();
+        public void Change(T item)
+        {
+            if (null != OnChange)
+            {
+                OnChange(item);
+            }
+        }
     }
 }

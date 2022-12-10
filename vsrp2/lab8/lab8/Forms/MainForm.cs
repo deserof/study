@@ -1,4 +1,5 @@
 ﻿using Domain.Enums;
+using lab8;
 using lab8.Models.Entities;
 
 namespace laba8
@@ -6,7 +7,6 @@ namespace laba8
     public partial class MainForm : Form
     {
         private readonly IServiceProvider _serviceProvider;
-        //public event EventHandler OnAdd;
 
         public delegate void AddDelegate(Medicine item);
 
@@ -23,10 +23,8 @@ namespace laba8
 
             SetPermissions();
 
-            //Listener.l_OnMyAddMedicine()
-            //_medicines.OnAdd += new EventHandler(JournalList<Medicine>.l_OnAdd);
-            //_medicines.OnDelete += new EventHandler(JournalList<Medicine>.l_OnDelete);
-            //_medicines.OnChange += new EventHandler(JournalList<Medicine>.l_OnChange);
+            _medicines.OnAdd += Listener.l_OnAdd;
+            _medicines.OnChange += Listener.l_OnChange;
         }
 
         private void SetPermissions()

@@ -4,20 +4,11 @@ namespace lab8
 {
     public class Listener
     {
-        public static void l_OnMyAddMedicine(Medicine sender)
+        public static void l_OnMyAddMedicine(Medicine medicine)
         {
-            if (sender is Pills pills)
-            {
-                MessageBox.Show($"boba {pills}");
-            }
+            var hist = $"{DateTime.Now} Element has been added :{medicine}";
 
-            if (sender is Ointment ointment)
-            {
-                MessageBox.Show(ointment.ToString());
-            }
-
-            //MessageBox.Show($"boba {sender}");
-            //History.Add(e.)
+            Storage.History.Add(hist);
         }
 
         public static void l_OnAdd(object sender, EventArgs e)
@@ -30,9 +21,11 @@ namespace lab8
             MessageBox.Show("Element has been deleted...");
         }
 
-        public static void l_OnChange(object sender, EventArgs e)
+        public static void l_OnChange(Medicine medicine)
         {
-            MessageBox.Show("Element has been changed...");
+            var hist = $"{DateTime.Now} Element has been changed :{medicine}";
+
+            Storage.History.Add(hist);
         }
     }
 }
