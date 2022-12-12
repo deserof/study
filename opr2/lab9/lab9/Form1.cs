@@ -1,4 +1,5 @@
-﻿using NPOI.SS.UserModel;
+﻿using NPOI.SS.Formula.Functions;
+using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
 
 namespace lab9
@@ -13,6 +14,9 @@ namespace lab9
 
             timeFirstLabel.Text = string.Empty;
             timeSecondLabel.Text = string.Empty;
+
+            commonTimeFirst.Text = string.Empty;
+            commonTimeSecond.Text = string.Empty;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -70,6 +74,29 @@ namespace lab9
             }
 
             timeSecondLabel.Text = maxSecond.ToString();
+
+            int a = sumsFirst[0];
+            for (int i = 0; i < taskZavods.Count - 1; i++)
+            {
+                if (taskZavods[i].B > taskZavods[i + 1].A)
+                {
+                    a += taskZavods[i].B;
+                }
+                else a += taskZavods[i + 1].A;
+            }
+
+            int b = sumsSecond[0];
+            for (int i = 0; i < sortedTaskZavod.Count - 1; i++)
+            {
+                if (sortedTaskZavod[i].B > sortedTaskZavod[i + 1].A)
+                {
+                    b += sortedTaskZavod[i + 1].A;
+                }
+                else b += sortedTaskZavod[i].B;
+            }
+
+            commonTimeFirst.Text = a.ToString();
+            commonTimeSecond.Text = b.ToString();
 
             FillDataGridView(dataGridView2, sortedTaskZavod);
         }
