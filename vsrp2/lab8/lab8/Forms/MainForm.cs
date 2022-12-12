@@ -8,10 +8,6 @@ namespace laba8
     {
         private readonly IServiceProvider _serviceProvider;
 
-        public delegate void AddDelegate(Medicine item);
-
-        public event AddDelegate OnMyAdd;
-
         private readonly JournalList<Medicine> _medicines = new JournalList<Medicine>();
 
         public MainForm(IServiceProvider serviceProvider)
