@@ -44,8 +44,7 @@ namespace Lab2.Task2
 
         private void ExecuteAnimation()
         {
-
-            Storyboard sb = FindResource("PlayAnimation") as Storyboard;
+            var sb = FindResource("PlayAnimation") as Storyboard;
 
             if (sb != null) 
             { 
