@@ -24,5 +24,10 @@ namespace Lab2.Task1
         {
             InitializeComponent();
         }
+
+        private void ButtonAnimation_Completed(object sender, EventArgs e)
+        {
+
+        }
     }
 }

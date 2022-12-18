@@ -5,8 +5,53 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lab2.Task1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="400" Width="400">
 
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="MouseEnter">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation 
+                                    Storyboard.TargetProperty="Width" 
+                                    Duration="0:0:1" 
+                                    RepeatBehavior="Forever"
+                                    To="220" 
+                                    AutoReverse="True" />
+                                <DoubleAnimation 
+                                    Storyboard.TargetProperty="Height"
+                                    Duration="0:0:1"
+                                    RepeatBehavior="Forever"
+                                    To="80"
+                                    AutoReverse="True" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+
+                <EventTrigger RoutedEvent="MouseLeave">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation 
+                                    Storyboard.TargetProperty="Width" 
+                                    Duration="0:0:1" 
+                                    To="100" />
+                                <DoubleAnimation 
+                                    Storyboard.TargetProperty="Height"
+                                    Duration="0:0:1"
+                                    To="30" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Button Width="100" Height="30" Content="Наведи на меня"></Button>
     </Grid>
 </Window>
