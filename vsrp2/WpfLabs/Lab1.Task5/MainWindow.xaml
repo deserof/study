@@ -5,8 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lab1.Task5"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="250" Width="700">
 
-    </Grid>
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+
+    <WrapPanel>
+        <Button Content="Top Button" VerticalAlignment="Top" Height="20"></Button>
+        <Button Content="Tall Button2" Height="70"></Button>
+        <Button Content="Bottom Button" VerticalAlignment="Bottom" Height="20"></Button>
+        <Button Content="Strech Button" Width="85"></Button>
+        <Button Content="Centered Button" Height="20"></Button>
+    </WrapPanel>
 </Window>
