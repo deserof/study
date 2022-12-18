@@ -5,8 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lab2.Task2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="600" ResizeMode="NoResize">
     <Grid>
+        <Label Content="Я надпись" Width="70" Height="30" HorizontalAlignment="Left" Margin="-100,0,0,0">
+            <Label.RenderTransform>
+                <TranslateTransform x:Name="MyAnimatedTranslateTransform" X="0" Y="0" />
+            </Label.RenderTransform>
+            <Label.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimationUsingPath
+                                    Storyboard.TargetName="MyAnimatedTranslateTransform"
+                                    Storyboard.TargetProperty="X"
+                                    Source="X"
+                                    RepeatBehavior="Forever"
+                                    Duration="0:0:4" AccelerationRatio="0.5">
 
+                                <DoubleAnimationUsingPath.PathGeometry>
+                                    <PathGeometry Figures="M1 157C8.18884 69.3442 32.1596 32.4999 132 2C197.434 -1.92191 225.316 11.8068 273 40C306.8 83.5753 317.456 108.932 311 157C336.823 90.374 381.141 76.6902 395 75C408.859 73.3098 521.247 104.745 532 157C324.632 157 208.368 157 1 157Z"/>
+                                </DoubleAnimationUsingPath.PathGeometry>
+
+                            </DoubleAnimationUsingPath>
+
+                            <DoubleAnimationUsingPath
+                                    Storyboard.TargetName="MyAnimatedTranslateTransform"
+                                    Storyboard.TargetProperty="Y"
+                                    Source="Y"
+                                    RepeatBehavior="Forever"
+                                    Duration="0:0:4" AccelerationRatio="0.5">
+
+                                <DoubleAnimationUsingPath.PathGeometry>
+                                    <PathGeometry Figures="M1 157C8.18884 69.3442 32.1596 32.4999 132 2C197.434 -1.92191 225.316 11.8068 273 40C306.8 83.5753 317.456 108.932 311 157C336.823 90.374 381.141 76.6902 395 75C408.859 73.3098 521.247 104.745 532 157C324.632 157 208.368 157 1 157Z"/>
+                                </DoubleAnimationUsingPath.PathGeometry>
+                            </DoubleAnimationUsingPath>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Label.Triggers>
+        </Label>
     </Grid>
 </Window>
