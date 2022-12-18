@@ -6,7 +6,45 @@
         xmlns:local="clr-namespace:Lab1.Task4"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    
+    <Window.Resources>
+        <Style TargetType="Label">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Width" Value="70"/>
+            <Setter Property="Height" Value="70"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+    </Window.Resources>
+    
     <Grid>
-
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <WrapPanel Grid.Row="1" Grid.RowSpan="3" Grid.Column="0">
+                <Label Background="Yellow" Content="A"/>
+                <Label Background="Red" Content="B"/>
+                <Label Background="Green" Content="C"/>
+                <Label Background="Blue" Content="D"/>
+                <Label Background="Gray" Content="E"/>
+                <Label Background="LightGray" Content="F"/>
+            </WrapPanel>
+            <WrapPanel Grid.Row="0" Grid.RowSpan="3" Grid.Column="1">
+                <Label Background="Yellow" Content="A"/>
+                <Label Background="Red" Content="B"/>
+                <Label Background="Green" Content="C"/>
+                <Label Background="Blue" Content="D"/>
+                <Label Background="Gray" Content="E"/>
+                <Label Background="LightGray" Content="F"/>
+            </WrapPanel>
+        </Grid>
     </Grid>
 </Window>
