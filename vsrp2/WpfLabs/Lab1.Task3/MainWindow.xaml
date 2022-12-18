@@ -6,7 +6,60 @@
         xmlns:local="clr-namespace:Lab1.Task3"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
 
-    </Grid>
+    <Canvas>
+        <Label Content="Регистрация пользователя" Canvas.Left="10" Canvas.Top="10"/>
+        <Label Content="ФИО" Canvas.Left="10" Canvas.Top="40"/>
+        <Label Content="Email" Canvas.Left="10" Canvas.Top="70"/>
+        <Button Content="Зарегистрироваться" Canvas.Left="60" Canvas.Top="105"/>
+        <TextBox Canvas.Left="75" Canvas.Top="45" Width="170"/>
+        <TextBox Canvas.Left="75" Canvas.Top="75" Width="170"/>
+    </Canvas>
+
+    <!--<WrapPanel>
+        <Label Content="Регистрация пользователя"/>
+        <Label Content="ФИО"/>
+        <TextBox Width="170"/>
+        <Label Content="Email"/>
+        <TextBox Width="170"/>
+        <Button Content="Зарегистрироваться"/>
+    </WrapPanel>-->
+
+    <!--<StackPanel HorizontalAlignment="Center">
+        <Label Content="Регистрация пользователя"/>
+        <Label Content="ФИО"/>
+        <TextBox Width="170"/>
+        <Label Content="Email"/>
+        <TextBox Width="170"/>
+        <Button Content="Зарегистрироваться"/>
+    </StackPanel>-->
+
+    <!--<DockPanel>
+        <Label Content="Регистрация пользователя" DockPanel.Dock="Top"/>
+        <Label Content="ФИО" DockPanel.Dock="Left"/>
+        <TextBox Width="170" DockPanel.Dock="Left"/>
+        <Label Content="Email" DockPanel.Dock="Right"/>
+        <TextBox Width="170" DockPanel.Dock="Right" />
+        <Button Content="Зарегистрироваться" DockPanel.Dock="Bottom" VerticalAlignment="Bottom"/>
+    </DockPanel>-->
+
+    <!--<Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Content="Регистрация пользователя" />
+        <Label Grid.Row="1" Grid.Column="0" Content="ФИО" />
+        <TextBox Grid.Row="1" Grid.Column="1" Width="170" />
+        <Label Grid.Row="2" Grid.Column="0" Content="Email" />
+        <TextBox Grid.Row="2" Grid.Column="1" Width="170" />
+        <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Content="Зарегистрироваться" />
+    </Grid>-->
+
 </Window>
