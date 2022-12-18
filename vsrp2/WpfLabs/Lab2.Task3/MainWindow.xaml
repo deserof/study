@@ -6,7 +6,18 @@
         xmlns:local="clr-namespace:Lab2.Task3"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Canvas>
+        <Button Name="WinButton" Content="Win" Height="50" Width="100" Canvas.Left="200" Canvas.Top="79"/>
+        <Button Name="LoseFirstButton" Content="Lose" Height="50" Width="100" Canvas.Left="350" Canvas.Top="79"/>
+        <Button Name="LoseSecondButton" Content="Lose" Height="50" Width="100" Canvas.Left="491" Canvas.Top="79"/>
 
-    </Grid>
+        <Button Name="StartButton"
+                Grid.Row="1" 
+                Click="StartButton_Click"
+                Content="Начать" 
+                Height="30"
+                Width="80"
+                VerticalAlignment="Top" 
+                HorizontalAlignment="Left" Canvas.Left="360" Canvas.Top="315"></Button>
+    </Canvas>
 </Window>
