@@ -7,14 +7,14 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
 
-    <Canvas>
+    <!--<Canvas>
         <Label Content="Регистрация пользователя" Canvas.Left="10" Canvas.Top="10"/>
         <Label Content="ФИО" Canvas.Left="10" Canvas.Top="40"/>
         <Label Content="Email" Canvas.Left="10" Canvas.Top="70"/>
         <Button Content="Зарегистрироваться" Canvas.Left="60" Canvas.Top="105"/>
         <TextBox Canvas.Left="75" Canvas.Top="45" Width="170"/>
         <TextBox Canvas.Left="75" Canvas.Top="75" Width="170"/>
-    </Canvas>
+    </Canvas>-->
 
     <!--<WrapPanel>
         <Label Content="Регистрация пользователя"/>
@@ -34,14 +34,14 @@
         <Button Content="Зарегистрироваться"/>
     </StackPanel>-->
 
-    <!--<DockPanel>
+    <DockPanel LastChildFill="False">
         <Label Content="Регистрация пользователя" DockPanel.Dock="Top"/>
         <Label Content="ФИО" DockPanel.Dock="Left"/>
         <TextBox Width="170" DockPanel.Dock="Left"/>
         <Label Content="Email" DockPanel.Dock="Right"/>
         <TextBox Width="170" DockPanel.Dock="Right" />
-        <Button Content="Зарегистрироваться" DockPanel.Dock="Bottom" VerticalAlignment="Bottom"/>
-    </DockPanel>-->
+        <Button Content="Зарегистрироваться" DockPanel.Dock="Bottom" />
+    </DockPanel>
 
     <!--<Grid>
         <Grid.RowDefinitions>

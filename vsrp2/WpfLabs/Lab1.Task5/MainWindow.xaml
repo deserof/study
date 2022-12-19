@@ -9,16 +9,28 @@
 
     <Window.Resources>
         <Style TargetType="Button">
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <!--<Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>-->
+            <!--<Setter Property="Height" Value="20"/>-->
         </Style>
     </Window.Resources>
 
-    <WrapPanel>
-        <Button Content="Top Button" VerticalAlignment="Top" Height="20"></Button>
-        <Button Content="Tall Button2" Height="70"></Button>
-        <Button Content="Bottom Button" VerticalAlignment="Bottom" Height="20"></Button>
-        <Button Content="Strech Button" Width="85"></Button>
-        <Button Content="Centered Button" Height="20"></Button>
-    </WrapPanel>
+    <Grid>
+        <!--<Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="5*"></RowDefinition>
+        </Grid.RowDefinitions>-->
+
+        <WrapPanel>
+            <Button Content="Top Button" VerticalAlignment="Top" ></Button>
+            <Button Content="Tall Button2" Height="40"></Button>
+            <Button Content="Bottom Button" VerticalAlignment="Bottom"></Button>
+            <Button Content="Strech Button" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"></Button>
+            <Button Content="Centered Button" VerticalAlignment="Center"></Button>
+        </WrapPanel>
+    </Grid>
 </Window>
