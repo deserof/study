@@ -14,45 +14,5 @@ namespace Lab2.Task2._2
         {
             InitializeComponent();
         }
-
-        private void btn_MouseEnter(object sender, MouseEventArgs e)
-        {
-            var animation1 = new DoubleAnimation
-            {
-                Duration = new Duration(TimeSpan.FromSeconds(1)),
-                RepeatBehavior = RepeatBehavior.Forever,
-                To = 220,
-                AutoReverse = true
-            };
-
-            var animation2 = new DoubleAnimation
-            {
-                Duration = new Duration(TimeSpan.FromSeconds(1)),
-                RepeatBehavior = RepeatBehavior.Forever,
-                To = 80,
-                AutoReverse = true
-            };
-
-            btn.BeginAnimation(WidthProperty, animation1);
-            btn.BeginAnimation(HeightProperty, animation2);
-        }
-
-        private void btn_MouseLeave(object sender, MouseEventArgs e)
-        {
-            var animation1 = new DoubleAnimation
-            {
-                Duration = new Duration(TimeSpan.FromSeconds(1)),
-                To = 100
-            };
-
-            var animation2 = new DoubleAnimation
-            {
-                Duration = new Duration(TimeSpan.FromSeconds(1)),
-                To = 30
-            };
-
-            btn.BeginAnimation(WidthProperty, animation1);
-            btn.BeginAnimation(HeightProperty, animation2);
-        }
     }
 }
