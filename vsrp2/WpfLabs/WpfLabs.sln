@@ -3,23 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab1.Task1", "Lab1.Task1\Lab1.Task1.csproj", "{8D41B1F4-DD0A-4A6D-A20C-20F39FACD371}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab1.Task1", "Lab1.Task1\Lab1.Task1.csproj", "{8D41B1F4-DD0A-4A6D-A20C-20F39FACD371}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab1.Task2", "Lab1.Task2\Lab1.Task2.csproj", "{268AA0BD-B109-4DF1-9C06-D8E0A8895907}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab1.Task2", "Lab1.Task2\Lab1.Task2.csproj", "{268AA0BD-B109-4DF1-9C06-D8E0A8895907}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab1.Task3", "Lab1.Task3\Lab1.Task3.csproj", "{DF615153-B83F-4C23-A907-BE40571CBAA9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab1.Task3", "Lab1.Task3\Lab1.Task3.csproj", "{DF615153-B83F-4C23-A907-BE40571CBAA9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab1.Task4", "Lab1.Task4\Lab1.Task4.csproj", "{1CB06939-729C-471B-B204-BAD74774F61A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab1.Task4", "Lab1.Task4\Lab1.Task4.csproj", "{1CB06939-729C-471B-B204-BAD74774F61A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab1.Task5", "Lab1.Task5\Lab1.Task5.csproj", "{79360C55-3C8C-44C8-AFAA-2EF8D60BBB80}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab1.Task5", "Lab1.Task5\Lab1.Task5.csproj", "{79360C55-3C8C-44C8-AFAA-2EF8D60BBB80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab1.Task6", "Lab1.Task6\Lab1.Task6.csproj", "{229F041E-EB29-433A-9986-0F6FB178B142}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab1.Task6", "Lab1.Task6\Lab1.Task6.csproj", "{229F041E-EB29-433A-9986-0F6FB178B142}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab2.Task1", "Lab2.Task1\Lab2.Task1.csproj", "{F5673D65-6542-4250-9619-A76480FBAE21}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab2.Task1", "Lab2.Task1\Lab2.Task1.csproj", "{F5673D65-6542-4250-9619-A76480FBAE21}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab2.Task2", "Lab2.Task2\Lab2.Task2.csproj", "{066DC5AB-379D-4D81-AED4-733B0660AB06}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab2.Task2", "Lab2.Task2\Lab2.Task2.csproj", "{066DC5AB-379D-4D81-AED4-733B0660AB06}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab2.Task3", "Lab2.Task3\Lab2.Task3.csproj", "{D1BB819A-33EA-4C19-9466-289F46B1F983}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab2.Task3", "Lab2.Task3\Lab2.Task3.csproj", "{D1BB819A-33EA-4C19-9466-289F46B1F983}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab2.Task2.2", "Lab2.Task2.2\Lab2.Task2.2.csproj", "{227FA24F-B96D-4C87-8F35-7D73848F7131}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{D1BB819A-33EA-4C19-9466-289F46B1F983}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1BB819A-33EA-4C19-9466-289F46B1F983}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1BB819A-33EA-4C19-9466-289F46B1F983}.Release|Any CPU.Build.0 = Release|Any CPU
+		{227FA24F-B96D-4C87-8F35-7D73848F7131}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{227FA24F-B96D-4C87-8F35-7D73848F7131}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{227FA24F-B96D-4C87-8F35-7D73848F7131}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{227FA24F-B96D-4C87-8F35-7D73848F7131}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
