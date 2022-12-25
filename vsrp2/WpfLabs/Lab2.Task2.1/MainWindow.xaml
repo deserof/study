@@ -6,7 +6,12 @@
         xmlns:local="clr-namespace:Lab2.Task2._1"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    
     <Grid>
-
+        <Label Content="Я надпись" MouseDown="Label_MouseDown" Width="70" Height="30" HorizontalAlignment="Left" Margin="-100,0,0,0">
+            <Label.RenderTransform>
+                <TranslateTransform x:Name="MyAnimatedTranslateTransform" X="0" Y="0" />
+            </Label.RenderTransform>
+        </Label>
     </Grid>
 </Window>
