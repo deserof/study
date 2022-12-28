@@ -1,4 +1,5 @@
 ﻿using Domain.Enums;
+using lab8;
 using lab8.Models.Entities;
 
 namespace laba8
@@ -6,6 +7,12 @@ namespace laba8
     public partial class OintmentForm : Form
     {
         private readonly Ointment _ointment;
+
+        private readonly Journal<Medicine> _journal = new Journal<Medicine>();
+
+        private string _op;
+
+        private readonly Listener _listener = new Listener();
 
         public OintmentForm(Ointment ointment)
         {
@@ -20,12 +27,14 @@ namespace laba8
             _ointment = ointment;
 
             SetPermissions();
+
+            _journal.OnChange += _listener.l_OnAdd;
         }
 
         public OintmentForm(Ointment ointment, string qwe)
         {
             InitializeComponent();
-
+            _op = qwe;
             comboBoxType.Items.AddRange(GetDescriptions<OitmentType>().ToArray());
             comboBoxType.SelectedIndex = 0;
 
@@ -44,6 +53,8 @@ namespace laba8
             _ointment = ointment;
 
             SetPermissions();
+
+            _journal.OnChange += _listener.l_OnChange;
         }
 
         private void SetPermissions()
@@ -120,6 +131,10 @@ namespace laba8
             }
 
             Close();
+
+            if (string.IsNullOrEmpty(_op)) _journal.Add(_ointment);
+
+            _journal.Change(_ointment);
         }
     }
 }

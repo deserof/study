@@ -8,19 +8,23 @@ namespace laba8
     {
         private readonly IServiceProvider _serviceProvider;
 
-        private readonly JournalList<Medicine> _medicines = new JournalList<Medicine>();
+        private readonly Journal<Medicine> _journal = new Journal<Medicine>();
+
+        private readonly List<Medicine> _medicines = new List<Medicine>();
+
+        private readonly Listener _listener = new Listener();
 
         public MainForm(IServiceProvider serviceProvider)
         {
             _serviceProvider = serviceProvider;
+
             InitializeComponent();
 
             _medicines.AddRange(Storage.Medicines);
 
             SetPermissions();
 
-            _medicines.OnAdd += Listener.l_OnAdd;
-            _medicines.OnChange += Listener.l_OnChange;
+            _journal.OnSell += _listener.l_OnSell;
         }
 
         private void SetPermissions()
@@ -215,6 +219,7 @@ namespace laba8
             if (selectedMed.IsSold)
             {
                 var index = listBoxMedicine.SelectedIndex;
+                _journal.Sell((Medicine)listBoxMedicine.Items[index]);
                 listBoxMedicine.Items.RemoveAt(index);
             }
 

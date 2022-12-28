@@ -4,28 +4,49 @@ namespace lab8
 {
     public class Listener
     {
-        public static void l_OnMyAddMedicine(Medicine medicine)
-        {
-            var hist = $"{DateTime.Now} Element has been added :{medicine}";
+        private const string Path = "..\\..\\..\\History.json";
 
-            Storage.History.Add(hist);
+        private readonly WriterService _writerService;
+
+        private readonly ReaderService _readerService;
+
+        public Listener()
+        {
+            _writerService = new WriterService();
+            _readerService = new ReaderService();
         }
 
-        public static void l_OnAdd(object sender, EventArgs e)
+        public void l_OnAdd(Medicine medicine)
         {
-            MessageBox.Show($"Element has been added {sender}");
+            WriteHistory("Add", medicine.ToString());
         }
 
-        public static void l_OnDelete(object sender, EventArgs e)
+        public void l_OnSell(Medicine medicine)
         {
-            MessageBox.Show("Element has been deleted...");
+            WriteHistory("Sell", medicine.ToString());
         }
 
-        public static void l_OnChange(Medicine medicine)
+        public void l_OnChange(Medicine medicine)
         {
-            var hist = $"{DateTime.Now} Element has been changed :{medicine}";
+            WriteHistory("Change", medicine.ToString());
+        }
 
-            Storage.History.Add(hist);
+        public void l_OnDelete(Medicine medicine)
+        {
+            WriteHistory("Delete", medicine.ToString());
+        }
+
+        private void WriteHistory(string operation, string info)
+        {
+            Hist hist = new()
+            {
+                Operation = operation,
+                Info = info
+            };
+
+            var hists = _readerService.Read<List<Hist>>(Path);
+            hists.Add(hist);
+            _writerService.Write<List<Hist>>(hists, Path);
         }
     }
 }

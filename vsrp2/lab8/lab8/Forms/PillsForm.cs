@@ -1,4 +1,5 @@
 ﻿using Domain.Enums;
+using lab8;
 using lab8.Models.Entities;
 using System.Diagnostics;
 using System.Windows.Forms;
@@ -8,7 +9,9 @@ namespace laba8
     public partial class PillsForm : Form
     {
         private readonly Pills _pills;
-
+        private string _op;
+        private readonly Journal<Medicine> _journal = new Journal<Medicine>();
+        private readonly Listener _listener = new Listener();
         public PillsForm(Pills pills)
         {
             InitializeComponent();
@@ -19,12 +22,14 @@ namespace laba8
             _pills = pills;
 
             SetPermissions();
+
+            _journal.OnChange += _listener.l_OnAdd;
         }
 
         public PillsForm(Pills pills, string qwe)
         {
             InitializeComponent();
-
+            _op = qwe;
             comboBoxMinimalAge.Items.AddRange(GetDescriptions<MinimalAgeType>().ToArray());
             comboBoxMinimalAge.SelectedIndex = 0;
 
@@ -40,6 +45,8 @@ namespace laba8
             _pills = pills;
 
             SetPermissions();
+
+            _journal.OnChange += _listener.l_OnChange;
         }
 
         private void SetPermissions()
@@ -116,6 +123,10 @@ namespace laba8
             }
 
             Close();
+
+            if (string.IsNullOrEmpty(_op)) _journal.Add(_pills);
+
+            _journal.Change(_pills);
         }
     }
 }

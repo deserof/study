@@ -4,7 +4,7 @@ namespace lab8.Forms
 {
     public partial class ProductsForm : Form
     {
-        private readonly JournalList<Medicine> _medicines = new JournalList<Medicine>();
+        private readonly List<Medicine> _medicines = new List<Medicine>();
 
         public ProductsForm()
         {

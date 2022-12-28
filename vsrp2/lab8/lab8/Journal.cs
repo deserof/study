@@ -1,25 +1,23 @@
 ﻿namespace laba8
 {
-    public class JournalList<T> : List<T>
+    public class Journal<T>
     {
-        public delegate void CustomDelegate(T item);
+        public delegate void Handler(T item);
 
-        public event CustomDelegate OnMyAdd;
+        public event Handler OnAdd;
 
-        public event EventHandler OnAdd;
+        public event Handler OnSell;
 
-        public event EventHandler OnDelete;
+        public event Handler OnDelete;
 
-        public event CustomDelegate OnChange;
+        public event Handler OnChange;
 
-        public new void Add(T item)
+        public void Add(T item)
         {
-            if (null != OnMyAdd)
+            if (null != OnAdd)
             {
-                OnMyAdd(item);
+                OnAdd(item);
             }
-
-            base.Add(item);
         }
 
         public void Change(T item)
@@ -27,6 +25,22 @@
             if (null != OnChange)
             {
                 OnChange(item);
+            }
+        }
+
+        public void Sell(T item)
+        {
+            if (null != OnSell)
+            {
+                OnSell(item);
+            }
+        }
+
+        public void Delete(T item)
+        {
+            if (null != OnDelete)
+            {
+                OnDelete(item);
             }
         }
     }
