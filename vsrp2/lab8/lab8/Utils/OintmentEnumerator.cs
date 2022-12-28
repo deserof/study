@@ -1,12 +1,12 @@
 ﻿namespace lab8.Utils
 {
-    public class OintmentEnumerator : IEnumerator
+    public class MedicineEnumerator : IEnumerator
     {
         private int position = -1;
 
         private readonly CustomMedicineCollection customMedicineCollection;
 
-        public OintmentEnumerator(CustomMedicineCollection customMedicineCollection)
+        public MedicineEnumerator(CustomMedicineCollection customMedicineCollection)
         {
             this.customMedicineCollection = customMedicineCollection;
         }
@@ -29,12 +29,15 @@
             {
                 position++;
 
+                while (!customMedicineCollection[position].IsSold && position < customMedicineCollection.Length - 1)
+                {
+                    position++;
+                }
+
                 return true;
             }
-            else
-            {
-                return false;
-            }
+
+            return false;
         }
         public void Reset() => position = -1;
     }

@@ -5,32 +5,30 @@ namespace lab8.Collections
     public class CustomMedicineCollection : IEnumerable, IComparer<Medicine>
     {
         private readonly List<Medicine> medicines;
-        private readonly OintmentEnumerator ointmentEnumerator;
+        private readonly MedicineEnumerator medEnumaretor;
 
         public CustomMedicineCollection(List<Medicine> medicines)
         {
             this.medicines = medicines;
-            ointmentEnumerator = new OintmentEnumerator(this);
+            medEnumaretor = new MedicineEnumerator(this);
         }
 
         public int Length => this.medicines.Count;
-
         public IEnumerator GetEnumerator()
         {
-            foreach (var medicine in this.medicines)
-            {
-                yield return medicine.Title;
-            }
+            return medEnumaretor;
         }
-
-        //public IEnumerator GetEnumerator()
-        //{
-        //    return ointmentEnumerator;
-        //}
 
         public Medicine this[int index]
         {
-            get => this.medicines[index];
+            get 
+            {
+                if (index >= 0 && index < medicines.Count)
+                    return this.medicines[index];
+
+                return null;
+            }
+
             set => this.medicines[index] = value;
         }
 
@@ -49,5 +47,13 @@ namespace lab8.Collections
 
             return result;
         }
+
+        //public IEnumerator GetEnumerator()
+        //{
+        //    foreach (var medicine in this.medicines)
+        //    {
+        //        yield return medicine.ToString();
+        //    }
+        //}
     }
 }

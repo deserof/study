@@ -189,14 +189,6 @@ namespace laba8
             }
         }
 
-        //protected override void OnFormClosing(FormClosingEventArgs e)
-        //{
-        //    if (e.CloseReason == CloseReason.UserClosing)
-        //    {
-        //        Application.Exit();
-        //    }
-        //}
-
         private void SellButton_Click(object sender, EventArgs e)
         {
             Medicine selectedMed = (Medicine)listBoxMedicine.SelectedItem;
@@ -247,7 +239,9 @@ namespace laba8
             SetPermissions();
             listBoxMedicine.Items.Clear();
 
-            foreach (var med in _medicines.Where(med => med.IsSold))
+            CustomMedicineCollection soldItems = new(_medicines);
+
+            foreach (var med in soldItems)
             {
                 listBoxMedicine.Items.Add(med);
             }
