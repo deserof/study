@@ -1,20 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.Xml;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows;
-using System.Windows.Automation.Text;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Lab2.Task3
 {
@@ -23,13 +13,19 @@ namespace Lab2.Task3
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly Thickness th1 = new Thickness(150, 0, 0, 0);
+        private readonly Thickness th2 = new Thickness(350, 0, 0, 0);
+        private readonly Thickness th3 = new Thickness(550, 0, 0, 0);
+
+        private int _milliseconds = 3000;
+        private int _hp = 5;
+
         private Dictionary<int, Button> _buttons => new Dictionary<int, Button>
         {
             { 0, WinButton },
             { 1, LoseFirstButton },
             { 2, LoseSecondButton },
         };
-
 
         public MainWindow()
         {
@@ -38,47 +34,66 @@ namespace Lab2.Task3
 
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
-            (Button firstButton, Button secondButton) = GetTwoRandonButtons();
+            WinButton.Content = string.Empty;
+            LoseFirstButton.Content = string.Empty;
+            LoseSecondButton.Content = string.Empty;
 
-            var firstLeftPos = Canvas.GetLeft(firstButton);
+            var storyboard = new Storyboard();
+            var shButtons = Shuffle();
 
-            var secondLeftPos = Canvas.GetLeft(secondButton);
-
-            MoveButton(firstButton, secondButton, firstLeftPos, secondLeftPos);
-        }
-
-        private void MoveButton(Button firstButton, Button secondButton, double firstLeftPos, double secondLeftPos)
-        {
-            DoubleAnimation animationFirst = new(secondLeftPos - firstLeftPos, TimeSpan.FromMilliseconds(2000));
-            var e = Canvas.GetLeft(firstButton);
-            TranslateTransform transformFirst = new();
-            firstButton.RenderTransform = transformFirst;
-
-            transformFirst.BeginAnimation(TranslateTransform.XProperty, animationFirst);
-
-            animationFirst.Completed += (sender, e) => anim_Completed(sender, e, firstButton, secondButton, firstLeftPos, secondLeftPos);
-        }
-
-        private void anim_Completed(object sender, EventArgs e, Button firstButton, Button secondButton, double firstLeftPos, double secondLeftPos)
-        {
-            Canvas.SetLeft(firstButton, secondLeftPos);
-            Canvas.SetLeft(secondButton, firstLeftPos);
-        }
-
-        private (Button, Button) GetTwoRandonButtons()
-        {
-            Random rnd = new Random();
-
-            var first = rnd.Next(3);
-
-            var second = rnd.Next(3);
-
-            while (first == second)
+            storyboard.Children = new TimelineCollection
             {
-                second = rnd.Next(3);
+                MoveBtn(shButtons.ElementAt(0).Value, th1, TimeSpan.FromMilliseconds(_milliseconds)),
+                MoveBtn(shButtons.ElementAt(1).Value, th2, TimeSpan.FromMilliseconds(_milliseconds)),
+                MoveBtn(shButtons.ElementAt(2).Value, th3, TimeSpan.FromMilliseconds(_milliseconds)),
+            };
+
+            storyboard.Begin();
+        }
+
+        private ThicknessAnimation MoveBtn(Button button, Thickness thickness, TimeSpan duration)
+        {
+            ThicknessAnimation thicknessAnimation = new()
+            {
+                From = button.Margin,
+                To = thickness,
+                Duration = duration
+            };
+
+            Storyboard.SetTarget(thicknessAnimation, button);
+            Storyboard.SetTargetProperty(thicknessAnimation, new PropertyPath(MarginProperty));
+
+            return thicknessAnimation;
+        }
+
+        private void WinButton_Click(object sender, RoutedEventArgs e)
+        {
+            _milliseconds -= 500;
+            WinButton.Content = "Win";
+            LoseFirstButton.Content = "Lose";
+            LoseSecondButton.Content = "Lose";
+            MessageBox.Show("Угадали");
+            if (_milliseconds <= 0) _milliseconds = 500;
+        }
+
+        private void LoseButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (_hp <= 0)
+            {
+                MessageBox.Show("Проиграли");
+                Thread.Sleep(3);
+                Environment.Exit(0);
             }
 
-            return (_buttons[first], _buttons[second]);
+            _hp--;
+            MessageBox.Show($"Минус hp. Текущее {_hp}");
+            WinButton.Content = string.Empty;
+        }
+
+        private Dictionary<int, Button> Shuffle()
+        {
+            Random r = new Random();
+            return _buttons.OrderBy(x => r.Next()).ToDictionary(item => item.Key, item => item.Value);
         }
     }
 }
