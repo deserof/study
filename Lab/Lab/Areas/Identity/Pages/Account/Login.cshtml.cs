@@ -127,17 +127,7 @@ namespace Lab.Areas.Identity.Pages.Account
 
                 if (result.Succeeded)
                 {
-                    var claims = new List<Claim>{ new Claim("amr", "pwd") };
-
-                    var roles = await _signInManager.UserManager.GetRolesAsync(user);
-
-                    if (roles.Any())
-                    {
-                        var rolesClaims = string.Join(",", roles);
-                        claims.Add(new Claim("Roles", rolesClaims));
-                    }
-
-                    await _signInManager.SignInWithClaimsAsync(user, Input.RememberMe, claims);
+                    await _signInManager.SignInAsync(user, Input.RememberMe);
                     _logger.LogInformation("User logged in.");
                     return LocalRedirect(returnUrl);
                 }
