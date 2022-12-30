@@ -13,12 +13,9 @@ namespace Lab2.Task3
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly Thickness th1 = new Thickness(150, 0, 0, 0);
-        private readonly Thickness th2 = new Thickness(350, 0, 0, 0);
-        private readonly Thickness th3 = new Thickness(550, 0, 0, 0);
-
-        private int _milliseconds = 3000;
+        private int _milliseconds = 2000;
         private int _hp = 5;
+        private int winCount = 0;
 
         private Dictionary<int, Button> _buttons => new Dictionary<int, Button>
         {
@@ -34,6 +31,8 @@ namespace Lab2.Task3
 
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
+            StartButton.IsEnabled = false;
+
             WinButton.Content = string.Empty;
             LoseFirstButton.Content = string.Empty;
             LoseSecondButton.Content = string.Empty;
@@ -41,11 +40,13 @@ namespace Lab2.Task3
             var storyboard = new Storyboard();
             var shButtons = Shuffle();
 
+            storyboard.Completed += Storyboard_Completed;
+
             storyboard.Children = new TimelineCollection
             {
-                MoveBtn(shButtons.ElementAt(0).Value, th1, TimeSpan.FromMilliseconds(_milliseconds)),
-                MoveBtn(shButtons.ElementAt(1).Value, th2, TimeSpan.FromMilliseconds(_milliseconds)),
-                MoveBtn(shButtons.ElementAt(2).Value, th3, TimeSpan.FromMilliseconds(_milliseconds)),
+                MoveBtn(shButtons.ElementAt(0).Value, WinButton.Margin, TimeSpan.FromMilliseconds(_milliseconds)),
+                MoveBtn(shButtons.ElementAt(1).Value, LoseFirstButton.Margin, TimeSpan.FromMilliseconds(_milliseconds)),
+                MoveBtn(shButtons.ElementAt(2).Value, LoseSecondButton.Margin, TimeSpan.FromMilliseconds(_milliseconds)),
             };
 
             storyboard.Begin();
@@ -68,32 +69,57 @@ namespace Lab2.Task3
 
         private void WinButton_Click(object sender, RoutedEventArgs e)
         {
+            StartButton.IsEnabled = true;
+
+            winCount++;
             _milliseconds -= 500;
             WinButton.Content = "Win";
             LoseFirstButton.Content = "Lose";
             LoseSecondButton.Content = "Lose";
             MessageBox.Show("Угадали");
             if (_milliseconds <= 0) _milliseconds = 500;
+
+            if (winCount == 5)
+            {
+                MessageBox.Show($"Выиграли. {winCount} раз угадали");
+                Environment.Exit(0);
+            }
         }
 
         private void LoseButton_Click(object sender, RoutedEventArgs e)
         {
+            StartButton.IsEnabled = true;
+
             if (_hp <= 0)
             {
-                MessageBox.Show("Проиграли");
+                MessageBox.Show($"Проиграли. {winCount} раз угадали");
                 Thread.Sleep(3);
                 Environment.Exit(0);
             }
 
             _hp--;
             MessageBox.Show($"Минус hp. Текущее {_hp}");
-            WinButton.Content = string.Empty;
         }
 
         private Dictionary<int, Button> Shuffle()
         {
             Random r = new Random();
             return _buttons.OrderBy(x => r.Next()).ToDictionary(item => item.Key, item => item.Value);
+        }
+
+        private void Storyboard_Completed(object? sender, EventArgs e)
+        {
+            var storyboard = new Storyboard();
+            var shButtons = Shuffle();
+
+            storyboard.Children = new TimelineCollection
+            {
+                MoveBtn(shButtons.ElementAt(0).Value, WinButton.Margin, TimeSpan.FromMilliseconds(_milliseconds)),
+                MoveBtn(shButtons.ElementAt(1).Value, LoseFirstButton.Margin, TimeSpan.FromMilliseconds(_milliseconds)),
+                MoveBtn(shButtons.ElementAt(2).Value, LoseSecondButton.Margin, TimeSpan.FromMilliseconds(_milliseconds)),
+            };
+
+            storyboard.Begin();
         }
     }
 }
