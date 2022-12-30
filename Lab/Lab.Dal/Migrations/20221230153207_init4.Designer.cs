@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lab.Dal.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221230124226_initappuser")]
-    partial class initappuser
+    [Migration("20221230153207_init4")]
+    partial class init4
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -32,6 +32,15 @@ namespace Lab.Dal.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BankCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CardNumber")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
@@ -44,12 +53,10 @@ namespace Lab.Dal.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
@@ -58,6 +65,10 @@ namespace Lab.Dal.Migrations
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("MiddleName")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -97,6 +108,40 @@ namespace Lab.Dal.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "b74ddd14-6340-4840-95c2-db12554843e5",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "367011a0-3e77-4988-b540-0e26665eaf0e",
+                            Email = "client@gmail.com",
+                            EmailConfirmed = false,
+                            FirstName = "Jonh",
+                            LastName = "Smith",
+                            LockoutEnabled = false,
+                            PasswordHash = "AQAAAAEAACcQAAAAEI1DbjkMtLC6B6vfWMptidNBo9szcJEqZUYqRfKkbrJl9qVE78PB8tBNM3TZD+8GxA==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "fc484c24-7267-4f4e-a1fa-59f649ab383b",
+                            TwoFactorEnabled = false,
+                            UserName = "client@gmail.com"
+                        },
+                        new
+                        {
+                            Id = "a35ddd14-6340-4840-95c2-db12554843e5",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "011233a2-4a48-4265-9814-499994e92d7a",
+                            Email = "employee@gmail.com",
+                            EmailConfirmed = false,
+                            FirstName = "Adam",
+                            LastName = "Black",
+                            LockoutEnabled = false,
+                            PasswordHash = "AQAAAAEAACcQAAAAENyyuhPuRCUxvQFBStBwnfdmbKgutX6FqJHLGZKBfw2qFvynZo2aXICAW7hwpFfYCQ==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "54a41f71-4291-4f47-8ab9-5d2af2db3569",
+                            TwoFactorEnabled = false,
+                            UserName = "employee@gmail.com"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -124,6 +169,22 @@ namespace Lab.Dal.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "fab4fac1-c546-41de-aebc-a14da6895711",
+                            ConcurrencyStamp = "1",
+                            Name = "Client",
+                            NormalizedName = "Client Role"
+                        },
+                        new
+                        {
+                            Id = "c7b013f0-5201-4317-abd8-c211f91b7330",
+                            ConcurrencyStamp = "2",
+                            Name = "Employee",
+                            NormalizedName = "Employee Role"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -213,6 +274,18 @@ namespace Lab.Dal.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "b74ddd14-6340-4840-95c2-db12554843e5",
+                            RoleId = "fab4fac1-c546-41de-aebc-a14da6895711"
+                        },
+                        new
+                        {
+                            UserId = "a35ddd14-6340-4840-95c2-db12554843e5",
+                            RoleId = "c7b013f0-5201-4317-abd8-c211f91b7330"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>

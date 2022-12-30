@@ -4,8 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Lab.Controllers
 {
-    [Authorize]
-    public class TestController : Controller
+    [Authorize(Roles = "Employee")]
+    public class OperationController : Controller
     {
         // GET: TestController
         public IActionResult Index()

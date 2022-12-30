@@ -4,6 +4,7 @@ using Lab.Areas.Identity.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lab.Dal.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221230152402_init3")]
+    partial class init3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -112,17 +114,14 @@ namespace Lab.Dal.Migrations
                         {
                             Id = "b74ddd14-6340-4840-95c2-db12554843e5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "397396d2-3e62-4595-9453-f88cf7b7e609",
+                            ConcurrencyStamp = "121adae1-c6c4-49f2-a1ae-79983fe87735",
                             Email = "client@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Jonh",
                             LastName = "Smith",
                             LockoutEnabled = false,
-                            NormalizedEmail = "client@gmail.com",
-                            NormalizedUserName = "client@gmail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEMuSdgKJ+G4eM/UslTQceqjRoVKnM3jBT6P6/qTUqRkxkT6UDKhbWyrb/K6vimsGkQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b95ae87d-9a5a-4b7d-99cd-0015da56fb4c",
+                            SecurityStamp = "0564b55f-2f56-444a-81dc-a46fc4c52bd4",
                             TwoFactorEnabled = false,
                             UserName = "client@gmail.com"
                         },
@@ -130,17 +129,14 @@ namespace Lab.Dal.Migrations
                         {
                             Id = "a35ddd14-6340-4840-95c2-db12554843e5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "4a682e38-2ba9-4d5c-a0bb-cc43be1d23ac",
+                            ConcurrencyStamp = "b6bb36de-1071-400f-896f-554494419c28",
                             Email = "employee@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Adam",
                             LastName = "Black",
                             LockoutEnabled = false,
-                            NormalizedEmail = "employee@gmail.com",
-                            NormalizedUserName = "employee@gmail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEFWULtzvKaM4XyjYPdQ+aUjafIo7eAVVhk2LXpm7R7C+HSVYnd+U+DoV25/ik82HUA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b3298dcb-c813-4442-8a7a-f11637ddef2e",
+                            SecurityStamp = "6875a0b8-c682-4d6c-8944-3bcc65b7fb03",
                             TwoFactorEnabled = false,
                             UserName = "employee@gmail.com"
                         });

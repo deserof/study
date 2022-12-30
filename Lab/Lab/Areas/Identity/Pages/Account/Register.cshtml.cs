@@ -79,14 +79,19 @@ namespace Lab.Areas.Identity.Pages.Account
 
             [Required]
             [StringLength(100, ErrorMessage = "last name should have a maximum of 100 characters")]
-            [Display(Name = "FirstName")]
+            [Display(Name = "LastName")]
             public string LastName { get; set; }
 
-            /// <summary>
-            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-            ///     directly from your code. This API may change or be removed in future releases.
-            /// </summary>
             [Required]
+            [Display(Name = "MiddleName")]
+            [StringLength(100, ErrorMessage = "middle name should have a maximum of 100 characters")]
+            public string MiddleName { get; set; }
+
+        /// <summary>
+        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
+        ///     directly from your code. This API may change or be removed in future releases.
+        /// </summary>
+        [Required]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
@@ -136,6 +141,8 @@ namespace Lab.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
+
+                    await _userManager.AddToRoleAsync(user, "Client Role");
 
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
